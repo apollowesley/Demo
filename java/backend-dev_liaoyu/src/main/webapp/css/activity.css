@@ -1,0 +1,449 @@
+@charset "utf-8";
+.activity {
+    margin-left: 205px;
+    position: static;
+    height: auto;
+    font-size: 12px;
+    font-family: "微软雅黑", Tahoma;
+}
+
+#u22 {
+    position: relative;
+    height: auto;
+    border: solid 1px #626262;
+}
+
+#u24 {
+    position: relative;
+    width: 100%;
+    height: 27px;
+    margin: 5px auto 0;
+    padding: 0;
+}
+
+#u25 {
+    position: relative;
+    float: right;
+    margin: 0 5px;
+    height: 25px;
+}
+
+.u25_serch {
+    position: relative;
+    width: 200px;
+    height: 25px;
+    padding: 0;
+}
+
+.u25_serch label {
+    position: absolute;
+    margin-top: 5px;
+}
+
+
+#u25_serch_1 {
+    position: absolute;
+    right: 40px;
+    width: 100px;
+    height: 25px;
+    border: 0;
+}
+
+#u25_serch_2 {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 25px;
+    border: 0;
+    padding: 0 5px;
+    color: #ffffff;
+    background-color: rgb(20, 101, 255);
+}
+
+#u25_serch_2:hover {
+    background-color: rgb(75, 90, 203);
+}
+
+/*轮播展位部分开始*/
+
+#u32 {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    margin: 3px auto;
+    text-align: left;
+    border-top: solid 1px #bebebe;
+    background-color: #bfbfbf;
+}
+
+#u33 p {
+    position: absolute;
+    margin: 3px;
+    padding: 5px;
+}
+
+
+/*替换部分开始*/
+
+
+/* 本例子css */
+
+.slideTxtBox {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: left;
+}
+
+.slideTxtBox .hd {
+    width: 100%;
+    top: -3px;
+    height: 30px;
+    line-height: 30px;
+    background: #e1e1e1;
+    padding: 0;
+    position: relative;
+    border-top: solid 1px #cecece;
+}
+
+.slideTxtBox .hd ul {
+    float: left;
+    position: absolute;
+    width: 100%;
+    height: 30px;
+}
+
+.slideTxtBox .hd ul li {
+    float: left;
+    text-align: center;
+    width: 33.3%;
+    cursor: pointer;
+}
+
+.slideTxtBox .hd ul li.on {
+    height: 30px;
+    background: rgb(20, 101, 255);
+    border: -2px solid #ddd;
+    border-bottom: 2px solid #fff;
+    color: #ffffff;
+}
+
+
+/* 下面是前/后按钮代码，如果不需要删除即可 */
+
+.slideTxtBox .arrow {
+    position: absolute;
+    right: 10px;
+    top: 0;
+}
+
+.slideTxtBox .arrow a {
+    display: block;
+    width: 5px;
+    height: 9px;
+    float: right;
+    margin-right: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background: url("../images/arrow.png") 0 0 no-repeat;
+}
+
+.slideTxtBox .arrow .next {
+    background-position: 0 -50px;
+}
+
+.slideTxtBox .arrow .prevStop {
+    background-position: -60px 0;
+}
+
+.slideTxtBox .arrow .nextStop {
+    background-position: -60px -50px;
+}
+
+.slideTxtBox .bd {
+    position: relative;
+    margin: 5px auto;
+    width: 100%;
+}
+
+
+/*PV/UV页面开始*/
+
+.pv {
+    width: 100%;
+    position: relative;
+    margin-top: 5px;
+}
+
+.pv .part1 {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.part1 p {
+    position: relative;
+    display: inline-block;
+    width: 75px;
+    height: 24px;
+    font-size: 18px;
+    margin: 2px auto;
+}
+
+#bd_img {
+    position: relative;
+    margin: 3px 1px;
+    width: 100%;
+    height: 270px;
+}
+
+#bd_img img {
+    position: relative;
+    left: 2px;
+    width: 99.5%;
+    height: 260px;
+}
+
+.b1,
+.b2,
+.b3 {
+    border: 0;
+    position: relative;
+    display: block;
+    margin: 5px auto;
+    width: 105px;
+    height: 13px;
+    background: url(../images/u46.png) center no-repeat;
+}
+
+.bg1 {
+    position: relative;
+    margin: 5px auto;
+    width: 99%;
+    border-left: solid 1px #bebebe;
+    border-top: solid 1px #bebebe;
+}
+
+.shujubiaoge {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    border: 0;
+    text-align: center;
+}
+
+.shujubiaoge .biaoge {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.shujubiaoge .biaoge tr {
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
+
+.shujubiaoge .biaoge tr td {
+    border-bottom: solid 1px #bebebe;
+    border-right: solid 1px #bebebe;
+}
+
+.shujubiaoge .biaoge tr.on {
+    background-color: #a0a1a1;
+}
+
+#u62 {
+    float: right;
+    margin: 2px;
+    height: 25px;
+}
+
+#u62 form p input {
+    height: 25px;
+    margin: 0;
+    padding: 1px 10px;
+}
+
+#u62 form p input:hover {
+    background-color: #b7b7b7;
+}
+
+#u66 {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    margin: 40px auto 0;
+    background-color: #d7d3ff;
+    border-top: solid 1px #bebebe;
+    border-bottom: solid 1px #bebebe;
+}
+
+#u66 p {
+    position: relative;
+    margin-left: 10px;
+    font-size: 12px;
+    float: left;
+    line-height: 32px;
+}
+
+#u64 img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#part4 {
+    position: relative;
+    margin: 10px auto;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.bg2 {
+    position: relative;
+    width: 99%;
+    margin: auto;
+    border-top: solid 1px #bebebe;
+    border-left: solid 1px #bebebe;
+}
+
+.bg2 table {
+    width: 100%;
+}
+
+.bg2 table tr {
+    height: 35px;
+}
+
+.bg2 table tr td {
+    border-right: solid 1px #bebebe;
+    border-bottom: solid 1px #bebebe;
+}
+
+
+/*页面停留时间开始*/
+
+.viewTime {
+    position: relative;
+    padding: 0;
+}
+
+.page_part1 p {
+    position: relative;
+    margin: 0 auto;
+    width: 180px;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.page_part2 {
+    position: relative;
+    width: 100%;
+}
+
+.page_part2 img {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.page_part3 {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    margin: 1px auto;
+    vertical-align: top;
+}
+
+.page_part3 img {
+    position: relative;
+    display: block;
+    top: 15px;
+}
+
+.page_part3 p {
+    position: relative;
+    float: right;
+}
+
+
+/*转发数页面开始*/
+
+#u226 {
+    position: relative;
+    margin: 5px auto;
+    padding: 0 10px;
+    width: 121px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#u85_img {
+    position: relative;
+    width: 100%;
+    height: 260px;
+}
+
+#u85_img img {
+    width: 100%;
+}
+
+.bg3 {
+    position: relative;
+    margin: 1px auto;
+    width: 99%;
+    border-top: solid 1px #bebebe;
+    border-left: solid 1px #bebebe;
+    text-align: center;
+}
+
+.bg3 table {
+    width: 100%;
+    margin: auto;
+}
+
+.bg3 table tr {
+    line-height: 30px;
+}
+
+.bg3 table tr td {
+    border-right: solid 1px #bebebe;
+    border-bottom: solid 1px #bebebe;
+}
+
+#u100 {
+    position: relative;
+    margin: 25px auto;
+    width: 100%;
+    height: 234px;
+}
+
+#u100 img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 234px;
+}
+.excel {
+    position: relative;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.fenye {
+    width: 99%;
+    clear: both;
+    text-align: center;
+    border: solid 1px;
+    margin: 5px auto;
+}

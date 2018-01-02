@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC      
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户 管理 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.customer.CustomerDao">
+
+	<!-- 插入用户信息 -->
+	<insert id="customer_insertCustomer" parameterType="java.util.Map">
+		INSERT into
+		t_user_account(user_id,phone,name,photo,garden_id,creation_time,update_time,regist)
+		VALUES(#{uuid},#{phone},#{name},#{photo},#{garden_id},NOW(),NOW(),#{regist})
+	</insert>
+
+
+	<!-- 根据用户id，查看关联用户的信息 -->
+		<!-- SELECT t1.phone,t1.name,t2.address,t2.name as
+		garden_name from t_user_account t1,t_dict_garden t2 where t1.garden_id
+		= t2.garden_id and t1.user_id = #{user_id} -->
+	<select id="customer_queryCustomerInfo" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from t_user_account where user_id = #{user_id}
+	</select>
+	
+	<!-- 查询所有用户账户扩展的信息加载到缓存-->
+	<select id="customer_queryAllUserExtend" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from t_user_extend
+	</select>
+	
+	
+	<!-- 根据用户id，查看用戶使用記錄总数-->
+	<select id="customer_queryUsagerecordCount" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		SELECT count(*) from t_user_integral where user_id = #{user_id}
+	</select>
+	
+	<!-- 根据用户id，查看用戶使用記錄-->
+	<select id="customer_queryUsagerecord" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT * from t_user_integral where user_id = #{user_id}
+		order by event_time desc
+		limit #{startnum},#{mr}
+	</select>
+	
+	
+	<!-- 查询所有用户账户信息加载到缓存-->
+	<select id="customer_queryAllUser" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT * from t_user_account
+	</select>
+	
+	
+	<!--根据用户id查询 用户token，判断是否登陆 -->
+	<select id="customer_queryUserMobileById" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT token from t_user_mobile where user_id = #{user_id}
+	</select>
+	
+	<!-- 修改回收人员登陆状态 为注销-->
+	<update id="customer_updateUserMobileById" parameterType="java.util.Map">
+	UPDATE t_user_mobile set update_time=NOW(),token='' where user_id = #{user_id}
+	</update>
+</mapper>

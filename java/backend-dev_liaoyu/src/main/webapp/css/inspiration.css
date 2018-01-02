@@ -1,0 +1,247 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+a:hover {
+    color: #1974A1;
+}
+
+.jn {
+    margin-left: 205px;
+    position: static;
+    height: auto;
+}
+
+.slideTxtBox {
+    position: relative;
+    margin: 0 auto;
+    width: 99%;
+    height: auto;
+    border: solid 1px #6e6e6e;
+    text-align: left;
+}
+
+.slideTxtBox .hd {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: #cecece;
+    padding: 0;
+    position: relative;
+}
+
+.slideTxtBox .hd ul {
+    width: 100%;
+    float: left;
+    position: absolute;
+    height: 30px;
+}
+
+.slideTxtBox .hd ul li {
+    float: left;
+    text-align: center;
+    width: 33.3%;
+    cursor: pointer;
+}
+
+.slideTxtBox .hd ul li.on {
+    height: 30px;
+    background: rgb(20, 101, 255);
+    border: -2px solid #ddd;
+    border-bottom: 2px solid #fff;
+    color: #ffffff;
+}
+
+.slideTxtBox .bd {
+    position: relative;
+    width: 100%;
+    border-top: solid 1px #bebebe;
+}
+
+
+/*相关数据部分开始*/
+
+.xiangguanshuju {
+    position: relative;
+    width: 100%;
+}
+
+.serch {
+    position: relative;
+    width:auto;
+    height: 25px;
+    margin: 5px 3px 5px 0;
+    float: right;
+}
+
+.serch label {
+    margin-left: 10px;
+}
+
+#inspirationName,
+#shelves_time{
+    height: 25px;
+    border: 0;
+    padding-left: 15px;
+}
+
+#serch_3 {
+    position: relative;
+    display: inline-block;
+    border: 0;
+    height: 25px;
+    color:#276E98;
+}
+
+#serch_3:hover {
+    color: #276E98;
+}
+
+.bg1 {
+    position: relative;
+    margin: 5px auto;
+    width: 99%;
+    text-align: center;
+    border-top: solid 1px #bebebe;
+    border-left: solid 1px #bebebe;
+    clear: both;
+}
+
+.bg1 table {
+    width: 100%;
+}
+
+.bg1 table tr {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+}
+
+.bg1 table tr td {
+	padding-left:5px;
+    margin-left: -3px;
+    border-right: solid 1px #bebebe;
+    border-bottom: solid 1px #bebebe;
+    font-size: 12px;
+    font-family: "微软雅黑",Tahoma;
+}
+
+.bg1 .img1 {
+    cursor: pointer;
+    width: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.bg1 .img2{
+    width: 60px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/*搜索热词部分开始*/
+
+.sousuoreci {
+    position: relative;
+}
+
+.bg2 {
+    position: relative;
+    margin: 5px auto;
+    width: 99%;
+    border-left: solid 1px #bebebe;
+    border-top: solid 1px #bebebe;
+    text-align: center;
+}
+
+.bg2 table {
+    width: 100%;
+}
+
+.bg2 table tr {
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.bg2 table tr td {
+    border-bottom: solid 1px #bebebe;
+    border-right: solid 1px #bebebe;
+    font-size: 12px;
+    font-family: "微软雅黑",Tahoma;
+}
+
+.bg2 ul.on2 {
+    width: 30%;
+}
+
+.bg2 ul.on3,
+.bg2 ul.on4 {
+    width: 29.5%;
+}
+
+
+/*锦囊商品部分开始*/
+
+.jinnangshangpin {
+    position: relative;
+}
+
+.bg3 {
+    position: relative;
+    margin: 20px auto;
+    width: 99%;
+    border-left: solid 1px #bebebe;
+    border-top: solid 1px #bebebe;
+    text-align: center;
+}
+
+.bg3 table {
+	display:block;
+    width: 100%;
+}
+
+.bg3 table tr {
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.bg3 table tr td {
+    border-bottom: solid 1px #bebebe;
+    border-right: solid 1px #bebebe;
+    font-size: 12px;
+    font-family: "微软雅黑",Tahoma;
+}
+.excel {
+    position: relative;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.fenye {
+    width: 99%;
+    clear: both;
+    text-align: center;
+    border: solid 1px;
+    margin: 5px auto;
+}

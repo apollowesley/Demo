@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC     
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 后台管理人员 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.account.ManagerUserDao">
+
+	<!-- 查询所有管理员信息到缓存 -->
+	<select id="manageruser_queryAllManagerUser" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT * from t_oms_account
+	</select>
+
+	<!-- 管理员信息查询 -->
+	<select id="manageruser_queryManagerUser" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT * from t_oms_account where account=#{account}
+		<if test="pwd != null and pwd !='' ">
+			and pwd = #{pwd}
+		</if>
+		<if test="token != null and token !='' ">
+			and token = #{token}
+		</if>
+		and record_status = 0
+	</select>
+
+	<!-- 修改管理员账号信息 -->
+	<update id="manageruser_updateOmsAccount" parameterType="java.util.Map">
+		UPDATE t_oms_account set update_time = NOW()
+		<if test="token != null">
+			,token=#{token}
+		</if>
+		where account = #{account}
+	</update>
+
+	<!-- 获取菜单列表 -->
+	<select id="manageruser_queryAllMenu" parameterType="java.util.Map" resultType="java.util.Map">
+		  SELECT module_id,name,parent_id from t_oms_module where record_status = 0
+	</select>
+	<!-- 获取用户菜单列表 -->
+	<select id="manageruser_queryUserRoleMenu" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT module_id,role_id from t_oms_role_module where role_id=#{role_id}
+	</select>
+	<select id="manageruser_getUserModuleByUserId" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT module_id,account_id from t_oms_user_module where account_id=#{account_id}
+	</select>
+	<select id="manageruser_getRoleList"  resultType="java.util.Map">
+		SELECT
+			account_id,
+			account,
+			NAME account_name,
+			creation_time,
+			toa.role_id,
+			tor.role_name
+		FROM
+			t_oms_account toa
+		RIGHT JOIN t_oms_role tor ON toa.role_id = tor.role_id
+	</select>
+	<select id="manageruser_getUserRoleMenuList" parameterType="java.util.Map" resultType="java.util.Map">
+		 SELECT
+			tom.module_id,
+			tom. NAME module_name,
+			torm.role_id
+		FROM
+			(
+				SELECT
+					module_id,
+					role_id
+				FROM
+					t_oms_role_module torm
+				WHERE
+					torm.role_id = #{role_id}
+			) torm
+		LEFT JOIN t_oms_module tom ON tom.module_id = torm.module_id
+	</select>
+    <delete id="manageruser_deleteRoleMenu" parameterType="java.util.Map">
+			delete from t_oms_role_module where role_id=#{role_id}
+	</delete>
+	<delete id="manageruser_deleteUserModule" parameterType="java.util.Map">
+		delete from t_oms_user_module where account_id=#{account_id}
+	</delete>
+    <insert id="manageruser_saveRoleMenu" parameterType="java.util.Map" >
+		INSERT t_oms_role_module (module_id, role_id)
+		VALUES
+		<foreach collection="moduleValues" item="item" index="index" separator="," >
+			(#{item},#{role_id})
+		</foreach>
+	</insert>
+	<insert id="manageruser_saveUserModule" parameterType="java.util.Map" >
+		INSERT t_oms_user_module (module_id, account_id)
+		VALUES
+		<foreach collection="moduleValues" item="item" index="index" separator="," >
+			(#{item},#{account_id})
+		</foreach>
+	</insert>
+	<insert id="manageruser_addRole" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="role_id">
+		INSERT
+		 	t_oms_role(role_name)
+		VALUES
+			(#{role_name})
+	</insert>
+	<insert id="manageruser_createUser" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="account_id">
+		INSERT
+		t_oms_account(account,pwd,name,creation_time,update_time)
+		VALUES
+		(#{account},#{pwd},#{account},NOW(),NOW()
+	</insert>
+	<select id="manageruser_getUserListByRoleId" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT account_id,account,name account_name from t_oms_account where role_id=#{role_id}
+	</select>
+
+	<select id="manageruser_getAllUserInfoList" parameterType="java.util.Map" resultType="java.util.Map">
+		 SELECT user_id	,
+				user_phone,
+				user_name,
+        		creation_time,
+				update_time,
+				user_regist_type,
+				ifnull(integral_balance,0) integral_balance,
+				ifnull(integral_amount,0) integral_amount,
+				address,
+				house_numer,
+				report_state,
+				client_type,
+				inviteCount,
+				exchangeCount
+        from (
+						 SELECT
+									tua.user_id,
+									CONCAT(tua.NAME,tua.phone),
+									tua.phone user_phone,
+									IFNULL(tua. NAME, '') user_name,
+									DATE_FORMAT(tua.creation_time,'%Y-%c-%d %h:%i') creation_time,
+									DATE_FORMAT(tua.update_time,'%Y-%c-%d %h:%i') update_time,
+									tua.regist user_regist_type,
+									tue.integral_balance,
+									tue.integral_amount,
+									tue.address,
+									tue.house_numer,
+									tue.report_state,
+									ifnull(tum.client_type, '2') client_type,
+									(SELECT COUNT(id) from t_user_invitecode tui where the_top=0 and tui.user_id=tua.user_id) inviteCount,
+									(SELECT COUNT(id) from t_user_integrals_log tux where integral_type=3 and tux.user_id=tua.user_id) exchangeCount
+
+							FROM
+									t_user_account tua
+							LEFT JOIN t_user_extend tue ON tua.user_id = tue.user_id
+							LEFT JOIN t_user_mobile tum ON tua.user_id = tum.user_id
+							where  1=1
+							<if test="query_content != null" >
+								and CONCAT(tua.NAME,tua.phone) like CONCAT('%',#{query_content},'%')
+							</if>
+							limit #{start}, #{mr}
+			)a
+
+	</select>
+	<select id="manageruser_getAllUserInfoListCount" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+		   count(1) pageTotal
+		FROM
+		t_user_account tua
+		LEFT JOIN t_user_extend tue ON tua.user_id = tue.user_id
+		LEFT JOIN t_user_mobile tum ON tua.user_id = tum.user_id
+	</select>
+
+	<update id="manageruser_resetPassword" parameterType="java.util.Map">
+		UPDATE t_oms_account set pwd = #{pwd},update_time=NOW()
+		where account = #{account_id}
+	</update>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC     
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.menu.MenuDao">
+	<!-- 父级菜单 -->
+	<resultMap type="com.kyl.ps.model.config.ModuleMenu" id="parent_menu">
+		<result property="id" column="id" javaType="String"/>
+		<result property="moduleId" column="moduleId" javaType="String"/>
+		<result property="menuName" column="menuName" javaType="String"/>
+		<collection property="menus" column="id" select="menu_selectListByParentId" />
+	</resultMap>
+	<!-- 查询moduleId为'0'的一级菜单 -->
+	<select id="menu_selectList" resultMap="parent_menu" parameterType="java.util.Map">
+		select * from t_module_menu where moduleId = '0' and `status` = '0' ORDER BY `sort` 
+	</select>
+	
+	<!-- 根据菜单Id查询子菜单 -->
+	<select id="menu_selectListByParentId" resultMap="last_menu" parameterType="java.util.Map">
+		select * from t_module_menu where moduleId = #{id} and `status` = '0' ORDER BY `sort`
+	</select>
+	
+	<resultMap type="com.kyl.ps.model.config.ModuleMenu" id="last_menu">
+		<result property="id" column="id" javaType="String"/>
+		<result property="moduleId" column="moduleId" javaType="String"/>
+		<result property="menuName" column="menuName" javaType="String"/>
+	</resultMap>
+</mapper>

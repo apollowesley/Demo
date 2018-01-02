@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC     
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 后台管理人员 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.content.ContentManagerDao" >
+    <insert id="content_addColumn" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="column_id" >
+		INSERT INTO
+				t_msg_column (column_type, show_num,column_name,order_flag,creation_time,update_time)
+		VALUES
+				(#{column_type},#{show_num},#{column_name},#{column_order},NOW(),NOW())
+	</insert>
+	<update id="content_moveColumn" parameterType="java.util.Map">
+		update  t_msg_article  set column_id = #{new_column_id}
+				where  column_id =#{column_id}
+	</update>
+	<update id="content_modifyColumn" parameterType="java.util.Map">
+		update  t_msg_column  set show_num = #{show_num},column_name=#{column_name},column_type=#{column_type},update_time=NOW()
+		where  column_id =#{column_id}
+	</update>
+
+	<update id="content_modifyColumnOrder" parameterType="java.util.Map">
+		update  t_msg_column  set order_flag =
+		<foreach collection="columnList" index="index" item="item" separator=" " open="case column_id" close="end ">
+			when #{item.column_id} then #{item.column_order}
+		</foreach>
+		 where column_id in
+		<foreach collection="columnList" index="index" item="item" separator="," open="(" close=") ">
+			#{item.column_id}
+		</foreach>
+	</update>
+	<select id="content_getColumnList" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT  column_id, column_type ,show_num, column_name,order_flag from t_msg_column order by  order_flag
+	</select>
+	<insert id="content_addContentInfo" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="column_id" >
+		INSERT INTO t_msg_article (
+			title,
+			column_id,
+			bonus_integral,
+			icon,
+			article_desc,
+			content,
+			img_url,
+			creation_time,
+			update_time,
+			read_random
+		)
+		VALUES
+			(
+				#{article_title},
+				#{column_id},
+				#{article_bonus_integral},
+				#{article_icon},
+				#{article_desc},
+				#{article_content},
+				#{article_img_url},
+				NOW(),
+				NOW(),
+				#{read_random}
+			)
+	</insert>
+	<update id="content_modifyContentInfo" parameterType="java.util.Map">
+		update  t_msg_article  set
+			title = #{article_title},
+			column_id = #{column_id},
+			bonus_integral = #{article_bonus_integral},
+			icon = #{article_icon},
+			article_desc = #{article_desc},
+			content = #{article_content},
+			img_url = #{article_img_url},
+			update_time = NOW()
+			where article_id = #{article_id}
+  </update>
+	<select id="content_getColumnContentCountByColumnId" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			COUNT(1) pageTotal
+		from t_msg_article where 1 =1
+		<if test="column_id !=null"><!--0表示全部-->
+			and column_id=#{column_id}
+		</if>
+	</select>
+	<select id="content_getColumnContentByColumnId" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+				article_id,
+				title article_title,
+				column_id
+		from t_msg_article where 1 =1 and is_remove = 0
+		<if test="column_id !=null"><!--0表示全部-->
+			and column_id=#{column_id}
+		</if>
+		order by UPDATE_time desc
+		limit #{start}, #{mr}
+	</select>
+	<select id="content_getColumnArticleByArticleId" resultType="java.util.Map" parameterType="java.util.Map">
+	SELECT
+				article_id,
+				title article_title,
+				column_id,
+				bonus_integral,
+				icon article_icon,
+				article_desc,
+				content article_content,
+				img_url article_img_url,
+				top article_top,
+				creation_time,
+				update_time
+		from t_msg_article where 1 =1 and article_id= #{article_id}
+	</select>
+	<delete id="content_deleteArticle" parameterType="java.util.Map">
+			update  t_msg_article  set  is_remove =1 where article_id= #{article_id}
+	</delete>
+	<delete id="content_deleteColumn" parameterType="java.util.Map">
+		DELETE   from  t_msg_column where column_id= #{column_id}
+	</delete>
+
+	<update id="content_stickArticle" parameterType="java.util.Map">
+		update  t_msg_article  set
+		update_time = NOW()
+		where article_id = #{article_id}
+	</update>
+</mapper>

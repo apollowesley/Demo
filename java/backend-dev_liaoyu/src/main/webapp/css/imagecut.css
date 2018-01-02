@@ -1,0 +1,66 @@
+body{
+	margin:0px; padding:0px;
+	text-align:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+#statistics{
+	position:relative;
+	padding:0px; margin:0px;
+}
+#statistics span{
+	text-align:left;
+}
+
+#picArea{
+	position:relative;
+	float:left;
+	background:rgba(0,0,0,0.3);	/* 锟斤拷色锟斤拷锟斤拷 */
+	padding:0px; margin:0px;
+}
+
+#mypic{
+	position:relative;
+	padding:0px; margin:0px;
+	left:0px; top:0px;
+}
+/* 锟斤拷锟斤拷锟斤拷同锟斤拷图片锟斤拷锟斤拷同一锟斤拷位锟斤拷
+   锟斤拷锟斤拷锟酵计拷锟斤拷锟斤拷锟绞狙★拷胁锟斤拷郑锟斤拷锟斤拷锟斤拷锟缴�
+   锟斤拷锟斤拷锟角凤拷锟斤拷通锟斤拷透锟斤拷锟斤拷锟斤拷锟�
+*/
+#mypic1{
+	position:absolute;
+	/*clip:rect(50px,300px,400px,100px);*/
+	z-index:2;
+}
+#mypic2{
+	position:absolute;
+	z-index:1;
+	filter:alpha(opacity=50);	/* 位锟斤拷锟铰凤拷锟斤拷图片锟斤拷锟斤拷锟斤拷透锟斤拷锟斤拷 */
+	-moz-opacity:0.1;
+	opacity:0.1;
+}
+
+#selectArea{
+	border:1px dashed #FFFFFF;
+	position:absolute;
+	z-index:5;
+	display:none;	/* 锟斤拷始锟斤拷时锟斤拷锟斤拷选锟斤拷 */
+	margin:0px; padding:0px;
+	cursor:move;
+}
+#selectArea span{
+	padding:0px; margin:0px;
+	position:absolute;
+}
+#selectArea span img{
+	padding:0px; margin:0px;
+	position:absolute;
+}
+#squareIE{
+	/*锟斤拷锟斤拷锟斤拷歉锟絀E锟矫的ｏ拷锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷IE选锟斤拷*/
+	position:absolute;
+	left:4px; top:4px;
+	filter:alpha(opacity=0); /* 透锟斤拷锟斤拷锟斤拷锟斤拷为0 */
+	-moz-opacity:0;
+}

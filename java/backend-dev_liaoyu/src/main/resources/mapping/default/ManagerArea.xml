@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC     
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 后台管理人员 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.area.AreaManagerDao" >
+	<select id="areaManager_getUserAreaList" resultType="java.util.Map" parameterType="java.util.Map">
+			SELECT DISTINCT province.id province_id,province.`name` province_name from
+			(
+				SELECT
+						dist.area_id,
+						tda.parent_id,tda.`name`,
+						tda.id city_id,
+						tda.parent_id province_id
+				 from
+				(
+				 SELECT
+						tdg.area_id,
+						tda.parent_id,
+						tda.merger_name
+					FROM
+						t_dict_garden tdg
+					LEFT JOIN t_dict_area tda ON tdg.area_id = tda.id
+
+				) dist
+				LEFT JOIN t_dict_area tda ON dist.parent_id = tda.id
+			)city LEFT JOIN t_dict_area province on city.province_id = province.id
+	</select>
+	<select id="areaManager_getCityUserAreaList" resultType="java.util.Map" parameterType="java.util.Map">
+			SELECT
+						DISTINCT city.id province_id,
+						city.name province_name,
+						city.parent_id
+				 from
+				(
+				   SELECT
+						tda.name,
+						tda.parent_id,
+						tda.merger_name
+					FROM
+						t_dict_garden tdg
+					LEFT JOIN t_dict_area tda ON tdg.area_id = tda.id
+				) dist
+				LEFT JOIN t_dict_area city ON dist.parent_id = city.id
+				where city.parent_id =#{area_id}
+	</select>
+
+	<select id="areaManager_getDistUserAreaList" resultType="java.util.Map" parameterType="java.util.Map">
+					SELECT
+						DISTINCT dist.id province_id,
+						dist.name province_name,
+						dist.parent_id
+					FROM
+						t_dict_garden tdg
+					LEFT JOIN t_dict_area dist ON tdg.area_id = dist.id
+					where dist.parent_id = #{area_id}
+	</select>
+	<select id="areaManager_getUserAreaPlot" resultType="java.util.Map" parameterType="java.util.Map">
+		 SELECT
+			garden_id,
+			area_id,
+			NAME
+		FROM
+			t_dict_garden
+		WHERE
+			area_id = #{area_id}
+		AND NAME = #{plot_name}
+		AND address = #{plot_address}
+	</select>
+	<select id="areaManager_getAreaList" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			id area_id,
+			type area_type,
+			parent_id,
+			NAME area_name
+		FROM
+			t_dict_area tda
+		where tda.parent_id =#{area_id}
+	</select>
+	<select id="areaManager_getPlotListByAreaId" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+				a.area_id,
+				a.garden_id,
+				a.plot_name,
+				a.plot_address,
+				a.photo,
+				b.city_id,
+				b.city_name,
+				b.province_id,
+				b.province_name,
+				b.dist_id,
+				b.dist_name
+			FROM
+				(
+					SELECT
+						area_id,
+						garden_id,
+						NAME plot_name,
+						address plot_address,
+						photo
+					FROM
+						t_dict_garden
+					WHERE
+						area_id = #{area_id}
+				) a
+			 LEFT JOIN (
+				SELECT
+					dist_id,
+					dist_name,
+					city_name,
+					city_id,
+					province.id province_id,
+					province.name province_name
+				FROM
+					(
+						SELECT
+							dist_id,
+							dist_name,
+							city.id city_id,
+							city.parent_id,
+							city. NAME city_name
+						FROM
+							(
+								SELECT
+									dist.id dist_id,
+									dist. NAME dist_name,
+									dist.parent_id
+								FROM
+									t_dict_area dist
+								WHERE
+									id = #{area_id}
+							) dist
+						LEFT JOIN t_dict_area city ON dist.parent_id = city.id
+					) city
+				LEFT JOIN t_dict_area province ON city.parent_id = province.id
+			) b ON a.area_id = b.dist_id
+	</select>
+
+	<insert id="areaManager_addUserAreaPlot"  parameterType="java.util.Map">
+			insert into t_dict_garden
+			  (area_id,name,address
+				<if test="plot_photo !=null"><!--0表示全部-->
+					,photo
+				</if>
+			 )
+			  values
+			(
+					 #{area_id},#{plot_name},#{plot_address}
+					<if test="plot_photo !=null"><!--0表示全部-->
+						,#{plot_photo}
+					</if>
+			)
+	</insert>
+	<update id="areaManager_modifyUserAreaPlot"  parameterType="java.util.Map">
+		update
+			t_dict_garden
+		set
+		  	area_id = #{area_id},name=#{plot_name},name=#{plot_name},address=#{plot_address},photo=#{plot_photo}
+		where garden_id = #{plot_id}
+	</update>
+    <delete id="areaManager_deletePlot" parameterType="java.util.Map">
+				delete  from  t_dict_garden where garden_id =#{plot_id}
+	</delete>
+	<select id="areaManager_queryAllSystemMessage" resultType="java.util.Map" parameterType="java.util.Map">
+			SELECT  system_id,
+					content system_content,
+					account_id,
+					inform_time  from t_msg_system tms where  tms.inform_time >#{inform_time}
+	</select>
+	<select id="areaManager_getSystemPushMessageList" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			a.system_id,
+			a.system_content,
+			a.account_id,
+			a.system_content,
+			DATE_FORMAT(a.inform_time,'%Y-%c-%d %h:%i') inform_time,
+			b.account_name
+		FROM
+			(
+				SELECT
+					system_id,
+					content system_content,
+					account_id,
+					inform_time
+				FROM
+					t_msg_system tms
+					where type = 2
+				ORDER BY
+					inform_time DESC
+				limit #{start}, #{mr}
+			) a
+		INNER JOIN (
+			SELECT
+				account,
+				`name` account_name,
+				account_id
+			FROM
+				t_oms_account toa
+		) b ON a.account_id = b.account_id
+	</select>
+
+	<select id="areaManager_getSystemPushMessageListCount" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			count(1) pageTotal
+		FROM
+			t_msg_system tms
+		where type = 2
+
+	</select>
+	<insert id="areaManager_createSystemPushMessage"  parameterType="java.util.Map">
+		insert into t_msg_system (content,
+		 account_id,user_id,type
+		,inform_time
+		,creation_time)
+		values (#{system_content},#{account_id},#{user_id},#{type}
+		<if test="inform_time != null" >
+			,#{inform_time}
+		</if>
+		<if test="inform_time == null" >
+			,NOW()
+		</if>
+		,NOW())
+	</insert>
+</mapper>

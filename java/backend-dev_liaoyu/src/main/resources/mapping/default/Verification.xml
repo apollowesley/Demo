@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC      
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户登陆，验证码操作 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.account.VerificationDao">
+	<insert id="verification_insertCode" parameterType="java.util.Map">
+		insert into
+		t_verification(code,phone,createTime,status)
+		values(#{code},#{phone},now(),#{status})
+	</insert>
+
+
+	<!-- 查询当日发送验证码次数 -->
+	<select id="verification_CodeShuMu" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select count(phone)
+		from t_verification
+		where phone=#{phone}
+ <![CDATA[ and createTime >=  #{startTime}]]>
+ <![CDATA[ and createTime <=  #{endTime}]]>
+	</select>
+
+	<!-- 校验验证码 -->
+	<select id="verification_selectCode" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select count(*) from t_verification where phone=#{phone} and code=#{code}
+	</select>
+
+
+</mapper>

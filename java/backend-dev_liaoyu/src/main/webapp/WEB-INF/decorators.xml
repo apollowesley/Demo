@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/_decorators">
+    
+    <!-- 单个装饰，需在子页面进行调用,并在base.jsp页面定义taglib：page -->
+    <decorator name="main" page="main.jsp" />
+    <decorator name="login" page="login.jsp" />
+    <decorator name="frame" page="frame.jsp" />
+</decorators>

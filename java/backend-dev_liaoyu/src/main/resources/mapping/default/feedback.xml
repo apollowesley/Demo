@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC     
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 后台管理人员 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.feedback.FeedbackManagerDao" >
+		<select id="feedbackManager_getFeedbackInfoList" resultType="java.util.Map" parameterType="java.util.Map">
+			SELECT
+				a.update_time,
+				a.phone,
+				a.creation_time,
+				ifnull(a.feedback_type, '0') feedback_type,
+				a.is_handle,
+				a.is_bonus,
+				a.is_archive,
+				a.handle_user_id,
+				a.feedback_content,
+			   a.bonus_integral,
+			   ifnull(a.revert_content,'') revert_content,
+			  ifnull(u.name,'') user_name,
+				a.feedback_id
+			from (
+				SELECT
+						DATE_FORMAT(
+							update_time,
+							'%Y-%c-%d %h:%i:%s'
+						) update_time,
+						phone phone,
+						DATE_FORMAT(
+							creation_time,
+							'%Y-%c-%d %h:%i:%s'
+						) creation_time,
+						feedback_type,
+						is_handle,
+						is_bonus,
+						is_archive,
+						account_id handle_user_id,
+						bonus_integral,
+						content feedback_content,
+						revert_content,
+						feedback_id
+					FROM
+						t_msg_feedback
+					WHERE
+						1 = 1
+					<if test="is_handle == 0 " >
+						and is_handle = 0
+					</if>
+					<if test="is_handle == 1 " >
+						and is_handle = 1
+					</if>
+					ORDER BY
+						creation_time DESC
+					LIMIT #{start},
+					#{mr}
+			)a LEFT JOIN t_oms_account u on u.account_id=a.handle_user_id
+		</select>
+	<select id="feedbackManager_getFeedbackInfoPageCount" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+		  count(1) pageTotal
+		FROM
+		t_msg_feedback where 1=1
+		<if test="is_handle == 0 " >
+			and is_handle = 0
+		</if>
+		<if test="is_handle == 1 " >
+			and is_handle = 1
+		</if>
+	</select>
+	<update id="feedbackManager_replyFeedbackInfo"  parameterType="java.util.Map">
+		  update t_msg_feedback set  revert_content=#{revert_content} ,is_handle=1 where feedback_id=#{feedback_id};
+	</update>
+
+	<select id="feedbackManager_getFeedbackInfo" resultType="java.util.Map" parameterType="java.util.Map">
+				SELECT
+						a.update_time,
+						a.phone,
+						a.creation_time,
+						ifnull(a.feedback_type, '0') feedback_type,
+						a.is_handle,
+						a.is_bonus,
+						a.is_archive,
+						a.handle_user_id,
+						a.feedback_content,
+						a.bonus_integral,
+						ifnull(a.revert_content,'') revert_content,
+					  ifnull(u.name,'') user_name,
+					  user_id
+					from (
+						SELECT
+								DATE_FORMAT(
+									update_time,
+									'%Y-%c-%d %h:%i:%s'
+								) update_time,
+								phone phone,
+								revert_content,
+								DATE_FORMAT(
+									creation_time,
+									'%Y-%c-%d %h:%i:%s'
+								) creation_time,
+								feedback_type,
+								is_handle,
+								is_bonus,
+								is_archive,
+								account_id handle_user_id,
+								bonus_integral,
+								content feedback_content,
+								user_id
+							FROM
+								t_msg_feedback
+							WHERE
+								1 = 1
+							 and feedback_id =#{feedback_id}
+					)a LEFT JOIN t_oms_account u on u.account_id=a.handle_user_id
+	</select>
+
+</mapper>

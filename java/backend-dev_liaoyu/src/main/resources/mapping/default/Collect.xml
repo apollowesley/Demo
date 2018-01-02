@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC      
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 回收 管理 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.collect.CollectDao">
+
+	<!--  查询某贴纸的 厨余记录总数-->
+	<select id="collect_queryKitchenBySidCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(*) from t_collect_kitchen where sticker_id = #{sticker_id}
+	</select>
+	
+	<!-- 查询某贴纸 的厨余记录-->
+	<select id="collect_queryKitchenBySid" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT kitchen_id,recycler_id,sticker_id,user_id,collect_time,integral from t_collect_kitchen where sticker_id = #{sticker_id}
+	</select>
+	
+	
+	
+	
+	<!-- 查询某贴纸 的小件投递记录-->
+	<select id="collect_queryGarbageBySid" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		SELECT garbage_id,recycler_id,sticker_id,user_id,integral,collect_time from t_collect_garbage where sticker_id = #{sticker_id}
+	</select>
+	
+	<!--  查询某贴纸的 小件投递记录总数-->
+	<select id="collect_queryGarbageBySidCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(*) from t_collect_garbage where sticker_id = #{sticker_id}
+	</select>
+</mapper>

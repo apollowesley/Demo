@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC     
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 后台管理人员 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.material.MaterialManagerDao2" >
+    <insert id="material_addCategory" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="category_id" >
+		INSERT INTO
+				t_mtl_category (category_name, create_time)
+		VALUES
+				(#{category_name},#{create_time})
+	</insert>
+	<insert id="material_saveMaterialInfo" parameterType="java.util.Map" >
+		INSERT INTO
+			 t_mtl_material (material_name,material_url,category_id,create_time,update_time)
+		 VALUES
+			<foreach collection="pathList" item="item" index="index" separator="," >
+				 (#{item.material_name},#{item.material_url},#{category_id},#{create_time},#{update_time})
+			</foreach>
+	</insert>
+
+	<select id="material_queryCategoryName" resultType="java.util.Map" parameterType="java.util.Map">
+			SELECT category_id  from t_mtl_category where category_name=#{category_name}
+	</select>
+	<select id="material_getCategoryList" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			category_id,
+			category_name,
+			CASE category_id
+		WHEN 0 THEN
+		(
+				SELECT
+					COUNT(1)
+				FROM
+					t_mtl_material tmm
+		)
+		ELSE
+			(
+				SELECT
+					COUNT(1)
+				FROM
+					t_mtl_material tmm
+				WHERE
+					tmm.category_id = tmc.category_id
+			)
+		END material_count
+		FROM
+			t_mtl_category tmc ORDER BY `order` asc
+	</select>
+	<select id="material_getMaterialListByCategoryId" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+			material_id,
+			material_name,
+			material_url,
+			category_id,
+			create_time,
+			update_time
+		FROM
+			t_mtl_material where 1 =1
+		<if test="category_id !=0"><!--0表示全部-->
+			and category_id=#{category_id}
+		</if>
+		limit #{start}, #{mr}
+	</select>
+	<select id="material_getMaterialCountByCategoryId" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT
+		count(1) pageTotal
+		FROM
+		t_mtl_material where 1 =1
+		<if test="category_id !=0"><!--0表示全部-->
+			and category_id=#{category_id}
+		</if>
+
+	</select>
+
+
+	<update id="material_moveCategory" parameterType="java.util.Map">
+			update  t_mtl_material  set  category_id = #{new_category_id} where category_id=#{category_id}
+	</update>
+	<update id="material_moveCategory_batch" parameterType="java.util.Map"><!--全部分组中可能会有其他组的情况，故不能和material_moveCategory一起用-->
+		update  t_mtl_material  set  category_id = #{new_category_id}  where 1=1
+		<if test="materialIdList !=null">
+			and material_id
+			in
+			<foreach collection="materialIdList" index="index" item="item" separator="," open="(" close=")">
+				#{item}
+			</foreach>
+		</if>
+	</update>
+	<delete id="material_deleteMaterial" parameterType="java.util.Map">
+		delete from t_mtl_material where material_id=#{material_id}
+	</delete>
+
+	<delete id="material_deleteCategory" parameterType="java.util.Map">
+		delete from t_mtl_category where category_id=#{category_id}
+	</delete>
+	<update id="material_modifyCategory" parameterType="java.util.Map">
+		update t_mtl_category set category_name=#{category_name} where category_id=#{category_id}
+	</update>
+	<update id="material_modifyMaterial" parameterType="java.util.Map">
+		update t_mtl_material set material_name=#{material_name} where material_id=#{material_id}
+	</update>
+
+</mapper>

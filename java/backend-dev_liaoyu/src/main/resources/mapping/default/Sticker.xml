@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC      
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 二维码贴纸 管理 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.sticker.StickerDao">
+
+
+	<!-- 根据区域编号 查询    使用过的最大数- -->
+	<select id="sticker_selectStickerCountByAreaCode" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT  IFNULL(max(count),0) count from t_sticker where prefix_code = #{prefix_code}
+	</select>
+	
+	<!-- 根据区域表编号前缀是否存在 - -->
+	<select id="sticker_selectAreaPrefixCode" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		select count(id) from t_dict_code where prefix_code =  #{prefix_code}
+	</select>
+	
+	
+	
+	<!-- 插入贴纸批次记录记录 ， 返回主键id -->
+	<insert id="sticker_insertCreationsRetKey" useGeneratedKeys="true"
+		keyProperty="keyId" parameterType="com.kyl.ps.model.manageruser.ManagerUser">
+		INSERT into
+		t_sticker_creation(name,prefix,rolls,rolls_quantity,expiration_time,downloads,creation_time,update_time,record_status,creator_id)
+		VALUES(#{name},#{prefix},#{rolls},#{rollsQuantity},#{expirationTime},0,NOW(),NOW(),0,#{accountId})
+	</insert>
+
+	<!-- 插入贴纸批次记录 ,暂不使用 -->
+	<insert id="sticker_insertCreations" parameterType="java.util.Map">
+		INSERT into
+		t_sticker_creation(name,fault_level,size_width,size_height,quantity,bags,bags_quantity,prefix,rolls,rolls_quantity,expiration_time,downloads,creation_time,update_time,record_status,creator_id)
+		VALUES(#{name},#{fault_level},#{size_width},#{size_height},#{quantity},#{bags},#{bags_quantity},#{prefix},#{rolls},#{rolls_quantity},#{expiration_time},0,NOW(),NOW(),0,#{managerUserId_})
+	</insert>
+
+
+	<!-- 插入贴纸信息记录 -->
+	<insert id="sticker_insertStickers" parameterType="java.util.Map">
+		insert into
+		t_sticker(sticker_id,creation_id,roll_tag,status,expiration_time,creation_time,creator_id,prefix_code,count)
+		VALUES(#{sticker_id},#{creation_id},#{roll_tag},0,#{expiration_time},NOW(),#{creator_id},#{prefix_code},#{count})
+	</insert>
+
+
+	<!-- 查询所有贴纸生成批次记录 record_status(0.正常；1.激活)- -->
+	<select id="sticker_selectCreations" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT * from t_sticker_creation where 1=1
+		<if test="record_status != null and record_status != '' ">
+			and record_status = #{record_status}
+		</if>
+		<if test="creation_id != null and creation_id != '' ">
+			and creation_id = #{creation_id}
+		</if>
+		<if test="name != null and name != '' ">
+			and name = #{name}
+		</if>
+		order by creation_id desc
+		limit #{startnum},#{mr}
+	</select>
+	
+	<!-- 查询所有贴纸印刷批次加载到缓存 -->
+	<select id="sticker_selectAllCreations" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT * from t_sticker_creation
+	</select>
+	
+	<!-- 查询所有贴纸生成批次记录 总数- -->
+	<select id="sticker_selectCreationsCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(*) from t_sticker_creation where 1=1
+		<if test="record_status != null and record_status != '' ">
+			and record_status = #{record_status}
+		</if>
+		<if test="creation_id != null and creation_id != '' ">
+			and creation_id = #{creation_id}
+		</if>
+		<if test="name != null and name != '' ">
+			and name = #{name}
+		</if>
+	</select>
+	
+	
+
+
+	<!-- 根据id更新贴纸批次 -->
+	<update id="sticker_updateCreation" parameterType="java.util.Map">
+		update t_sticker_creation set update_time = NOW()
+		<if test="downloads != null and downloads != '' ">
+			,downloads = #{downloads}
+		</if>
+		where creation_id = #{creation_id}
+	</update>
+	
+	<!-- 根据批次名称更新贴纸批次 -->
+	<update id="sticker_updateCreationByName" parameterType="java.util.Map">
+		update t_sticker_creation set update_time=NOW(),downloads=downloads+1 where `name`=#{name} and record_status = 0
+	</update>
+
+
+	<!-- 查询所有贴纸记录 -->
+	<select id="sticker_selectStickers" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT * from t_sticker where 1=1
+		<if test="user_id != null and user_id !='' ">
+			and user_id = #{user_id}
+		</if>
+		<if test="status != null and status !='' ">
+			and status = #{status}
+		</if>
+		<if test="null != sticker_id and sticker_id != ''">
+			and sticker_id like CONCAT(CONCAT('%', #{sticker_id}),'%')
+		</if>
+		<if test="null != creation_name and creation_name != ''">
+			and creation_id in( SELECT creation_id from t_sticker_creation where `name` like CONCAT(CONCAT('%', #{creation_name}),'%'))
+		</if>
+		<if test="null != creation_id and creation_id != ''">
+			and creation_id like CONCAT(CONCAT('%', #{creation_id}),'%')
+		</if>
+		order by sticker_id desc
+		limit #{startnum},#{mr}
+	</select>
+	
+	
+	<!-- 根据批次名称查询所有对应的贴纸记录 -->
+	<select id="sticker_selectStickersBycreationName" parameterType="java.util.Map"
+		resultType="java.util.Map">
+		SELECT sticker_id,roll_tag from t_sticker t1,t_sticker_creation t2 where t2.creation_id = t1.creation_id and t2.`name` = #{name}
+	</select>
+	
+	<!-- 查询所有贴纸记录的总数 -->
+	<select id="sticker_selectStickersCount" parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT count(*) from t_sticker where 1=1
+		<if test="user_id != null and user_id !='' ">
+			and user_id = #{user_id}
+		</if>
+		<if test="status != null and status !='' ">
+			and status = #{status}
+		</if>
+		<if test="null != sticker_id and sticker_id != ''">
+			and sticker_id like CONCAT(CONCAT('%', #{sticker_id}),'%')
+		</if>
+		<if test="null != creation_name and creation_name != ''">
+			and creation_id in( SELECT creation_id from t_sticker_creation where `name` like CONCAT(CONCAT('%', #{creation_name}),'%'))
+		</if>
+		<if test="null != creation_id and creation_id != ''">
+			and creation_id like CONCAT(CONCAT('%', #{creation_id}),'%')
+		</if>
+	</select>
+</mapper>

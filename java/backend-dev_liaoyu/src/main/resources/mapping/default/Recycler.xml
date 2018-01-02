@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>    
+    
+<!DOCTYPE mapper PUBLIC      
+    "-//mybatis.org//DTD Mapper 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 回收人员 管理 -->
+<mapper namespace="com.kyl.ps.infrastructure.dao.impl.recycler.RecyclerDao">
+
+	<!-- 插入回收人员信息 -->
+	<insert id="recycle_insertRecycler" parameterType="java.util.Map">
+		INSERT into
+		t_collect_recycler(recycler_id,phone,name,photo,creation_time,update_time,age,address,state)
+		values(#{uuid},#{phone},#{name},#{photo},NOW(),NOW(),#{age},#{address},0)
+	</insert>
+
+	<!-- 查询所有回收人员加载到缓存map -->
+	<select id="recycle_queryAllRecycles" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from t_collect_recycler
+	</select>
+
+
+	<!-- 查询所有回收人员 -->
+	<select id="recycle_queryRecycles" resultType="java.util.Map"
+		parameterType="java.util.Map">
+		select * from t_collect_recycler where 1=1
+		<if test="state != null and state !='' ">
+			and state = #{state}
+		</if>
+		<if test="phone != null and phone !='' ">
+			and phone like CONCAT(CONCAT('%', #{phone}),'%')
+		</if>
+		order by creation_time desc
+		limit #{startnum},#{mr}
+	</select>
+
+
+
+
+	<!-- 查询所有回收人员 总数 -->
+	<select id="recycle_queryRecyclesCount" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		select count(*) from t_collect_recycler where 1=1
+		<if test="state != null and state !='' ">
+			and state = #{state}
+		</if>
+		<if test="phone != null and phone !='' ">
+			and phone like CONCAT(CONCAT('%', #{phone}),'%')
+		</if>
+	</select>
+
+
+
+	<!-- 编辑保存回收人员信息 -->
+	<update id="recycle_editRecycler" parameterType="java.util.Map">
+		update t_collect_recycler set
+		update_time=NOW()
+		<if test="phone != null and phone !='' ">
+			,phone=#{phone}
+		</if>
+		<if test="name != null and name !='' ">
+			,name=#{name}
+		</if>
+		<if test="age != null and age !='' ">
+			,age=#{age}
+		</if>
+		<if test="address != null and address !='' ">
+			,address=#{address}
+		</if>
+		<if test="state != null and state !='' ">
+			,state=#{state}
+		</if>
+		<if test="idnumber != null and idnumber !='' ">
+			,idnumber=#{idnumber}
+		</if>
+		<if test="sex != null and sex !='' ">
+			,sex=#{sex}
+		</if>
+		<if test="city != null and city !='' ">
+			,city=#{city}
+		</if>
+		<if test="garden != null and garden !='' ">
+			,garden=#{garden}
+		</if>
+		where recycler_id=#{recycler_id}
+	</update>
+</mapper>
