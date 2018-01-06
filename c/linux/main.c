@@ -6,6 +6,9 @@ int main(int argc, char **argv)
 {
     int i;
     i = atoi(argv[1]);
+    
+
+
     printf("The reciprocal of %d is %g\n", i, reciprocal(i));
     //printf("This is a good date");
     return 0;
