@@ -1,0 +1,137 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户风险信息(银行)</title>
+<link rel="stylesheet" href="/static/common/css/mch_risk.css">
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/bank/risk/merchant" method="GET">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">搜索</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">最新状态:</p>
+            <select class="form-control search-criteria" name="has_risk" id="has_risk">
+                <option value="0">全部</option>
+                <option value="2" {% if form.has_risk.data == 2 %}selected{% end %}>有风险</option>
+                <option value="1" {% if form.has_risk.data == 1 %}selected{% end %}>无风险</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">风险类型:</p>
+            <select class="form-control search-criteria" name="risk_type" id="risk_type">
+                <option value="">全部</option>
+                <option value="cert_no" {% if form.risk_type.data == "cert_no" %}selected{% end %}>身份证风险</option>
+                <option value="bank_card_no" {% if form.risk_type.data == "bank_card_no" %}selected{% end %}>银行卡风险</option>
+                <option value="business_license_no" {% if form.risk_type.data == "business_license_no" %}selected{% end %}>营业执照风险</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">风险内容</p>
+            <input style="width:250px;" type="text" class="form-control search-criteria" name="risk_content"
+                   value="{{ form.risk_content.data or '' }}" id="risk_content"
+                   placeholder="身份证/银行卡/营业执照号码">
+        </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>风险类型</th>
+                <th>风险内容</th>
+                <th>最新状态</th>
+                <th>更新时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+            {% for risk_info in merchant_risk_list %}
+            <tr>
+                <td>{{print_merchant_risk_type(risk_info.get('risk_type', ''))}}</td>
+                <td>{{risk_info.get('description', '')}}</td>
+                <td>
+                    {% if risk_info.get('has_risk', 0) > 0  %}
+                      有风险
+                    {% elif risk_info.get('has_risk', 0) == 0 %}
+                      无风险
+                    {% end %}
+                </td>
+                <td>{{risk_info.get('update_at', '')}}</td>
+                <td>
+                    <a href="javascript:;" risk-id="{{risk_info.get('risk_id','')}}" data-click="getMchDetail">详情</a>
+                </td>
+            </tr>
+            {% end %}
+        </tbody>
+    </table>
+
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+
+    <!-- 模态框（Modal）商户风险详情 -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog"
+             aria-hidden="true">
+        <div class="modal-dialog batch">
+            <div class="modal-content risk-modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">商户风险详情</h4>
+                </div>
+                <div class="modal-body risk-modal-body text-left">
+                    <h3 class="risk-modal-title"><i>|</i>风险信息</h3>
+                    <table class="risk-modal-table table-no-click risk-m-bottom-30">
+                        <tbody>
+                            <tr>
+                                <td class="risk-th">风险类型</td>
+                                <td data-key="risk_type"></td>
+                            </tr>
+                            <tr>
+                                <td class="risk-th">风险内容</td>
+                                <td data-key="description"></td>
+                            </tr>
+                            <tr>
+                                <td class="risk-th">信息来源</td>
+                                <td id="source"></td>
+                            </tr>
+                            <tr>
+                                <td class="risk-th">最新状态</td>
+                                <td id="has-risk"></td>
+                            </tr>
+                            <tr>
+                                <td class="risk-th">更新时间</td>
+                                <td data-key="update_at"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_number }};</script>
+<script type="text/javascript" src="/static/common/js/alipay_risk_controller.js" ></script>
+{% end %}
+<!-- 引入js文件  end-->

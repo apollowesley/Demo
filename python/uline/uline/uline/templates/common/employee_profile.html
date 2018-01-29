@@ -1,0 +1,70 @@
+
+<div style="width:500px;padding-top:30px;">
+    <table class="staff-table">
+        <tbody>
+            <tr>
+                <td class="th">创建时间</td>
+                <td>{{ data["employee_profile"]["create_at"] }}</td>
+            </tr>
+            <tr>
+                <td class="th">员工编号</td>
+                <td>{{ data["employee_profile"]["id"] }}</td>
+            </tr>
+            <tr>
+                <td class="th">员工姓名</td>
+                <td>{{ data["employee_profile"]["name"] }}</td>
+            </tr>
+            <tr>
+                <td class="th">登录账号</td>
+                <td>{{ data["employee_profile"]["login_name"] }}</td>
+            </tr>
+            {% if sys_type_code in ["ub","bk"] and sp_type not in [1]  %}
+            <tr>
+                <td class="th">手机号码</td>
+                <td>{{ data["employee_profile"]["phone1"] }}</td>
+            </tr>
+            {% end %}
+
+            <tr>
+                <td class="th">联系邮箱</td>
+                <td>{{ data["employee_profile"]["email"] }}</td>
+            </tr>
+                {% if sp_type not in [1] %}
+
+            <tr>
+                <td class="th">绑定微信号</td>
+                <td>{% if data["employee_profile"]["wx_id"] is None %}未绑定{% else %}{{ data["employee_profile"]["wx_id"] }}{% end %}</td>
+            </tr>
+            {% end %}
+            <tr>
+                <td class="th">是否启用</td>
+                <td>{{ data["employee_profile"]["status"] }}</td>
+            </tr>
+            {% if sys_type_code == "mch" and cs_name is not None %}
+            <tr>
+                <td class="th">所属门店</td>
+                <td>{{ data["employee_profile"]["employee_cs_name"] }}</td>
+            </tr>
+            {% end %}
+            <tr>
+                <td class="th">角色权限</td>
+                <td>{{ data["employee_profile"]["employee_role"] }}</td>
+            </tr>
+        </tbody>
+    </table>
+    {% if sp_type not in [1] %}
+    <h3 class="base-pop-title"><i class="">|</i>修改记录</h3>
+    <div class="staff-record-list">
+        <ul>
+        {%  for record in data["employee_record"] %}
+            <li>
+                <p>{{ record["comment"] }}</p>
+                <span>{{ record["create_at"] }}</span>
+                <p class="c-999">操作人:{{ record["name"] }}({{ record["email"] }})</p>
+            </li>
+        {% end %}
+        </ul>
+    </div>
+    {% end %}
+</div>
+

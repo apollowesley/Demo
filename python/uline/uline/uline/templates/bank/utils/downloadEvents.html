@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		{% block title %}
+		<title>下载</title>
+		{% end %}
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+
+		<!--引入样式 start-->
+		<link rel="stylesheet" href="/static/common/libs/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/static/common/font-awesome/css/font-awesome.min.css">
+
+		<!--<link rel="stylesheet" href="/static/common/css/metisMenu.min.css" />-->
+		<link rel="stylesheet" href="/static/common/css/sb-admin-2.css" />
+		<link rel="stylesheet" href="/static/distributor/css/style.css" />
+		{% block css %}
+		{% end %}
+		<!--引入样式 end-->
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    	<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+	</head>
+	<body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background: #fff">
+                <div class="navbar-header">
+                    <a class="navber-img" href="/bank/">
+                        <img src="/static/common/image/logo.png" />
+                        <span class="uline-lg">ULINE</span>
+                        <span class="uline-ht">银行后台</span>
+                    </a>
+                </div>
+            </nav>
+
+
+            <div class="tab_cont">
+                <p>
+                    <img src="/static/common/image/questionMark.png" />
+                    <span>报表文件生成后系统保留7天,过期自动删除</span>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>申请时间</th>
+                            <th>类型</th>
+                            <th>文件名</th>
+                            <th>当前状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyBox">
+                    {% for create_at,type,file,status,order_id,status_com in data %}
+                        <tr>
+                            <td>{{ create_at }}</td>
+                            <td>{{ type }}</td>
+                            <td>{{ file }}</td>
+                            <td>{{ status_com }}</td>
+                            <td>
+                                {% if status == 1 %}
+                                {% elif status == 3 %}
+                                <a href="javascript:void(0);" onclick="deleteExportFile('{{ order_id }}')" id="tr_{{ order_id }}">删除</a>
+                                {% elif status == 2 or status == 4 %}
+                                <a href="javascript:void(0);" onclick="downloadExportFile('{{ order_id }}')">下载</a>
+                                <a href="javascript:void(0);" onclick="deleteExportFile('{{ order_id }}')" id="tr_{{ order_id }}">删除</a>
+                                {% else %}
+                                {% end %}
+                            </td>
+                        </tr>
+                    {% end %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <script type="text/javascript" src="/static/common/libs/jquery.min.js" ></script>
+    <script type="text/javascript" src="/static/common/libs/bootstrap/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="/static/common/libs/metisMenu.min.js" ></script>
+    <script type="text/javascript" src="/static/common/libs/sb-admin-2.js" ></script>
+    <script type="text/javascript" src="/static/common/libs/raphael.min.js" ></script>
+    <script type="text/javascript" src="/static/bank/js/download.js"></script>
+    <script> var env = '{{ env}}'; </script>
+    <script src="/static/common/js/pufa_ui.js"></script>
+    {% block js %}
+    {% end %}
+	</body>
+</html>
+

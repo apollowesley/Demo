@@ -1,0 +1,315 @@
+<div class="row index-row">
+    <div class="btnBox clearfix" style="margin-bottom: 10px;">
+        <div class="addNew">
+            <a class="btn btn-default" href="javascript:;" role_id="" role_name=""  data-click="getAddInfo">新增</a>
+        </div>
+    </div>
+    <div id="tableBox">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>角色名称</th>
+                {% if sys_type_code == 'mr' %}
+                <th>角色所属</th>
+                {% end %}
+                <th>创建时间</th>
+                <th>创建人</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody id="tbodyBox">
+                {% for d in data %}
+                    <tr>
+                        <td>{{ d['role_name'] }}</td>
+                        {% if sys_type_code == 'mr' %}
+                        <td>{% if d['is_follower'] == 1 %}门店角色{% else %}总部角色{% end %}</td>
+                        {% end %}
+                        <td>{{ d['create_at'] }}</td>
+                        <td>{% if d['sp_type'] != 0 %}内置角色{% else %}用户创建{% end %}</td>
+                        <td>
+                            <a class="check_btn" role_id="{{d['role_id']}}" role_type="info" data-click="getAddInfo">查看权限</a>
+                            {% if d['sp_type'] == 0 %}
+                            <a class="check_btn" role_id="{{d['role_id']}}" role_name="{{d['role_name']}}"  data-click="getAddInfo">修改</a>
+                            <a class="check_btn" role_id="{{d['role_id']}}" role_name="{{d['role_name']}}"  data-click="deleteRole">删除</a>
+                              {% end %}
+                        </td>
+                    </tr>
+                {% end %}
+            </tbody>
+        </table>
+        <!--分页-->
+        <div>
+            {% autoescape None %}
+            {{ navigate_html }}
+        </div>
+
+    </div>
+    <!-- 模态框（Modal）新增员工信息 -->
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+        <div class="modal-dialog batch">
+            <div class="modal-content">
+                <form class="form-horizontal" id="mch_sub_user_form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">新增角色</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">角色名称：</label>
+                            <div class="col-md-8 sub-login-name">
+                                <input type="text" style="width:300px;" class="form-control" name="name" placeholder="角色名称" value="">
+                            </div>
+                        </div>
+                        {% if sys_type_code == 'mr' %}
+                        <div class="form-group role-where">
+                            <label class="col-md-4 control-label">角色所属：</label>
+                            <div class="col-md-8 text-left">
+                                <div class="role-checkbox-list">
+                                    <ul class="clearfix">
+                                        <li>
+                                            <input type="radio" name="staff" checked="checked" value="0"/>
+                                            <span>总部角色</span>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="staff" value="1"/>
+                                            <span>门店角色</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% end %}
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">权限选择：</label>
+                            <div class="col-md-8">
+                                <div class="role-choose-list">
+                                    <ul>
+                                        <li>
+                                            <h3>进件管理</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/inlet/inter_bank"><span>同业银行</span></li>
+                                                <li><input type="checkbox" data-url="/inlet/dt"><span>渠道进件</span></li>
+                                                <li><input type="checkbox" data-url="/inlet/mch"><span>商户进件</span></li>
+                                                <li><input type="checkbox" data-url="/inlet/chain"><span>连锁商户进件</span></li>
+                                                <li><input type="checkbox" data-url="/inlet/cs"><span>连锁门店进件</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>对账管理</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/recon/transaction"><span>交易对账异常</span></li>
+                                                <li><input type="checkbox" data-url="/recon/refund"><span>退款对账异常</span></li>
+                                                <li><input type="checkbox" data-url="/common/downloads_bill"><span>商户对账单</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>结算管理</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/balance/cs"><span>门店结算</span></li>
+                                                <li><input type="checkbox" data-url="/balance/mch"><span>商户结算</span></li>
+                                                <li><input type="checkbox" data-url="/balance/dt"><span>渠道结算</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>交易管理</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/transaction/trade"><span>商户交易</span></li>
+                                                <li><input type="checkbox" data-url="/transaction/refund"><span>商户退款</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>数据统计</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                {% if sys_type_code == 'dt' %}
+                                                <li><input type="checkbox" data-url="/stats/transaction"><span>渠道交易统计</span></li>
+                                                {% end %}
+                                                {% if sys_type_code == 'bk' %}
+                                                <li><input type="checkbox" data-url="/stats/transaction"><span>银行交易统计</span></li>
+                                                {% end %}
+                                                {% if sys_type_code == 'ub' %}
+                                                <li><input type="checkbox" data-url="/stats/transaction"><span>平台交易统计</span></li>
+                                                {% end %}
+                                                {% if sys_type_code == 'mch' or sys_type_code == 'mr' %}
+                                                <li><input type="checkbox" data-url="/stats/transaction"><span>交易统计</span></li>
+                                                {% end %}
+                                                <li><input type="checkbox" data-url="/stats/dist"><span>渠道交易统计</span></li>
+                                                <li><input type="checkbox" data-url="/stats/mch"><span>商户交易统计</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>运营管理</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/operations/message/send"><span>短信推送</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>资金管理</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/capital"><span>资金流水</span></li>
+                                                <li><input type="checkbox" data-url="/capital/mch"><span>转入转出</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>优惠手续费</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/subsidize/mch"><span>活动商户管理</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>监控中心</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/risk/merchant"><span>商户风险信息</span></li>
+                                                <li><input type="checkbox" data-url="/risk/trade"><span>交易风险信息</span></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h3>系统设置</h3>
+                                            <i class="arrows-right"></i>
+                                            <ul class="role-menu">
+                                                <li><input type="checkbox" data-url="/common/role"><span>角色管理</span></li>
+                                                <li><input type="checkbox" data-url="/common/settings/sub_user"><span>员工账号管理</span></li>
+                                                <li><input type="checkbox" data-url="/common/settings/send"><span>公众号交易提醒</span></li>
+                                                <li><input type="checkbox" data-url="/settings/refund/password"><span>退款密码管理</span></li>
+                                                <li><input type="checkbox" data-url="/settings/email"><span>商户开户邮件汇总</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="change-error errors col-md-offset-4 text-left text-danger"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" data-click="addRole" class="btn btn-primary">提交更改</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal）角色权限 -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+        <div class="modal-dialog batch" style="width: 400px !important;">
+            <div class="modal-content">
+                <form class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">角色权限</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="role-choose-list" style="margin:0 auto;">
+                            <ul>
+                                <li>
+                                    <h3>进件管理</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/inlet/inter_bank"><span>同业银行</span></li>
+                                        <li><input type="checkbox" data-url="/inlet/dt"><span>渠道进件</span></li>
+                                        <li><input type="checkbox" data-url="/inlet/mch"><span>商户进件</span></li>
+                                        <li><input type="checkbox" data-url="/inlet/chain"><span>连锁商户进件</span></li>
+                                        <li><input type="checkbox" data-url="/inlet/cs"><span>连锁门店进件</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>对账管理</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/recon/transaction"><span>交易对账异常</span></li>
+                                        <li><input type="checkbox" data-url="/recon/refund"><span>退款对账异常</span></li>
+                                        <li><input type="checkbox" data-url="/common/downloads_bill"><span>商户对账单</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>结算管理</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/balance/cs"><span>门店结算</span></li>
+                                        <li><input type="checkbox" data-url="/balance/mch"><span>商户结算</span></li>
+                                        <li><input type="checkbox" data-url="/balance/dt"><span>渠道结算</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>交易管理</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/transaction/trade"><span>商户交易</span></li>
+                                        <li><input type="checkbox" data-url="/transaction/refund"><span>商户退款</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>数据统计</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        {% if sys_type_code == 'dt' %}
+                                        <li><input type="checkbox" data-url="/stats/transaction"><span>渠道交易统计</span></li>
+                                        {% end %}
+                                        {% if sys_type_code == 'bk' %}
+                                        <li><input type="checkbox" data-url="/stats/transaction"><span>银行交易统计</span></li>
+                                        {% end %}
+                                        {% if sys_type_code == 'ub' %}
+                                        <li><input type="checkbox" data-url="/stats/transaction"><span>平台交易统计</span></li>
+                                        {% end %}
+                                        {% if sys_type_code == 'mch' or sys_type_code == 'mr' %}
+                                        <li><input type="checkbox" data-url="/stats/transaction"><span>交易统计</span></li>
+                                        {% end %}
+                                        <li><input type="checkbox" data-url="/stats/dist"><span>渠道交易统计</span></li>
+                                        <li><input type="checkbox" data-url="/stats/mch"><span>商户交易统计</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>运营管理</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/operations/message/send"><span>短信推送</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>资金管理</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/capital"><span>资金流水</span></li>
+                                        <li><input type="checkbox" data-url="/capital/mch"><span>转入转出</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>优惠手续费</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/subsidize/mch"><span>活动商户管理</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>系统设置</h3>
+                                    <i class="arrows-right"></i>
+                                    <ul class="role-menu">
+                                        <li><input type="checkbox" data-url="/common/role"><span>角色管理</span></li>
+                                        <li><input type="checkbox" data-url="/common/settings/sub_user"><span>员工账号管理</span></li>
+                                        <li><input type="checkbox" data-url="/common/settings/send"><span>公众号交易提醒</span></li>
+                                        <li><input type="checkbox" data-url="/settings/refund/password"><span>退款密码管理</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>var sys_type_code='{{ sys_type_code }}'</script>

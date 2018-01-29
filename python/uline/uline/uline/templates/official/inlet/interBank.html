@@ -1,0 +1,279 @@
+
+{% extends '../base.html' %}
+
+{% block title %}
+<title>同业银行进件(官方)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/common/css/inter-bank.css">
+{% end %}
+
+{% block content %}
+
+	<div class="row index-row">
+
+		<form class="form-inline export-xls" action="/official/inlet/inter_bank" method="get">
+			{% module xsrf_form_html() %}
+
+            <div class="pull-right">
+				<button type="submit" class="btn btn-default pull-right" id="search">查询</button><br>
+			</div>
+
+            <div class="form-group">
+                <p class="form-control-static">创建日期:</p>
+                <div class="input-group input-daterange">
+                    <input type="text" class="form_datetime form-control search-criteria" id="create_at_start" name="create_at_start"
+                           placeholder="" value="{{ form.create_at_start.data or ''}}">
+                    <span class="input-group-addon">—</span>
+                    <input type="text" class="form_datetime form-control search-criteria" id="create_at_end" name="create_at_end"
+                           placeholder="" value="{{ form.create_at_end.data or '' }}">
+                </div>
+            </div>
+
+			<div class="form-group">
+				<p class="form-control-static">银行名称:</p>
+				<input type="text" class="form-control search-criteria" name="bk_name" id="bk_name" value="{{ form.bk_name.data or '' }}" placeholder="请输入银行名称"/>
+			</div>
+
+            <div class="form-group">
+				<p class="form-control-static">银行编号:</p>
+				<input type="text" class="form-control search-criteria" name="bk_id" id="bk_id" value="{{ form.bk_id.data or '' }}" placeholder="请输入银行编号"/>
+			</div>
+        </form>
+
+        <div class="addChannl">
+            <a class="btn btn-default" data-toggle="modal" data-target="#myAddModal">新增银行</a>
+        </div>
+
+        <div id="tableBox">
+            <div class="tab_left">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>银行编号</th>
+                            <th>银行名称</th>
+                            <th>邮箱</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyBox">
+                        {% for bk_id,bk_name,email,___ in data %}
+
+                        <tr>
+                            <td>{{ bk_id }}</td>
+                            <td>{{ bk_name }}</td>
+                            <td>{{ email }}</td>
+                            <td><span class="cursor c-blue" onclick="updateBank($(this))">修改</span></td>
+                        </tr>
+                        {% end %}
+                    </tbody>
+                </table>
+
+                <!--分页-->
+                <div>
+                    {% autoescape None %}
+                    {{ navigate_html }}
+                </div>
+            </div>
+            <div class="pull-right" id="dtPayInfo"></div>
+
+        </div>
+	</div>
+    <!-- 模态框（Modal) 新增银行 -->
+    <div class="modal fade base-modal" id="myAddModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog batch">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">新增银行</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="clearfix base-add-bank">
+                        <div class="col-lg-3">
+                            银行名称
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" name="bk_name" placeholder="请输入银行名称"/>
+                        </div>
+                    </div>
+                    <div class="clearfix base-add-bank">
+                        <div class="col-lg-3">
+                            邮箱
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="email" class="form-control" name="email" placeholder="请输入邮箱"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary set-wx-config add-bank-btn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框（Modal) 修改银行 -->
+    <div class="modal fade base-modal" id="myUpdateModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog batch">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">修改银行信息</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="clearfix base-add-bank">
+                        <div class="col-lg-3">
+                            银行名称
+                        </div>
+                        <div class="col-lg-8">
+                            <input id="edit_bk_id" type="hidden" name="bk_id">
+                            <input type="text" class="form-control update-bank-name" readonly name="bk_name" placeholder="请输入银行名称"/>
+                        </div>
+                    </div>
+                    <div class="clearfix base-add-bank">
+                        <div class="col-lg-3">
+                            邮箱
+                        </div>
+                        <div class="col-lg-8">
+                            <input type="email" class="form-control update-bank-email" name="email" placeholder="请输入邮箱"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary set-wx-config update-bank-btn">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script>
+var total_num={{ total_num }};
+var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+};
+function updateBank(_this){
+    var bankID=_this.parent('td').siblings().eq(0).text();
+    $("#edit_bk_id").val(bankID);
+    var bankName=_this.parent('td').siblings().eq(1).text();
+    var bankEmail=_this.parent('td').siblings().eq(2).text();
+    $('#myUpdateModal').modal('show');
+    $('.update-bank-name').val(bankName);
+    $('.update-bank-email').val(bankEmail);
+}
+function addBankBtn(that){
+    var _params={
+        bk_name:that.parents('.modal-content').find('[name="bk_name"]').val(),
+        email:that.parents('.modal-content').find('[name="email"]').val(),
+        _xsrf:getCookie("_xsrf")
+    };
+    if(_params.bk_name==''){
+        errorTip('银行名称不能为空');
+        return false;
+    }
+    if(_params.email=='' || !myreg.test(_params.email)){
+        errorTip('请输入正确邮箱地址');
+        return false;
+    }
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        data:_params,
+        url: '/official/inlet/inter_bank/add',
+        beforeSend: function (XMLHttpRequest) {
+        },
+        success: function (res) {
+            if(res.code==200){
+                $('#myAddModal').modal('hide');
+                errorTip('新增成功');
+                setTimeout(function(){
+                    location.reload();
+                },1500)
+            }else{
+                if(res.message.email){
+                    errorTip(res.message.email[0]);
+                }else if(res.message.bk_name){
+                    errorTip(res.message.bk_name[0]);
+                }
+            }
+        },
+        complete: function (XMLHttpRequest, textStatus) {
+        },
+        error: function (xhr) {
+            loadingHide();
+            errorTip('请求失败，请重试！');
+        }
+
+    });
+}
+$('.add-bank-btn').click(function(){
+    var that=$(this);
+    addBankBtn(that);
+});
+
+function updateBankBtn(that){
+    var _params={
+        bk_id:that.parents('.modal-content').find('[name="bk_id"]').val(),
+        bk_name:that.parents('.modal-content').find('[name="bk_name"]').val(),
+        email:that.parents('.modal-content').find('[name="email"]').val(),
+        _xsrf:getCookie("_xsrf")
+    };
+    if(_params.bk_name==''){
+        errorTip('银行名称不能为空');
+        return false;
+    }
+    if(_params.email=='' || !myreg.test(_params.email)){
+        errorTip('请输入正确邮箱地址');
+        return false;
+    }
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        data:_params,
+        url: '/official/inlet/inter_bank/modify',
+        beforeSend: function (XMLHttpRequest) {
+        },
+        success: function (res) {
+            if(res.code==200){
+                $('#myUpdateModal').modal('hide');
+                errorTip('修改成功');
+                setTimeout(function(){
+                    location.reload();
+                },1500)
+            }else if(res.code==60000){
+                errorTip(res.msg);
+            }else{
+                if(res.message.email){
+                    errorTip(res.message.email[0]);
+                }else if(res.message.bk_name){
+                    errorTip(res.message.bk_name[0]);
+                }
+            }
+        },
+        complete: function (XMLHttpRequest, textStatus) {
+        },
+        error: function (xhr) {
+            loadingHide();
+            errorTip('请求失败，请重试！');
+        }
+
+    });
+}
+$('.update-bank-btn').click(function(){
+    var that=$(this);
+    updateBankBtn(that);
+});
+</script>
+{% end %}
+<!-- 引入js文件  end-->

@@ -1,0 +1,11 @@
+image: python:3.6.3
+
+stages:
+  - test
+
+test:
+  stage: test
+  script:
+    - pip install pytest==3.2.3 flake8==3.5.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+    - flake8
+    - pytest -sv tests

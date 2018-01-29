@@ -1,0 +1,25 @@
+{
+  "name": "uline",
+  "version": "1.0.0",
+  "description": "uline frontend",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.ulaiber.com:uchang/uline.git"
+  },
+  "keywords": [
+    "uline"
+  ],
+  "author": "liufei",
+  "license": "ISC"
+}

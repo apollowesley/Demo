@@ -1,0 +1,147 @@
+{% extends '../base.html' %}
+{% module xsrf_form_html() %}
+
+{% block title %}
+<title>资金流水(商户)</title>
+{% end %}
+
+{% block content %}
+<style>
+    .capital-choose-list li{position:relative;margin-left:-1px;line-height:32px;padding:0px 20px;border:1px solid #ccc;cursor:pointer;}
+    .capital-choose-list li.on{background:#49576a;color:#fff;}
+</style>
+<div class="row index-row">
+
+
+
+    <div class="tab-nav">
+        <ul class="clearfix">
+            <li id="wx_btn" data-select="wx">微信账户</li>
+            <li id="ali_btn" class="on" data-select="alipay">支付宝账户</li>
+        </ul>
+    </div>
+
+    <div class="tab-detail">
+        <div class="clearfix capital-cash">
+            <p class="float-left">账户余额:</p>
+            {% if balance %}
+                <em class="float-left">￥{{balance}}</em>
+            {% else %}
+                <em class="float-left">￥0</em>
+            {% end %}
+        </div>
+        <div class="clearfix capital-cash">
+            <p class="float-left" style="font-weight:bold;font-size:16px;">流水明细</p>
+            <div class="float-right capital-choose-list">
+                <ul class="clearfix">
+                    <li data-select="0" class="float-left">未结算</li>
+                    <li data-select="1" class="float-left">已结算</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <form id="capital_form" class="form-inline export-xls" action="/merchant/capital/" method="POST">
+        {% module xsrf_form_html() %}
+        <input type="hidden" class="search-criteria" name="channel" value="alipay">
+        <input type="hidden" class="search-criteria" name="cleared" value="{{ form.cleared.data or '1' }}">
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right " id="search">查询</button><br>
+            <!--<button type="submit" class="btn btn-default" id="exportExcel">导出</button>-->
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static ">创建日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control search-criteria"
+                       id="create_at_start" name="create_at_start" value="{{ form.create_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control search-criteria"
+                       id="create_at_end" name="create_at_end" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">业务名称:</p>
+            <select class="form-control search-criteria" name="business_type">
+                <option value="">全部</option>
+                <option value="1" {% if form.business_type.data== 1 %}selected{% end %}>交易</option>
+                <option value="2" {% if form.business_type.data== 2 %}selected{% end %}>退款</option>
+                <option value="3" {% if form.business_type.data== 3 %}selected{% end %}>D0提现</option>
+                <option value="4" {% if form.business_type.data== 4 %}selected{% end %}>账务调整</option>
+                <option value="5" {% if form.business_type.data== 5 %}selected{% end %}>D1划款</option>
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">业务单号:</p>
+            <input type="text" class="form-control search-criteria" style="width:150px;"
+                   value="{{ form.mch_clear_no.data or '' }}" placeholder="请输入业务单号" name="mch_clear_no">
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">交易/退款单号:</p>
+            <input type="text" class="form-control search-criteria" style="width:170px;"
+                   value="{{ form.out_trade_no.data or '' }}" placeholder="请输入交易/退款单号" name="out_trade_no">
+        </div>
+
+
+    </form>
+    <div class="tab-box">
+        <!--支付宝-->
+        <div class="">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>创建时间</th>
+                        <th>业务单号</th>
+                        <th>业务名称</th>
+                        <th>收支金额</th>
+                        <th>账户结余</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for create_at,business_type,mch_clear_no,payment_type,current_balance,revenue_expenditure,_ in data%}
+                        <tr>
+                            <td>{{ create_at }}</td>
+                            <td>{{ mch_clear_no }}</td>
+                            {% if business_type == 1 %}
+                                <td>交易</td>
+                            {% elif business_type == 2 %}
+                                <td>退款</td>
+                            {% elif business_type == 3 %}
+                                <td>D0提现</td>
+                            {% elif business_type == 4 %}
+                                <td>账务调整</td>
+                            {% elif business_type == 5 %}
+                                <td>D1划款</td>
+                            {% else %}
+                                <td>无类型</td>
+                            {% end %}
+                            <td class="formatting-money">￥{{ revenue_expenditure }}</td>
+                            <td class="formatting-money">￥{{ current_balance }}</td>
+                            <td><a href="/merchant/capital/detail?mch_clear_no={{mch_clear_no}}&channel=alipay">详情</a></td>
+                        </tr>
+                    {% end %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--分页-->
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+</div>
+
+
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript" src="/static/common/js/capital.js"></script>
+
+{% end %}
+<!-- 引入js文件  end-->

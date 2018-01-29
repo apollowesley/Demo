@@ -1,0 +1,126 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户交易统计(同业银行)</title>
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <div class="tab-nav">
+      <ul class="clearfix">
+        {% if query_date == 1 %}
+        <li class="on">按日查询</li>
+        <li >按月查询</li>
+      {% else %}
+        <li >按日查询</li>
+        <li class="on" >按月查询</li>
+          {% end %}
+      </ul>
+    </div>
+
+    <form class="form-inline export-xls" action="/inter_bank/stats/mch" method="get">
+			{% module xsrf_form_html() %}
+            <input type="hidden" name="query_date" value="{{ query_date }}">
+            <div class="pull-right">
+				<button type="submit" class="btn btn-default pull-right" id="search">查询</button><br>
+                <button type="submit" class="btn btn-default" id="exportExcel">导出</button>
+			</div>
+
+            <div class="form-group">
+                <p class="form-control-static">创建日期:</p>
+                <div class="input-group input-daterange">
+                    <input type="text" class="form_datetime form-control search-criteria border-radius" id="create_at_start" name="create_at_start"
+                           placeholder="请选择日期" value="{{ form.create_at_start.data or ''}}">
+                    <input type="text" class="form_datetime form-control search-criteria border-radius" id="create_at_start_moon" disabled name="create_at_start"
+                           placeholder="请选择日期" value="{{ form.create_at_start.data or ''}}" style="display:none;">
+                </div>
+            </div>
+
+			<div class="form-group base-input-width">
+				<p class="form-control-static">商户名称:</p>
+				<input type="text" class="form-control search-criteria" name="mch_name" id="mch_name" value="{{ form.mch_name.data or '' }}" placeholder="请输入商户名称"/>
+			</div>
+
+            <div class="form-group base-input-width">
+				<p class="form-control-static">商户编号:</p>
+				<input type="text" class="form-control search-criteria" name="mch_id" id="mch_id" value="{{ form.mch_id.data or '' }}" placeholder="请输入商户编号"/>
+			</div>
+
+			<div class="form-group base-input-width">
+				<p class="form-control-static">所属渠道商:</p>
+				<input type="text" class="form-control search-criteria" name="dt_name" id="dt_name" value="{{ form.dt_name.data or '' }}" placeholder="请输入所属渠道商"/>
+			</div>
+
+            <div class="form-group base-input-width">
+				<p class="form-control-static">所属渠道商编号:</p>
+				<input type="text" class="form-control search-criteria" name="dt_id" id="dt_id" value="{{ form.dt_id.data or '' }}" placeholder="请输入所属渠道商编号"/>
+			</div>
+            <input type="hidden" class="search-criteria" name="order_by" value="{{ form.order_by.data or '' }}">
+        </form>
+
+        <div class="tab_container">
+            <table class="table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>商户名称</th>
+                            <th>商户编号</th>
+                            <th class="order-by" name="day_tx_count">支付笔数<i class="fa fa-caret-down m-left-5"></i> </th>
+                            <th class="order-by" name="day_tx_amount">支付成功金额<i class="fa fa-caret-down m-left-5"></i></th>
+                            <th class="order-by" name="day_refund_count">退款笔数<i class="fa fa-caret-down m-left-5"></i></th>
+                            <th class="order-by" name="day_refund_amount">退款金额<i class="fa fa-caret-down m-left-5"></i></th>
+                            <th class="order-by" name="day_tx_net_amout">交易总净额<i class="fa fa-caret-down m-left-5"></i></th>
+                            <th class="order-by" name="day_profit_amount">商户支出<i class="fa fa-caret-down m-left-5"></i></th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if len(data)==0 %}
+                        <tr>
+                            <td class="no-data-show" colspan="10">暂无数据</td>
+                        </tr>
+                        {% end %}
+                        {% for index,mch_name,mch_id,day_tx_count,day_tx_amount,day_refund_count,day_refund_amount,day_tx_net_amout,day_profit_amount,total in data %}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{mch_name}}</td>
+                            <td>{{mch_id}}</td>
+                            <td class="formatting-money">{{day_tx_count}}</td>
+                            <td class="formatting-money">{{day_tx_amount}}</td>
+                            <td class="formatting-money">{{day_refund_count}}</td>
+                            <td class="formatting-money">{{day_refund_amount}}</td>
+                            <td class="formatting-money">{{day_tx_net_amout}}</td>
+                            <td class="formatting-money">{{day_profit_amount}}</td>
+                            <td><a target="_blank" href="/inter_bank/stats/mch/detail?mch_id={{ mch_id }}&query_date={{ query_date }}">详情</a></td>
+                        </tr>
+                        {% end %}
+                    </tbody>
+                </table>
+        </div>
+
+
+        <!--分页-->
+        <div>
+            {% autoescape None %}
+            {{ navigate_html }}
+        </div>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/common/js/order_by.js"></script>
+<script type="text/javascript" src="/static/common/js/stats_controller.js"></script>
+{% end %}
+
+<!-- 引入js文件  end-->
+
+
+
+
+
+
+

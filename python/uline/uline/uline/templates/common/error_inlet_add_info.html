@@ -1,0 +1,9 @@
+{% if data.errors %}
+<ul class="errors">
+    {% for field_name, field_errors in data.errors.items() %}
+    {% for error in field_errors %}
+    <li>{{ error }}</li>
+    {% end %}
+    {% end %}
+</ul>
+{% end %}

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<notify>
+    <!-- path: sms: 单条短信; batsms: 批量短信; email: 单封邮件 -->
+    <errcode>
+
+    </errcode>
+    <errmess>交易成功</errmess>
+    <sessionID>
+
+    </sessionID>
+    <msgNo>
+
+    </msgNo>
+</notify>

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>连锁商户后台登录</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<!--引入样式-->
+	<link rel="stylesheet" href="/static/common/libs/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/common/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/common/css/login.css">
+</head>
+<body class="login">
+<div class="login-box">
+	<div class="logo">
+		<img src="/static/common/image/logo_1.png" alt="logo" />
+	</div>
+	<div class="lg-container">
+		<form class="form" method="post" action="/chain/login">
+		{% module xsrf_form_html() %}
+			<div class="form-group">
+				<img class="emailImg" src="/static/common/image/shoujihao.png"/>
+				<input class="form-control" type="text" placeholder="请输入用户名" name="chain_id" value="{{ form.chain_id.data or '' }}"/>
+			</div>
+			<div class="form-group">
+				<img class="emailImg" src="/static/common/image/mima.png"/>
+				<input class="form-control" type="password" placeholder="请输入密码" name="password"/>
+			</div>
+			{% if passwdMsg %}
+			<div class="pull-left errorBox">{{ passwdMsg }}</div>
+			{% end %}
+			{% raw xsrf_form_html() %}
+			<div class="pull-right">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<h4>如您忘记密码</h4>
+								<h4>请联系客服</h4>
+								<h4>4008047555</h4>
+							</div>
+							<div class="modal-footer">
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal -->
+				</div>
+				<a data-toggle="modal" href="/chain/forgetpwd" class="pull-right">忘记密码</a>
+			</div>
+			<button class="btn btn-block btn-info" type="submit">登录</button>
+			<div style="color:#999;margin-top:10px;">
+                <i style="display:inline-block;width:15px;height:15px;line-height:15px;text-align:center;background:#FF6666;border-radius:50%;font-style:inherit;color:#fff;">!</i>
+                <span>重要！登录名变更说明：近期系统将进行升级，升级后，商户登录名变更为：商户编号.mr，登录密码不变。具体升级时间请留意客服通知，请各位商户知悉。</span>
+            </div>
+		</form>
+		<!-- 初始化密码弹框 -->
+        <div data-toggle="modal" data-target="#password"></div>
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="password" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span>设置密码</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="passwordClose">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="input-group" id="authCode">
+                                <input type="text" class="form-control" placeholder="输入验证码" name="auth_code" id="auth_code" maxlength="6">
+                                <span class="input-group-addon"><input type="button" id="btnPass" value="获取验证码"/></span>
+                            </div>
+                        </div>
+                        <div class="account"></div>
+                        <div class="nextStep">
+                            <button class="btn btn-primary btn-block">下一步</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+
+        <!--下一步-->
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="setPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="fa fa-arrow-left pull-left previous"></span>
+                        <span>设置密码</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="newPassClose">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline" method="get" role="form" action="">
+                            <input type="password" class="form-control" placeholder="输入新密码" name="newPwd" id="newPwd">
+                            <input type="password" class="form-control" placeholder="确认密码" name="checkPwd" id="checkPwd">
+                        </form>
+                        <div class="passW_complete">
+                            <button type="button" class="btn btn-default" id="modify">完成</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal -->
+	</div>
+</div>
+<script>var env='{{env}}'</script>
+<script type="text/javascript" src="/static/common/libs/jquery.min.js" ></script>
+<script type="text/javascript" src="/static/common/libs/bootstrap/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="/static/common/js/browser_ie.js" ></script>
+<script type="text/javascript">
+    var status = {{status}}
+    $().ready(function () {
+        if (status == 2) {
+            //激活弹框
+            $('#password').modal();
+            var wait = 59;
+            var $btnPass = document.getElementById("btnPass");
+
+            function time(o) {
+                if (wait == 0) {
+                    o.removeAttribute("disabled");
+                    o.value = "获取验证码";
+                    wait = 60;
+                } else {
+
+                    o.setAttribute("disabled", true);
+                    o.value = "重新发送(" + wait + ")";
+                    wait--;
+                    setTimeout(function () {
+                        time(o)
+                    }, 1000)
+                }
+            }
+
+            //绑定点击事件
+            $btnPass.onclick = function () {
+                //调用倒计时函数
+				var _this=this;
+                var account = $('.account');
+                account.show();
+                account.removeClass("account-backg");
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: '/chain/login/code',
+                    beforeSend: function (XMLHttpRequest) {
+                        // 请求前处理
+                    },
+                    success: function (res) {
+                        // 请求成功处理
+                        if (res.code == 200) {
+                			time(_this);
+                            var appendHtml = "验证码已发送至" + res.data;
+                            account.text(appendHtml);
+                            //下一步绑定点击
+                            $(".nextStep").on("click", function () {
+                                var auth_code = $('#auth_code').val();
+                                if(auth_code == ''){
+                                    account.text("请输入验证码");
+                                    account.addClass("account-backg");
+                                }else if(auth_code.length < 5){
+                                    account.text("验证码错误");
+                                    account.addClass("account-backg");
+                                }else{
+                                    $.ajax({
+                                        type: 'GET',
+                                        dataType: 'json',
+                                        data: {'auth_code': auth_code},
+                                        url: '/chain/login/auth',
+                                        beforeSend: function (XMLHttpRequest) {
+                                            // 请求前处理
+                                        },
+                                        success: function (res) {
+                                            account.text('');
+                                            // 请求成功处理
+                                            if (res.code == 200) {
+                                                //第一层弹框关闭
+                                                $('#passwordClose').trigger("click");
+                                                //第二层弹框激活
+                                                $('#setPassword').modal();
+                                                $('.previous').on("click", function () {
+                                                    $('#newPassClose').trigger("click");
+                                                    $('#password').modal();
+                                                });
+                                                var $modify = document.getElementById("modify");
+                                                //绑定下一步
+                                                $modify.onclick = function () {
+                                                    var newPwd = $("#newPwd").val();
+                                                    var checkPwd = $("#checkPwd").val();
+                                                    $(".num-tip-pwd").remove();
+                                                    if(newPwd.length<6){
+                                                        $("#checkPwd").after("<div class='num-tip-pwd'>密码长度至少6位</div>");
+                                                        return;
+                                                    }else if(checkPwd.length<6){
+                                                        $("#checkPwd").after("<div class='num-tip-pwd'>密码长度至少6位</div>");
+                                                        return;
+                                                    }
+                                                    if(newPwd == "" && checkPwd ==""){
+                                                        $("#checkPwd").after("<div class='num-tip-pwd'>密码不能为空</div>");
+                                                    }else if(newPwd != checkPwd){
+                                                        $("#checkPwd").after("<div class='num-tip-pwd'>两次密码不一致</div>");
+                                                    }else{
+                                                        $.ajax({
+                                                            type: 'GET',
+                                                            dataType: 'json',
+                                                            data: {'newPwd': newPwd, 'checkPwd': checkPwd},
+                                                            url: '/chain/login/modify',
+                                                            beforeSend: function (XMLHttpRequest) {
+                                                            },
+                                                            success: function (res) {
+                                                                if (res.code == 200) {
+                                                                    $("#setPassword").modal('hide');
+                                                                    window.location.href = "/chain/"
+                                                                }else{
+                                                                    $("#checkPwd").after("<div class='num-tip-pwd'>输入格式有误，请核对</div>");
+                                                                }
+                                                            },
+                                                            complete: function (XMLHttpRequest, textStatus) {
+                                                            },
+                                                            error: function () {
+                                                            }
+                                                        });
+                                                    };
+                                                };
+                                            } else {
+                                                account.text("验证码错误");
+                                                account.addClass("account-backg");
+                                            }
+                                        },
+                                        complete: function (XMLHttpRequest, textStatus) {
+                                            // 完成请求处理
+                                        },
+                                        error: function () {
+                                            // 请求出错处理
+                                            alert("操作失败");
+                                        }
+                                    });
+                                }
+
+                            });
+
+                        } else {
+                            account.text("获取失败，请重新获取！");
+                            account.addClass("account-backg");
+                        }
+                    },
+                    complete: function (XMLHttpRequest, textStatus) {
+                        // 完成请求处理
+                    },
+                    error: function () {
+                        // 请求出错处理
+                        alert("操作失败");
+                    }
+                });
+            };
+        }
+
+    })
+</script>
+</body>
+</html>

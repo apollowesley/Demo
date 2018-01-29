@@ -1,0 +1,23 @@
+{% extends '../base.html' %}
+{% module xsrf_form_html() %}
+
+{% block title %}
+<title>角色管理(商户)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/merchant/css/subUser.css">
+{% end %}
+{% block content %}
+    {% autoescape None %}
+    {{ data_html }}
+{% end %}
+
+{% block js %}
+<script type="text/javascript">
+    var total_num ='{{ total_num }}';
+</script>
+<script type="text/javascript" src="/static/common/js/role_management_controller.js"></script>
+
+{% end %}
+<!-- 引入js文件  end-->

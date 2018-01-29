@@ -1,0 +1,829 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
+html,body,ul,li,ol,dl{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑","Microsoft Yahei", Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", sans-self, Simsun;
+	font-weight: 500;
+}
+.iBox{
+	float:left;
+	display: block;
+}
+.dt-name{
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	max-width:200px;
+	display: block;
+	float: left;
+}
+ul,li{
+	list-style: none;
+}
+
+.row{
+	margin:0;
+}
+.gap{
+	letter-spacing: 5px;
+}
+.gapTwo{
+	letter-spacing: 13px;
+}
+.nav-foot{
+	position: fixed;
+	width: 220px;
+	bottom: 20px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.table{
+	border: 1px solid #ccc;
+	border-collapse: separate;
+	border-radius:5px;
+}
+table>thead>tr>th{
+	text-align: center;
+	border-bottom: 0px !important;
+    min-height: 40px;
+}
+table>tbody>tr,
+table>tbody>tr>td {
+	text-align: center;
+	vertical-align: middle !important;
+	font-size: 14px;
+	font-weight: 500;
+	min-width: 50px;
+}
+table>tbody>tr:hover{
+	background: #FBDDDB ;
+}
+.hover{
+	background: #FBDDDB ;
+}
+.tr_data{
+	color: #ccc;
+}
+.list div>span>a>img{
+	width: 100px;
+	height: 100px;
+	margin: 0px 30px 10px 0;
+	display: inline-block;
+}
+
+
+.spanLi{
+	padding-right: 10px;
+	margin-left: 15px;
+}
+.inputAll{
+	width: 120px !important;
+}
+
+.btn{
+	width: 120px !important;
+}
+#search{
+	background: #00a8ea !important;
+    color: #fff;
+	margin-bottom: 10px;
+}
+.active{
+	color: #fff;
+}
+.nav .number{
+	margin-left: 35px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+}
+.nav .numberTwo{
+	margin-left: 10px;
+	padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+}
+.spanAll{
+	margin-left:8px;
+	font-size: 14px;
+	color: black;
+}
+.nav-second-level>li>a{
+	color: #333;
+}
+.sidebar ul li a.active{
+	color: #fff;
+}
+.pageBox{
+	text-align: center;
+}
+
+
+/*** 头部 start ***/
+.navbar .navber-img{
+	text-decoration: none;
+}
+.navbar .uline-lg{
+	font-size: 20px;
+	color: black;
+}
+.navbar .uline-ht{
+	color: black;
+}
+.navbar .borLine{
+	border-left: 1px solid #ccc;
+	height: 30px;
+	line-height: 50px;
+}
+.navbar-top-links li{
+	float: left;
+}
+
+/*popover复写样式*/
+.popover-content{
+	width: 180px;
+	color: #fff;
+}
+.fade.in{
+	/*opacity: 0.8;*/
+}
+.popover{
+	background-color: #666;
+	padding: 0;
+}
+.popover.bottom>.arrow{
+	margin-left: 0;
+}
+.popover.bottom>.arrow:after{
+	border-bottom-color: #666;
+}
+/*** 头部 end ***/
+
+
+
+
+/*** 首页 start ***/
+#page-wrapper .index-row{
+	padding-top: 20px;
+	padding-bottom:20px;
+}
+.panel-primary>a>.panel-heading{
+	color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+.panel-heading{
+	padding: 20px 5px;
+}
+.huge{
+    font-size: 26px;
+    /*text-align: center;*/
+    line-height: 56px;
+}
+/*** 首页  end ***/
+
+
+
+
+
+
+/*** 清算划付管理start ***/
+#page-wrapper .row .form-right,
+#page-wrapper .row .form-group{
+	margin-right: 30px;
+	padding-bottom: 10px;
+}
+.navber-img{
+	padding-left: 20px;
+}
+
+.formbox{
+	float:left;
+	margin-right:20px;
+}
+#main-content .formlist,
+#main-content .bankcard{
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.homeBox{
+	color: #ccc;
+}
+/*渠道结算*/
+#main-content{
+	width: 770px;
+}
+#main-content .formlist{
+	border:1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+#main-content .license>div{
+	height: 40px;
+}
+
+#main-content .formlist h4{
+	width: 100%;
+	margin: 0;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	background: #eee;
+	padding-left: 20px;
+}
+#main-content .formlist>div>label{
+	width: 246px;
+	padding-left: 20px;
+	margin: 0;
+	height: 40px;
+	line-height: 40px;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	float: left;
+}
+#main-content .formlist>div>span{
+	width: 522px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	border-top: 1px solid #ccc;
+	padding-left: 30px;
+	margin: 0;
+	padding-bottom: 0;
+}
+
+/*** 清算划付管理end ***/
+
+
+
+/*** 清算申请管理start ***/
+
+.form-inline{
+	width: 100%;
+	padding-bottom: 20px;
+	display: inline-block;
+}
+.tabList{
+	border: 1px solid #ccc;
+	width: 500px;
+}
+.trBox{
+	display: none;
+}
+.xlBox{
+	width: 500px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.rightBox{
+	border: 1px solid #ddd;
+	padding: 30px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+	border-radius: 6px;
+}
+.input-group-addon{
+	background: #fff;
+    border: 0;
+}
+#create_at_start,
+#create_at_end{
+	-webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.form-inline .form-group input,
+.form-inline .form-group .input-group input{
+	width: 120px;
+}
+/*** 清算申请管理end ***/
+
+
+
+
+/*** 渠道进件管理 start ***/
+.tab_left{
+	width: 60%;
+	float: left;
+}
+#dtPayInfo,
+#tableLeft,
+#mchPayInfo{
+	width: 38%;
+}
+#tableLeft .row .col-md-12>button{
+	border: none;
+	background: #fff;
+}
+#tableBox{
+	width: 100%;
+}
+#tableBox .rightLine{
+	border-right: 1px solid #ccc;
+}
+#tableBox .leftLine{
+	background: #fff;
+	color: black;
+}
+#tableBox .col-md-2,
+#tableBox .col-md-3,
+#tableBox .col-md-5,
+#tableBox .col-md-6,
+#tableBox .col-md-8{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	overflow: hidden;
+	padding-left: 0;
+	padding-right: 0;
+}
+.btnTop{
+	margin-top:20px;
+}
+#tabs ul {
+	list-style: none;
+	display: block;
+}
+#tabs ul li{
+	cursor:pointer;
+	list-style:none;
+	display:inline-block;
+	background: #ccc;
+	color: #fff;
+}
+.hidde{
+	display: none;
+}
+#tabs .col-md-4,
+#tabs .col-sm-4{
+	min-height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+#add-callback p{
+	min-height: 40px;
+	line-height: 40px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 0;
+}
+#add-callback div{
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 10px;
+}
+.add-callback {
+	display: inline-block;
+	padding-right: 10px;
+	max-width: 100%;
+	word-wrap:break-word ;
+}
+
+/*** 渠道进件管理 end ***/
+
+
+/*** 商户进件管理 start ***/
+.breadcrumb{
+	border-bottom:1px solid #ccc ;
+	padding: 8px 0px;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 0px;
+}
+
+.headBox{
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0;
+	margin-bottom: 20px;
+}
+.advancing{
+	color: #ccc;
+}
+.headLi{
+	border-bottom: 2px solid red;
+	padding: 6px 0;
+}
+.zfBox{
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+#tableLeft{
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	display: none;
+
+}
+.sh-infor{
+	background: #ccc;
+}
+.tabBorder{
+	border:1px solid #ccc;
+}
+.listBox{
+	border: 1px solid #ccc;
+	padding-left: 10px;
+}
+.col-md-12{
+	padding: 0;
+}
+.list{
+	width: 100%;
+	padding: 10px 20px;
+	border-bottom: 1px solid #ccc;
+}
+.list_lost{
+	padding: 20px;
+}
+.timeSpan{
+	padding-bottom: 10px;
+}
+
+#mchInfo .list h4,
+.list_lost h4{
+	color: #666;
+}
+#mchInfo .list label{
+	width: 35%;
+	color: #333;
+}
+#mchInfo .list>div{
+	line-height: 30px;
+}
+#mchInfo .list>div>span{
+	color: #333;
+	width: 65%;
+	display: inline-block;
+}
+.list_lost a{
+	cursor: pointer;
+}
+/*** 商户进件管理 end ***/
+
+
+
+
+
+/*** 新增商户 start ***/
+.leftBox{
+	width: 400px;
+	border: 1px solid #ccc;
+	padding: 25px 0 0 25px;
+	margin-bottom: 20px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+}
+.leftAll{
+	margin-left: 100px;
+}
+.tabBox{
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 900px;
+}
+.tabBox .cont{
+	display: flex;
+	justify-content: center;
+}
+
+.tabBox .input-group{
+	width: 150px;
+}
+
+.errors>li{
+	color: darkred;
+	font-size: 16px;
+}
+.select2-container .select2-selection--single{
+	width: 100% !important;
+	height: 34px !important;
+	border: 1px solid #ccc !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+	height: 34px !important;
+
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+	line-height: 34px !important;
+}
+/*** 新增商户 end ***/
+
+
+/*** 弹出框 start ***/
+.modal-header .close{
+	margin-top: -10px;
+}
+.modal-body{
+	text-align: center;
+	padding: 30px 15px;
+}
+.modal-header,
+.modal-footer{
+	min-height: 20px;
+	border: 0;
+}
+.modal-header，
+.modal-body{
+	min-width: 500px;
+}
+.modal-dialog{
+	width:500px;
+	margin: 150px auto;
+}
+/*** 弹出框 end ***/
+
+
+/*** 交易对账异常详情 start ***/
+#countBox{
+	border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px 20px 0 20px;
+	margin-bottom: 20px;
+}
+#countBox label{
+	width: 30%;
+}
+.col-sm-3,
+.col-md-3,
+.col-lg-3{
+	padding-bottom: 20px;
+}
+.tdLine{
+	border-right: 1px solid #ccc;
+	width: 50%;
+}
+
+/*** 交易对账异常详情 end ***/
+
+
+/*** 商户退款详情 start ***/
+#refund-conten{
+	width: 902px;
+}
+.singleNumber{
+	width: 100%;
+	min-height: 122px;
+	border:1px solid #ccc;
+	margin-bottom: 20px;
+}
+.singleHeight{
+	height: 202px;
+}
+.sn_left{
+	width: 450px;
+    position: relative;
+	float: left;
+}
+.sn_right{
+	width: 450px;
+	float: right;
+}
+.singleNumber ul li{
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	border-bottom: 1px solid #ccc;
+}
+.singleNumber ul li:last-child{
+	border-bottom: 0;
+}
+.singleNumber ul li label{
+	width: 165px;
+	background: #eee;
+	padding-left: 20px;
+	margin: 0;
+}
+.singleNumber ul li>span{
+	width: 285px;
+	display: inline-block;
+	padding-left: 20px;
+	float: right;
+}
+
+/*** 商户退款详情 end ***/
+
+.batchBox{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.batchBtn{
+	float: left;
+	margin-right: 10px;
+}
+.passBox{
+	/*width: 180px;
+	height: 38px;*/
+	padding:5px 10px;
+	line-height: 36px;
+	text-align: left;
+	position: fixed;
+	z-index: 9999;
+	background: #444C56;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px ;
+	-moz-border-radius: 5px ;
+	border-radius: 5px ;
+	top: 90px;
+	left: 50%;
+	font-size: 16px;
+	color: #fff;
+	filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+}
+.passBox p{margin:0px;}
+.passImg{
+	width: 200px;
+	height: 200px;
+	margin: 150px auto;
+	display: block;
+	z-index: 99999;
+}
+.input-group .form-control{
+	text-align: center !important;
+	z-index: 0;
+}
+#mch_activation{
+	z-index: 99999;
+}
+.ewm{
+	background: url(/static/common/image/ico_weixin.png) left center no-repeat;
+	margin: 0 30px 0 20px;
+}
+.statHead{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+	font-size: 18px;
+}
+.statBox{
+	padding: 20px 0;
+}
+.statBox>.col-md-2{
+	border: 1px solid #ccc;
+}
+.statBox .contStat{
+	width: 100%;
+
+}
+.statBox .contStat>li{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+}
+.statBox .contStat>li:nth-of-type(odd){
+	width: 40%;
+	text-align: start;
+}
+.statBox .contStat>li:nth-of-type(even){
+	width: 60%;
+	text-align: end;
+}
+
+.statForm{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid #ccc;
+}
+.statInput{
+	width: 300px;
+	margin-right: 20px;
+}
+
+#tab{
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	border:1px solid #ccc;
+	text-align: end;
+	overflow: hidden;
+}
+#tab .tabs{
+	text-align: center;
+	width: 100%;
+}
+#tab .tabs>li>a>h4{
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+#tab .tabs>li>a>p{
+	line-height: 40px;
+	font-size: 20px;
+}
+ul , li{
+	display: block;
+}
+#tab .tabs .col-md-2>a{
+	color: black;
+}
+#tab .tabs .active{
+	background: #e8594b;
+}
+#tab .tabs .active>a{
+	color: #fff;
+}
+#tab .tabs .col-md-2>a:hover,
+#tab .tabs .col-md-2>a:link{
+	text-decoration: none;
+}
+#tab .tabs>li:first-child{
+	border: 0px;
+}
+.tabs>.col-md-2{
+	border: 1px solid #ccc;
+	padding:0;
+	height: 100px;
+}
+.tab_content{
+	display: none;
+}
+.statTab{
+	margin-top: 20px;
+}
+.statTab>button{
+	margin-bottom: 20px;
+}
+.statBox .form-inline{
+	margin-bottom: 20px;
+}
+.triangle-down{
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #e8594b;
+	margin: auto;
+}
+#activated_batch{
+	text-align: end;
+    padding-right: 4%;
+    height: 30px;
+    line-height: 30px;
+}
+
+/*驳回原因start*/
+.turnDown .modal-header,
+.turnDown .modal-footer{
+	text-align: center;
+}
+.turnDown .modal-header .close {
+	margin-top: 0px;
+}
+.turnDown .modal-body {
+	padding: 15px 28px;
+}
+.turnDown .modal-body textarea{
+	resize: none;
+	border: 1px solid #ddd;
+	padding: 20px 20px 40px 20px;
+	box-sizing: border-box;
+    overflow-y: hidden;
+}
+.turnDown .modal-body .limitNum{
+	text-align: right;
+	padding-right: 20px;
+	color: #ccc;
+	margin-top: -35px;
+}
+.turnDown .modal-content{
+	width: 700px;
+}
+.turnDownInpt{
+	width: 640px;
+	height: 360px;
+}
+.turnDownImg{
+	text-align: right;
+	position: absolute;
+	left: 650px;
+    top: 17px;
+	cursor: pointer;
+	display: none;
+}
+.turnDown .modal-footer>a{
+	width: 340px !important;
+	height: 48px;
+	line-height: 48px;
+	font-size: 18px;
+	color: #fff;
+	padding:0;
+}
+#info{
+	position: absolute;
+    right: 40px;
+    bottom: 30px;
+}
+/*驳回原因end*/
+

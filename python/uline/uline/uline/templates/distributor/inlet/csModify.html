@@ -1,0 +1,342 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>修改连锁门店进件(渠道商)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/common/css/pay-type.css">
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+    <div class="headBox">
+        <span class="headLi">
+            <img src="/static/common/image/biaozhi.png"/>
+            <a href="/dist/inlet/cs">进件管理(连锁门店进件)</a>
+            <span class="advancing">></span>
+            <a href="javascript:;">信息修改</a>
+        </span>
+    </div>
+
+
+    <form class="form-horizontal" method="post" role="form" action="/dist/inlet/cs/modify"
+          enctype="multipart/form-data">
+        {% module xsrf_form_html() %}
+
+        <div class="newheadBox">
+            <p>联系信息</p>
+
+            <div class="form-group hidden">
+                <label for="mch_id" class="col-md-4 control-label">门店编号</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" id="mch_id" name="mch_id" placeholder="" readonly="readonly"
+                           required="required" value="{{ form.mch_id.data or ''}}">
+                </div>
+            </div>
+
+            <div class="newMchBox">
+                <div class="form-group ">
+                    <label for="contact" class="col-md-4 control-label gap">联系人</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="contact" placeholder="请输入姓名" name="contact"
+                               required="required" value="{{ form.contact.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="mobile" class="col-md-4 control-label">手机号码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="mobile" placeholder="请输入手机号码" name="mobile"
+                               maxlength="11" required="required" value="{{ form.mobile.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="email" class="col-md-4 control-label">电子邮箱</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="email" placeholder="请输入邮箱" name="email"
+                               required="required" value="{{ form.email.data or '' }}">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>经营信息</p>
+            <div class="newMchBox">
+                <div class="form-group has-edit">
+                    <label for="cs_id" class="col-md-4 control-label">所属连锁商户</label>
+                    <div class="col-md-8">
+                    <select class="form-control"  id="chain_id" name="cs_id" title="">
+                        {% if form.cs_id.data %}
+                        <option value="{{ form.cs_id.data or '' }}" selected>{{form.cs_name or ''}}</option>
+                        {% end %}
+                    </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mchShortName" class="col-md-4 control-label">门店简称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="mchShortName" name="mch_shortname" placeholder="请输入门店简称"
+                               required="required" value="{{ form.mch_shortname.data or ''}}">
+                    </div>
+                </div>
+
+                <div class="form-group has-edit">
+                    <label class="col-md-4 control-label">门店类型</label>
+                    <div class="col-md-8 ">
+                        <select class="form-control" id="area" name="jobBox" required></select>
+                    </div>
+                    <input value="" id="jobType" name="industry_no" class="hidden">
+                </div>
+
+                <div class="form-group has-edit">
+                    <label class="col-md-4 control-label ">经营类目</label>
+                    <div class="col-md-8 ">
+                        <select class="form-control" id="cmbProvince" required></select>
+                        <select class="form-control" id="cmbCity" required></select>
+                        <select class="form-control" id="cmbArea" required></select>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="servicePhone" class="col-md-4 control-label">客服电话</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="servicePhone" placeholder="请输入客服电话" name="service_phone"
+                               required="required" value="{{ form.service_phone.data or '' }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="newheadBox">
+            <p>门店信息</p>
+            <div class="newMchBox">
+                <div class="mackBox">
+                    <div class="newMchLine"></div>
+                    <span>基本信息</span>
+                </div>
+                <div class="form-group has-edit">
+                    <label for="mchName" class="col-md-4 control-label">门店名称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="mchName" name="mch_name" placeholder="请输入门店名称"
+                               required="required" value="{{ form.mch_name.data or ''}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">省市</label>
+                    <div class="distpicker col-md-8">
+                        <div><select name="province" class="form-control " id="province4" data-province="{{ form.province.data or '' }}" required></select></div>
+                        <div><select name="city" class="form-control " id="city4" data-city="{{ form.city.data or '' }}"  required></select></div>
+                        <div><select name="district" class="form-control " id="district4" data-district="{{ form.district.data or '' }}" required></select></div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="address" class="col-md-4 control-label">联系地址</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="address" placeholder="请输入地址" name="address"
+                               required="required" value="{{ form.address.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="mackBox">
+                    <div class="newMchLine"></div>
+                    <span>负责人信息</span>
+                </div>
+
+                <div class="form-group ">
+                    <label for="idCard" class="col-md-4 control-label">身份证号码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="idCard" placeholder="请输入身份证号码" name="id_card_no"
+                               required="required" value="{{ form.id_card_no.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group lastForm">
+                    <label for="imgCardFront" class="col-md-4 control-label">
+                        <p>身份证正反面</p>
+                        <div class="picImg">图片限制在<br>300KB以内</div>
+                    </label>
+                    <div class="col-md-8" id="test">
+                        <div id="cardPositive">
+                            <span>身份证正面</span>
+                            {% if form.imgCardFrontOld.data %}
+                            <img id="pic1" src="{{ form.imgCardFrontOld.data }}" />
+                            {% else %}
+                            <img id="pic1" src="/static/common/image/pic.png" />
+                            {% end %}
+                            <input id="imgCardFront" type="file" name="id_card_img_f" accept="image/png, image/jpeg">
+                            <input class="hidden" id="imgCardFrontOld" name="imgCardFrontOld" value="{{ form.imgCardFrontOld.data }}" readonly="readonly">
+                        </div>
+                        <div id="cardNegative col-md-2">
+                            <span>身份证反面</span>
+                            {% if form.imgCardBackOld.data %}
+                            <img id="pic2" src="{{ form.imgCardBackOld.data }}" />
+                            {% else %}
+                            <img id="pic2" src="/static/common/image/pic.png" />
+                            {% end %}
+                            <input id="imgCardBack" type="file" name="id_card_img_b" accept="image/png, image/jpeg">
+                            <input class="hidden" id="imgCardBackOld" name="imgCardBackOld" value="{{ form.imgCardBackOld.data }}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>营业执照信息</p>
+            <div class="newMchBox">
+                <div class="form-group">
+                    <label for="licenseNum" class="col-md-4 control-label">营业执照注册号</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="licenseNum" placeholder="请输入营业执照注册号" name="license_num"
+                               required="required" value="{{ form.license_num.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseNum" class="col-md-4 control-label">营业期限</label>
+                    <div class="col-md-3" id="licenseStartDate-div">
+                        <input type="text" class="form-control" id="licenseStartDate" placeholder="请选择证件开始日期" name="license_start_date"
+                                value="{{ form.license_start_date.data or '' }}">
+                    </div>
+                    <div class="col-md-3" id="licenseEndDate-div">
+                        <input type="text" class="form-control" id="licenseEndDate" placeholder="请选择证件结束日期" name="license_end_date" value="{{ form.license_end_date.data or '' }}">
+                    </div>
+                    <div class="col-md-2">
+                        <label>
+                            <input type="checkbox" id="licensePeriod" name="license_period"
+                            {% if form.license_period.data == 'on' or form.license_period.data == '2' %} checked="checked"{% end %}>长期
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseNum" class="col-md-4 control-label">营业范围</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" rows="3"  id="licenseScope" placeholder="与企业工商营业执照上一致" name="license_scope">
+                            {{ form.license_scope.data or '' }}
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group lastForm">
+                    <label for="imgCardFront" class="col-md-4 control-label">
+                        <span>营业执照照片</span>
+                        <div class="picImg">图片限制在<br>500kb以内</div>
+                    </label>
+                    <div class="col-md-8">
+                        <div id="cardPositive">
+                            <span>营业执照照片</span>
+                            {% if form.licenseImgOld.data %}
+                            <img id="pic3" src="{{ form.licenseImgOld.data }}" />
+                            {% else %}
+                            <img id="pic3" src="/static/common/image/pic.png" />
+                            {% end %}
+                            <input id="licenseImg" type="file" name="license_img" accept="image/png, image/jpeg">
+                            <input class="hidden" id="licenseImgOld" name="licenseImgOld" value="{{ form.licenseImgOld.data }}" readonly="readonly">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>经营信息</p>
+            <div class="newMchBox">
+                <div class="form-group">
+                    <label for="balanceType" class="col-md-4 control-label">结算账号类型</label>
+                    <div class="col-md-8">
+                        <select class="form-control" title="" id="balanceType" name="balance_type">
+                            <!--<option value="">请选择交易类型</option>-->
+                            <option value="1" {% if form.balance_type.data== 1 %}selected{% end %}>企业</option>
+                            <option value="2" {% if form.balance_type.data== 2 %}selected{% end %}>个人</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="balanceName" class="col-md-4 control-label">结算户名</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="balanceName" placeholder="请输入结算户名"
+                               name="balance_name" required="required" value="{{ form.balance_name.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bankNo" class="col-md-4 control-label">结算银行</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="bankNo" name="bank_no" title="">
+                            {% if form.bank_no.data %}
+                            <option value="{{ form.bank_no.data }}" selected>{{ form.bankName }}</option>
+                            {% end %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="balanceNo" class="col-md-4 control-label">结算账户</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="balanceNo" placeholder="请输入结算账户" name="balance_account"
+                               required="required" value="{{ form.balance_account.data or '' }}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tabBox">
+            {% autoescape None %}
+            {{ error_inlet_info_html }}
+            <div class="time-error"></div>
+            <button type="submit" id="submit-btn" class="btn btn-default mch-send">提交</button>
+        </div>
+        <input type="checkbox" class="hide" placeholder="" id="payTypeWechat" checked name="pay_type_wechat" >
+    </form>
+</div>
+<script>
+    //D0控制变量
+    var OPEN_D0="{{ OPEN_D0 }}";
+    var has_been_authed = "{{ has_been_authed }}";
+
+    var cmb_area = "{{ form.area.data }}";
+    var cmb_province = "{{ form.cmbProvince.data }}";
+    var cmb_city = "{{ form.cmbCity.data }}";
+    var cmb_cmbArea = "{{ form.cmbArea.data }}";
+</script>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+
+<script type="text/javascript" src="/static/common/libs/distpicker/distpicker.data.js"></script>
+<script type="text/javascript" src="/static/common/libs/distpicker/distpicker.js"></script>
+<script type="text/javascript" src="/static/distributor/js/merchantModifyInit.js"></script>
+<script type="text/javascript" src="/static/distributor/js/pay_type.js"></script>
+<script type="text/javascript" src="/static/common/js/search_sub_user.js"></script>
+<script type="text/javascript" src="/static/common/js/zero_rate_noedit.js"></script>
+<script type="text/javascript" src="/static/common/js/search_chains.js"></script>
+<script>
+    $('#select2-chain_id-container').text('{{ form.cs_name }}');
+    if(has_been_authed == 'True'){
+        $('.has-edit select,.has-edit input').attr('disabled',true);
+    }
+     $('.mch-send').click(function(){
+        if($('#licenseStartDate').val()==''){
+            $(this).siblings('.time-error').html('<p style="color:darkred;font-size:16px;">营业期限时间有误，请认真填写</p>')
+            return false;
+        }
+    });
+
+</script>
+{% end %}
+<!-- 引入js文件  end-->

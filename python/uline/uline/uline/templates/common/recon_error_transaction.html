@@ -1,0 +1,12 @@
+{% for key, value in detail.items() %}
+<tr>
+    <td class="tdLine">
+        <span>{{ key }}：</span>
+        <span>{{ value[1] or 'null'}}</span>
+    </td>
+    <td>
+        <span>{{ key }}：</span>
+        <span>{{ value[0] or 'null' }}</span>
+    </td>
+</tr>
+{% end %}

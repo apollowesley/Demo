@@ -1,0 +1,756 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>渠道商进件(新增)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/common/css/pay-type.css">
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+    <div class="headBox">
+        <span class="headLi">
+            <img src="/static/common/image/biaozhi.png"/>
+            <a href="/official/inlet/dt">进件管理(渠道进件)</a>
+            <span class="advancing">></span>
+            <a href="javascript:;">新增渠道进件</a>
+        </span>
+    </div>
+
+
+    <form class="form-horizontal" method="post" role="form" action="/official/inlet/dt/add"
+          enctype="multipart/form-data">
+        {% module xsrf_form_html() %}
+
+
+        <div class="newheadBox">
+            <p>联系信息</p>
+            <div class="newMchBox">
+                <div class="form-group ">
+                    <label for="contact" class="col-md-4 control-label gap">联系人</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="contact" placeholder="请输入姓名" name="contact"
+                               required="required" value="{{ form.contact.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="mobile" class="col-md-4 control-label">手机号码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="mobile" placeholder="请输入手机号码" name="mobile"
+                               maxlength="11" required="required" value="{{ form.mobile.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="email" class="col-md-4 control-label">电子邮箱</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="email" placeholder="请输入邮箱" name="email"
+                               required="required" value="{{ form.email.data or '' }}">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>经营信息</p>
+            <div class="newMchBox">
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">商户类型</label>
+                    <div class="col-md-8 ">
+                        <select class="form-control" id="area" name="jobBox" required></select>
+                    </div>
+                    <input value="" id="jobType" name="jobType" class="hidden">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label ">经营类目</label>
+                    <div class="col-md-8 ">
+                        <select class="form-control" id="cmbProvince" required></select>
+                        <select class="form-control" id="cmbCity" required></select>
+                        <select class="form-control" id="cmbArea" required></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="servicePhone" class="col-md-4 control-label">客服电话</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="servicePhone" placeholder="请输入客服电话"
+                               name="servicePhone"
+                               required="required" value="{{ form.servicePhone.data or '' }}">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>渠道信息</p>
+            <div class="newMchBox">
+                <div class="form-group">
+                    <label for="dtType" class="col-md-4 control-label">所属银行</label>
+                    <div class="col-md-8">
+                        <span class="float-left m-right-5">
+                             <input type="radio" name="bankType" value="1" > 直连
+                         </span>
+                        {% if INTER_BANK %}
+                        <span class="float-left m-right-5">
+                             <input type="radio" name="bankType" value="2">  间连
+                        </span>
+                        <span class="col-md-5 bankTypeChoose" style="display:none;">
+                            <select class="form-control" id="bk_id" name="bk_id" title="">
+                                {% for bk_id,bk_name in inter_bank %}
+                                <option value="{{ bk_id }}" >{{ bk_name }}</option>
+                                {% end %}
+                            </select>
+                        </span>
+                        {% end %}
+                    </div>
+                </div>
+                <div class="form-group bk-choose">
+                    <label for="dtType" class="col-md-4 control-label">渠道商类型</label>
+                    <div class="col-md-8">
+                        <span>
+                             <input type="radio" name="dtType" id="dtType"  value="1"> 普通渠道商
+                         </span>
+                        <span>
+                             <input type="radio" name="dtType" id="dtTypeBank" value="2">  银行内部渠道商
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dtName" class="col-md-4 control-label">渠道商名称</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="dtName" name="dtName" placeholder="请输入名字"
+                               required="required" value="{{ form.dtName.data or ''}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">省市</label>
+                    <div class="distpicker col-md-8">
+                        <div><select name="province" class="form-control " id="province4" data-province="{{ form.province.data or '' }}" required></select></div>
+                        <div><select name="city" class="form-control " id="city4" data-city="{{ form.city.data or '' }}"  required></select></div>
+                        <div><select name="district" class="form-control " id="district4" data-district="{{ form.district.data or '' }}" required></select></div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="address" class="col-md-4 control-label">联系地址</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="address" placeholder="请输入地址" name="address"
+                               required="required" value="{{ form.address.data or '' }}">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>责任人信息</p>
+            <div class="newMchBox">
+                <div class="form-group lastForm">
+                    <label for="idCard" class="col-md-4 control-label">身份证号码</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="idCard" placeholder="请输入身份证号码" name="idCard"
+                               required="required" value="{{ form.idCard.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="imgCardFront" class="col-md-4 control-label">
+                        <span>身份证正反面</span>
+                        <div class="picImg">图片限制在<br>300kb以内</div>
+                    </label>
+                    <div class="col-md-8" id="test">
+                        <div id="cardPositive">
+                            <span>身份证正面</span>
+                            <img id="pic1" src="/static/common/image/pic.png"/>
+                            <input id="imgCardFront" type="file" name="imgCardFront" accept="image/png, image/jpeg">
+                        </div>
+                        <div id="cardNegative col-md-2">
+                            <span>身份证反面</span>
+                            <img id="pic2" src="/static/common/image/pic.png"/>
+                            <input id="imgCardBack" type="file" name="imgCardBack" accept="image/png, image/jpeg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>营业执照信息</p>
+            <div class="newMchBox">
+                <div class="form-group">
+                    <label for="licenseNum" class="col-md-4 control-label">营业执照注册号</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="licenseNum" placeholder="请输入营业执照注册号" name="licenseNum"
+                               required="required" value="{{ form.licenseNum.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseNum" class="col-md-4 control-label">营业期限</label>
+                    <div class="col-md-3" id="licenseStartDate-div">
+                        <input type="text" class="form-control" id="licenseStartDate" placeholder="请选择证件开始日期" name="licenseStartDate" required="required" value="{{ form.licenseStartDate.data or '' }}" data-bv-date="true" data-bv-date-format="YYYY-MM-DD">
+                    </div>
+                    <div class="col-md-3" id="licenseEndDate-div">
+                        <input type="text" class="form-control" id="licenseEndDate" name="licenseEndDate" placeholder="请选择证件结束日期"
+                        value="{{ form.licenseEndDate.data or '' }}" data-bv-date="true" data-bv-date-format="YYYY-MM-DD">
+                    </div>
+                    <div class="col-md-2 checkbox">
+                        <label>
+                            <input type="checkbox" id="licensePeriod" name="licensePeriod" {% if form.licensePeriod.data == 'on' %} checked="checked"{% end %}> 长期
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="licenseNum" class="col-md-4 control-label">营业范围</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control" rows="3" id="licenseScope" placeholder="与企业工商营业执照上一致" name="licenseScope">{{ form.licenseScope.data or '' }}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group lastForm">
+                    <label for="imgCardFront" class="col-md-4 control-label">
+                        <span>营业执照照片</span>
+                        <div class="picImg">图片限制在<br>500kb以内</div>
+                    </label>
+                    <div class="col-md-8">
+                        <div id="cardPositive">
+                            <span>营业执照照片</span>
+                            <img id="pic3" src="/static/common/image/pic.png"/>
+                            <input id="licenseImg" type="file" name="licenseImg" accept="image/png, image/jpeg">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>结算信息</p>
+            <div class="newMchBox">
+                <div class="form-group">
+                    <label for="balanceType" class="col-md-4 control-label">结算账号类型</label>
+                    <div class="col-md-8">
+                        <select class="form-control" title="" id="balanceType" name="balanceType">
+                            <!--<option value="">请选择账号类型</option>-->
+                            <option value="1" {% if form.balanceType.data== 1 %}selected{% end %}>企业</option>
+                            <option value="2" {% if form.balanceType.data== 2 %}selected{% end %}>个人</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="balanceName" class="col-md-4 control-label">结算户名</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="balanceName" placeholder="请输入结算户名"
+                               name="balanceName" required="required" value="{{ form.balanceName.data or '' }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bankNo" class="col-md-4 control-label">结算银行</label>
+                    <div class="col-md-8">
+                        <select class="form-control" id="bankNo" name="bankNo" title="">
+                            {% if form.bankNo.data %}
+                            <option value="{{ form.bankNo.data }}" selected>{{ form.bankName }}</option>
+                            {% end %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <label for="balanceNo" class="col-md-4 control-label">结算账户</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" id="balanceNo" placeholder="请输入结算账户" name="balanceNo"
+                               required="required" value="{{ form.balanceNo.data or '' }}">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="newheadBox">
+            <p>支付信息</p>
+            <div class="newMchBox">
+                <div class="form-group ">
+                    <label class="col-md-4">支付渠道</label>
+                    <div class="col-md-2">
+                        <input type="checkbox" placeholder="" id="payTypeWechat" name="pay_type_wechat"
+                                      data-bv-field="checkItem[]"  VALUE=""> 微信支付
+                    </div>
+                    <div class="col-md-2">
+                        <input type="checkbox" placeholder="" id="payTypeAlipay" name="pay_type_alipay"
+                                      data-bv-field="checkItem[]"  VALUE=""> 支付宝
+                    </div>
+                    {% if jd_pay %}
+                    <div class="col-md-2">
+                        <input type="checkbox" placeholder="" id="payTypeJdpay" name="pay_type_jdpay"
+                                      data-bv-field="checkItem[]"  VALUE=""> 京东支付
+                    </div>
+                    {% end %}
+                </div>
+                <!--微信支付-->
+                <div class="pay-wechat">
+                    <h4 class="pay-type-title">微信支付</h4>
+                    {% if open_dine %}
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">围餐零费率</label>
+                        <div class="col-md-2" style="margin-top:6px;">
+                            <input type="checkbox"  placeholder="" name="use_dine" VALUE="{{ form.use_dine.data or '0' }}"> 开通
+                        </div>
+                    </div>
+                    {% end %}
+                    <div class="form-group ">
+                        <label for="wxChannelId" class="col-md-4 control-label">微信渠道号(2‰)</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control"  placeholder="请输入微信渠道号" name="wxChannelId"
+                                    value="{{ form.wxChannelId.data or '' }}" id="wxChannelId">
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="wxAppChannelId" class="col-md-4 control-label">微信渠道号(6‰)</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control"  placeholder="请输入微信渠道号" name="wxAppChannelId"
+                                    value="{{ form.wxAppChannelId.data or '' }}" id="wxAppChannelId">
+                        </div>
+                    </div>
+                    <div class="form-group dt-dzero-choose">
+                        <label for="bankRateWechat" class="col-md-4 control-label">D0结算</label>
+                        <div class="col-md-2" style="margin-top:6px;">
+                            <input type="checkbox"  placeholder="" id="bankRateWechat" name="wechat_bank_rate"
+                                           data-bv-field="checkItem[]" VALUE=""> 开通
+                        </div>
+                        <div class="col-md-6 dt-dzero-show">
+                            <div class="form-group ">
+                                <label for="bankRatePayWechat" class="col-md-4 control-label">D0提现手续费</label>
+                                <div class="col-md-8 ">
+                                    <input type="text" class="form-control" id="bankRatePayWechat" placeholder="请输入金额，精确到分，例如：0.50" name="wx"
+                                           value="{% if form.wx.data != None%}{{ form.wx.data }}{%end%}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabBox">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>支付类型</th>
+                                <th><span class="dt-dzero-show">D1</span>费率</th>
+                                <th class="dt-dzero-show">D0费率</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class=" table-role">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox1"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>微信－扫码支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_OFFLINE_NATIVE"
+                                               value="{% if form.WX_OFFLINE_NATIVE.data != None%}{{ form.WX_OFFLINE_NATIVE.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_OFFLINE_NATIVE_D0"
+                                               value="{% if form.WX_OFFLINE_NATIVE_D0.data != None%}{{ form.WX_OFFLINE_NATIVE_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class=" table-role">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox2"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>微信－刷卡支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_OFFLINE_MICROPAY"
+                                               value="{% if form.WX_OFFLINE_MICROPAY.data != None%}{{ form.WX_OFFLINE_MICROPAY.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_OFFLINE_MICROPAY_D0"
+                                               value="{% if form.WX_OFFLINE_MICROPAY_D0.data != None%}{{ form.WX_OFFLINE_MICROPAY_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class=" table-role">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox3"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>微信－公众账号支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_OFFLINE_JSAPI"
+                                               value="{% if form.WX_OFFLINE_JSAPI.data != None%}{{ form.WX_OFFLINE_JSAPI.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_OFFLINE_JSAPI_D0"
+                                               value="{% if form.WX_OFFLINE_JSAPI_D0.data != None%}{{ form.WX_OFFLINE_JSAPI_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class=" table-role">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox4"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>微信－APP支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_ONLINE_APP"
+                                               value="{% if form.WX_ONLINE_APP.data != None%}{{ form.WX_ONLINE_APP.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_ONLINE_APP_D0"
+                                               value="{% if form.WX_ONLINE_APP_D0.data != None%}{{ form.WX_ONLINE_APP_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% if h5 %}
+                            <tr class=" table-role">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox5"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>微信－H5支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_ONLINE_MWEB"
+                                               value="{% if form.WX_ONLINE_MWEB.data != None%}{{ form.WX_ONLINE_MWEB.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="WX_ONLINE_MWEB_D0"
+                                               value="{% if form.WX_ONLINE_MWEB_D0.data != None%}{{ form.WX_ONLINE_MWEB_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% end %}
+                            <!--围餐零费率-->
+                            <tr class="table-dine">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" checked disabled></label></div>
+                                </td>
+                                <td>微信－扫码支付(围餐)</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="tel" class="form-control" name="WX_DINE_NATIVE" placeholder="请输入费率"
+                                               value="0" disabled>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        --
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-dine">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" checked disabled></label></div>
+                                </td>
+                                <td>微信－刷卡支付(围餐)</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="tel" class="form-control" name="WX_DINE_MICROPAY" placeholder="请输入费率"
+                                               value="0" disabled>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        --
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="table-dine">
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" checked disabled></label></div>
+                                </td>
+                                <td>微信－公众账号支付(围餐)</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="tel" class="form-control" name="WX_DINE_JSAPI" placeholder="请输入费率"
+                                               value="0" disabled>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        --
+                                    </div>
+                                </td>
+                            </tr>
+                            <!--围餐零费率-->
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <!--支付宝-->
+                <div class="pay-alipay">
+                    <h4 class="pay-type-title">支付宝</h4>
+                    <div class="form-group dt-dzero-choose">
+                        <label for="bankRateAlipay" class="col-md-4 control-label">D0结算</label>
+                        <div class="col-md-2" style="margin-top:6px;">
+                            <input type="checkbox"  placeholder="" id="bankRateAlipay" name="alipay_bank_rate"
+                                           data-bv-field="checkItem[]" VALUE=""> 开通
+                        </div>
+                        <div class="col-md-6 dt-dzero-show">
+                            <div class="form-group ">
+                                <label for="bankRatePayAlipay" class="col-md-4 control-label">D0提现手续费</label>
+                                <div class="col-md-8 ">
+                                    <input type="text" class="form-control" id="bankRatePayAlipay" placeholder="请输入金额，精确到分，例如：0.50" name="alipay"
+                                           value="{% if form.alipay.data != None%}{{ form.alipay.data }}{%end%}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabBox">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>支付类型</th>
+                                <th><span class="dt-dzero-show">D1</span>费率</th>
+                                <th class="dt-dzero-show">D0费率</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox7"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>支付宝－扫码支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="ALI_OFFLINE_NATIVE"
+                                               value="{% if form.ALI_OFFLINE_NATIVE.data != None%}{{ form.ALI_OFFLINE_NATIVE.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="ALI_OFFLINE_NATIVE_D0"
+                                               value="{% if form.ALI_OFFLINE_NATIVE_D0.data != None%}{{ form.ALI_OFFLINE_NATIVE_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox8"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>支付宝－刷卡支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="ALI_OFFLINE_MICROPAY"
+                                               value="{% if form.ALI_OFFLINE_MICROPAY.data != None%}{{ form.ALI_OFFLINE_MICROPAY.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="ALI_OFFLINE_MICROPAY_D0"
+                                               value="{% if form.ALI_OFFLINE_MICROPAY_D0.data != None%}{{ form.ALI_OFFLINE_MICROPAY_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="checkbox form-group"><label><input type="checkbox" placeholder="" id="checkbox9"
+                                                                                   name="checkItem[]" data-bv-field="checkItem[]"
+                                                                                   VALUE=""></label></div>
+                                </td>
+                                <td>支付宝－JS支付</td>
+                                <td class="cont">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="ALI_OFFLINE_JSAPI"
+                                               value="{% if form.ALI_OFFLINE_JSAPI.data != None%}{{ form.ALI_OFFLINE_JSAPI.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                                <td class="cont dt-dzero-show">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="请输入费率" name="ALI_OFFLINE_JSAPI_D0"
+                                               value="{% if form.ALI_OFFLINE_JSAPI_D0.data != None%}{{ form.ALI_OFFLINE_JSAPI_D0.data }}{%end%}" readonly>
+                                        <span class="input-group-addon">‰</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% if jd_pay %}
+                <!--京东支付-->
+                <div class="pay-jdpay" style="display:none;">
+                    <h4 class="pay-type-title">京东支付</h4>
+                    <div class="tabBox">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>支付类型</th>
+                                <th>T1费率</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="cont">
+                                    <td>
+                                        <div class="checkbox form-group"><label><input type="checkbox" VALUE=""></label></div>
+                                    </td>
+                                    <td>京东－扫码支付</td>
+                                    <td >
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="JD_OFFLINE_NATIVE" placeholder="请输入费率"
+                                                   value="{% if form.JD_OFFLINE_NATIVE.data != None%}{{ form.JD_OFFLINE_NATIVE.data }}{%end%}" readonly>
+                                            <span class="input-group-addon">‰</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="cont">
+                                    <td>
+                                        <div class="checkbox form-group"><label><input type="checkbox" VALUE=""></label></div>
+                                    </td>
+                                    <td>京东－刷卡支付</td>
+                                    <td >
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="JD_OFFLINE_MICROPAY"  placeholder="请输入费率"
+                                                   value="{% if form.JD_OFFLINE_MICROPAY.data != None%}{{ form.JD_OFFLINE_MICROPAY.data }}{%end%}" readonly>
+                                            <span class="input-group-addon">‰</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="cont">
+                                    <td>
+                                        <div class="checkbox form-group"><label><input type="checkbox" VALUE=""></label></div>
+                                    </td>
+                                    <td>京东－JS支付</td>
+                                    <td >
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="JD_OFFLINE_JSAPI"  placeholder="请输入费率"
+                                                   value="{% if form.JD_OFFLINE_JSAPI.data != None%}{{ form.JD_OFFLINE_JSAPI.data }}{%end%}" readonly>
+                                            <span class="input-group-addon">‰</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {% end %}
+
+
+            </div>
+
+        </div>
+            {% autoescape None %}
+            {{ error_inlet_info_html }}
+        <div class="time-error"></div>
+        <button type="submit" class="btn btn-default ">提交</button>
+
+    </form>
+</div>
+<script>
+    var cmb_area = "{{ form.area.data }}";
+    var cmb_province = "{{ form.cmbProvince.data }}";
+    var cmb_city = "{{ form.cmbCity.data }}";
+    var cmb_cmbArea = "{{ form.cmbArea.data }}";
+
+    //D0控制变量
+    var OPEN_D0="{{ OPEN_D0 }}";
+
+    var jd_pay='{{ jd_pay }}';
+</script>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript" src="/static/common/libs/distpicker/distpicker.data.js"></script>
+<script type="text/javascript" src="/static/common/libs/distpicker/distpicker.js"></script>
+<script type="text/javascript" src="/static/official/js/distributorAddInit.js"></script>
+<script type="text/javascript" src="/static/common/js/pay_type.js"></script>
+<script>
+    var bankType="{{ form.bankType.data }}";
+    if(bankType == 'None' || bankType == 1){
+        $('[name="bankType"]').eq(0).attr('checked','checked');
+        $('#bk_id').val('');
+    }else{
+        $('[name="bankType"]').eq(1).attr('checked','checked');
+        $('[name="dtType"]').eq(0).attr('checked','checked');
+        $('.bankTypeChoose').show();
+        $('.bk-choose').hide();
+    }
+    var bk_id="{{form.bk_id.data}}"
+    var dt_type="{{form.dtType.data}}"
+    $("#bk_id option[value='"+bk_id+"']").attr("selected","selected");
+    if(dt_type == 'None' || dt_type==1){
+        $('[name="dtType"]').eq(0).attr('checked','checked');
+    }else if(dt_type==2){
+        $('[name="dtType"]').eq(1).attr('checked','checked');
+    }
+
+    $('[name="bankType"]').click(function(){
+        if($(this).is(':checked')){
+            if($(this).val()==2){
+                $(this).parent().next().show();
+                $(this).parents('.form-group').next().hide();
+                $(this).parents('.form-group').next().find('[name="dtType"]').eq(0).attr('checked','checked');
+            }else{
+                $(this).parents('.form-group').next().show();
+                $(this).parent().siblings('.col-md-5').hide();
+                $(this).parent().siblings('.col-md-5').find('select').val('');
+            }
+        }
+    })
+</script>
+{% end %}
+<!-- 引入js文件  end-->

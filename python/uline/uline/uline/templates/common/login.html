@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ULINE后台管理系统</title>
+    <link rel="stylesheet" href="/static/common/css/step.css" />
+    <link rel="stylesheet" href="/static/common/css/ulaiber-loading.css" />
+    <link rel="stylesheet" href="/static/common/css/possport.css" />
+</head>
+<body class="possport-bg">
+<div class="possport-header">
+    <img class="fl m-right-10" src="/static/common/image/logo.png"/>
+    <span class="fl">ULINE后台管理系统</span>
+</div>
+<div class="possport-content">
+    <h3 class="login-title">用户登录</h3>
+    <div class="clearfix">
+        <img src="/static/common/image/u99.jpg" class="fl m-top-15" />
+        <div class="fr login-form-box m-right-20">
+            <div class="login-form m-bottom-15">
+                <p>用户名</p>
+                <div class="login-input">
+                    <input type="text" name="login_name" placeholder="请输入用户名" />
+                </div>
+            </div>
+            <div class="login-form m-bottom-15">
+                <p>密码</p>
+                <div class="login-input">
+                    <input type="password" name="password" minlength="6" max="20" placeholder="请输入密码" />
+                </div>
+            </div>
+            <p class="tr"><a href="/account/forgetpwd?type=forget" class="c-blue fs12">忘记密码？</a></p>
+            <p class="tip-error"></p>
+            <span class="btn btn-red m-top-30" data-click="login">登录</span>
+            <p class="m-top-15 tc login-tip" data-click="login-tip"><i class="icon-error m-right-5">!</i>重要！登录名变更说明 ></p>
+        </div>
+    </div>
+</div>
+<div class="login-pop">
+    <div class="mask" data-click="login-tip-close"></div>
+    <div class="login-pop-box">
+        <div class="login-pop-header clearfix">
+            <h3 class="fl">登录名变更说明</h3>
+            <i class="fr close-btn" data-click="login-tip-close">x</i>
+        </div>
+        <p class="m-top-20">系统已经升级，登录名变更如下表：</p>
+        <table class="login-table m-top-15">
+            <thead>
+                <tr>
+                    <td>用户类型</td>
+                    <td>登录名规则</td>
+                    <td>登录名示例</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>渠道商</td>
+                    <td>渠道编号.dt</td>
+                    <td>10000366505.dt </td>
+                </tr>
+                <tr>
+                    <td>普通商户</td>
+                    <td>商户编号.mch</td>
+                    <td>100000451920.mch</td>
+                </tr>
+                <tr>
+                    <td>连锁商户</td>
+                    <td>商户编号.mr</td>
+                    <td>10000360890.mr</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="m-top-15 c-999">登录密码维持不变，如有疑问，请咨询客服人员</p>
+    </div>
+</div>
+<script src="/static/common/libs/jquery.min.js"></script>
+<script src="/static/common/js/ulaiber_loading.js"></script>
+<script src="/static/common/js/possport_controller.js"></script>
+</body>
+</html>

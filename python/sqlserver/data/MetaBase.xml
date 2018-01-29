@@ -1,0 +1,3574 @@
+﻿<?xml version ="1.0"?>
+<configuration xmlns="urn:microsoft-catalog:XML_Metabase_V64_0">
+<MBProperty>
+<IIS_Global	Location ="."
+		BINSchemaTimeStamp="bcd05399ceeccd01"
+		ChangeNumber="94030"
+		HistoryMajorVersionNumber="2736"
+		SessionKey="49634b62980000004c00000040000000010200000168000000a400005202a2d6c1c41132907af0f7caeb352f21381d3056f30fd63427d7fc4f20be829798568ccf0659ac3c78b57f146ff8e681ab5dce2615d74def15e11ad0f91540ffff4e0071948ba18831597d9deab24a192e6e89c66d4d4f4de729ed0ede6321daf370cae0b29b210228412ee002f7aebf2afb2c114758b0f3a0386568f57fa16c8f264f"
+		XMLSchemaTimeStamp="bcd05399ceeccd01"
+	>
+</IIS_Global>
+<IIS_ROOT	Location ="/"
+		AdminACL="4963446210010000c80000004000000039be3a2e3136d6f720d5eec5c8bae3d5c0491e2815f689a1a1078d5bae8863691743eb4063c61b30f1e4d4e3def70cc989bdb6402066063855979e6c831525f22a4980db2be6e120d4949f37277f8bcb99af2f44005fe77e676c61b13d0c117ccbcf63f450e74672e98b6c15d4783c7ce990f8f3eb65fd60e3cb58ef13c1f9bfa352f26f7346822b72b9131b71cb4ce4b3776ac28623eb98b31e23841f0238db81482ff03bd90264a05762c8e8368b041d844e91f6a48e47fd969ddeff8c2ef55ecf2d4b31b1f13c4c2002fabe25da56b75de2043565a8bdd01b6e7b31f9ae475e8d777ab762162e8bded3a7384c884f40fe80775045dee8ad08811a7180c54871ce80a447fc3508"
+	>
+</IIS_ROOT>
+<IIsComputer	Location ="/LM"
+		EnableEditWhileRunning="1"
+		EnableHistory="1"
+		MaxBandwidth="4294967295"
+		MaxHistoryFiles="10"
+	>
+</IIsComputer>
+<IIsConfigObject	Location ="/LM/IISADMIN"
+	>
+</IIsConfigObject>
+<IIsConfigObject	Location ="/LM/IISADMIN/EXTENSIONS"
+	>
+</IIsConfigObject>
+<IIsConfigObject	Location ="/LM/IISADMIN/EXTENSIONS/DCOMCLSIDS"
+	>
+	<Custom
+		Name="MD_IISADMIN_EXTENSIONS"
+		ID="1028"
+		Value="{61738644-F196-11D0-9953-00C04FD919C1}"
+		Type="MULTISZ"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="NO_ATTRIBUTES"
+	/>
+</IIsConfigObject>
+<IIsConfigObject	Location ="/LM/IISADMIN/PROPERTYREGISTRATION"
+	>
+	<Custom
+		Name="MD_METADATA_ID_REGISTRATION"
+		ID="1030"
+		Value="0-65535;Microsoft Reserved
+			65536-524288;Microsoft IIS Admin Objects Reserved"
+		Type="MULTISZ"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="INHERIT"
+	/>
+</IIsConfigObject>
+<IIsLogModules	Location ="/LM/Logging"
+		AdminACL="49634462a0000000580000004000000039be3a2e3136d6f7b0d5eec538bae3d5c0491e2815f689a1a1073d5baa8863691743d740c1c61f30f1e3d4e3def70cc9bcbdb640140817ec5e176228992432efe44a80db0be4f5205c969f37267e8bceb9af2f41335de77e3723ce79841951580f4da28407f655a3fcb4a5a79bce9bbc00e793934b3149001a95076b95b8284937caedb740d4fbe161f15296c3a737ea95595b779e60bf45"
+	>
+</IIsLogModules>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging"
+		LogCustomPropertyServicesString="W3SVC
+			MSFTPSVC
+			SMTPSVC
+			NNTPSVC"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Date"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="date"
+		LogCustomPropertyID="4013"
+		LogCustomPropertyMask="1"
+		LogCustomPropertyName="日期"
+		LogCustomPropertyNodeID="1"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyID="4013"
+		LogCustomPropertyName="扩展属性"
+		LogCustomPropertyNodeID="3"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Bytes Received"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="cs-bytes"
+		LogCustomPropertyMask="8192"
+		LogCustomPropertyName="接收的字节数"
+		LogCustomPropertyNodeID="17"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Bytes Sent"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-bytes"
+		LogCustomPropertyMask="4096"
+		LogCustomPropertyName="发送的字节数"
+		LogCustomPropertyNodeID="16"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Client IP Address"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="c-ip"
+		LogCustomPropertyMask="4"
+		LogCustomPropertyName="客户端 IP 地址"
+		LogCustomPropertyNodeID="5"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Cookie"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs(Cookie)"
+		LogCustomPropertyMask="131072"
+		LogCustomPropertyName="Cookie"
+		LogCustomPropertyNodeID="22"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Host"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-host"
+		LogCustomPropertyMask="1048576"
+		LogCustomPropertyName="主机"
+		LogCustomPropertyNodeID="20"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Method"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-method"
+		LogCustomPropertyMask="128"
+		LogCustomPropertyName="方法"
+		LogCustomPropertyNodeID="11"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Protocol Status"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-status"
+		LogCustomPropertyMask="1024"
+		LogCustomPropertyName="协议状态"
+		LogCustomPropertyNodeID="14"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Protocol Substatus"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-substatus"
+		LogCustomPropertyMask="2097152"
+		LogCustomPropertyName="协议子状态"
+		LogCustomPropertyNodeID="32"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Protocol Version"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-version"
+		LogCustomPropertyMask="524288"
+		LogCustomPropertyName="协议版本"
+		LogCustomPropertyNodeID="19"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Referer"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs(Referer)"
+		LogCustomPropertyMask="262144"
+		LogCustomPropertyName="引用站点"
+		LogCustomPropertyNodeID="23"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Server IP"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="s-ip"
+		LogCustomPropertyMask="64"
+		LogCustomPropertyName="服务器 IP 地址"
+		LogCustomPropertyNodeID="9"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Server Name"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="s-computername"
+		LogCustomPropertyMask="32"
+		LogCustomPropertyName="服务器名"
+		LogCustomPropertyNodeID="8"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Server Port"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="s-port"
+		LogCustomPropertyMask="32768"
+		LogCustomPropertyName="服务器端口"
+		LogCustomPropertyNodeID="10"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Service Name"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="s-sitename"
+		LogCustomPropertyMask="16"
+		LogCustomPropertyName="服务名"
+		LogCustomPropertyNodeID="7"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Time Taken"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="time-taken"
+		LogCustomPropertyMask="16384"
+		LogCustomPropertyName="所用时间"
+		LogCustomPropertyNodeID="18"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/URI Query"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-uri-query"
+		LogCustomPropertyMask="512"
+		LogCustomPropertyName="URI 查询"
+		LogCustomPropertyNodeID="13"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/URI Stem"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-uri-stem"
+		LogCustomPropertyMask="256"
+		LogCustomPropertyName="URI 资源"
+		LogCustomPropertyNodeID="12"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/User Agent"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs(User-Agent)"
+		LogCustomPropertyMask="65536"
+		LogCustomPropertyName="用户代理"
+		LogCustomPropertyNodeID="21"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/User Name"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-username"
+		LogCustomPropertyMask="8"
+		LogCustomPropertyName="用户名"
+		LogCustomPropertyNodeID="6"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Extended Properties/Win32 Status"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-win32-status"
+		LogCustomPropertyMask="2048"
+		LogCustomPropertyName="Win32 状态"
+		LogCustomPropertyNodeID="15"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/Logging/Custom Logging/Time"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="time"
+		LogCustomPropertyID="4013"
+		LogCustomPropertyMask="2"
+		LogCustomPropertyName="时间"
+		LogCustomPropertyNodeID="2"
+	>
+</IIsCustomLogModule>
+<IIsLogModule	Location ="/LM/Logging/Microsoft IIS 日志文件格式"
+		LogModuleId="{FF160657-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB87-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsLogModule	Location ="/LM/Logging/NCSA 公用日志文件格式"
+		LogModuleId="{FF16065F-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB85-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsLogModule	Location ="/LM/Logging/ODBC 日志记录"
+		LogModuleId="{FF16065B-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB86-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsLogModule	Location ="/LM/Logging/W3C 扩展日志文件格式"
+		LogModuleId="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB88-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsMimeMap	Location ="/LM/MimeMap"
+		MimeMap=".asx,video/x-ms-asf
+			.xml,text/xml
+			.tsv,text/tab-separated-values
+			.ra,audio/x-pn-realaudio
+			.sv4crc,application/x-sv4crc
+			.spc,application/x-pkcs7-certificates
+			.pmc,application/x-perfmon
+			.lit,application/x-ms-reader
+			.crd,application/x-mscardfile
+			.isp,application/x-internet-signup
+			.wmlsc,application/vnd.wap.wmlscriptc
+			.vst,application/vnd.visio
+			.xlam,application/vnd.ms-excel.addin.macroEnabled.12
+			.ttf,application/octet-stream
+			.pfm,application/octet-stream
+			.csv,application/octet-stream
+			.aaf,application/octet-stream
+			.one,application/onenote
+			.hta,application/hta
+			.atom,application/atom+xml
+			.323,text/h323
+			.mhtml,message/rfc822
+			.midi,audio/mid
+			.p7r,application/x-pkcs7-certreqresp
+			.mny,application/x-msmoney
+			.clp,application/x-msclip
+			.vsd,application/vnd.visio
+			.lpk,application/octet-stream
+			.bin,application/octet-stream
+			.onetoc,application/onenote
+			.x,application/directx
+			.wvx,video/x-ms-wvx
+			.vcf,text/x-vcard
+			.htc,text/x-component
+			.htt,text/webviewhtml
+			.h,text/plain
+			.mht,message/rfc822
+			.mid,audio/mid
+			.p7b,application/x-pkcs7-certificates
+			.gz,application/x-gzip
+			.dvi,application/x-dvi
+			.cpio,application/x-cpio
+			.vdx,application/vnd.ms-visio.viewer
+			.sldm,application/vnd.ms-powerpoint.slide.macroEnabled.12
+			.xlm,application/vnd.ms-excel
+			.fdf,application/vnd.fdf
+			.setreg,application/set-registration-initiation
+			.eps,application/postscript
+			.p7s,application/pkcs7-signature
+			.toc,application/octet-stream
+			.mdp,application/octet-stream
+			.ics,application/octet-stream
+			.chm,application/octet-stream
+			.asi,application/octet-stream
+			.afm,application/octet-stream
+			.evy,application/envoy
+			.wmp,video/x-ms-wmp
+			.qt,video/quicktime
+			.mpv2,video/mpeg
+			.xslt,text/xml
+			.etx,text/x-setext
+			.cod,image/cis-cod
+			.snd,audio/basic
+			.au,audio/basic
+			.man,application/x-troff-man
+			.qtl,application/x-quicktimeplayer
+			.pmw,application/x-perfmon
+			.class,application/x-java-applet
+			.iii,application/x-iphone
+			.csh,application/x-csh
+			.z,application/x-compress
+			.vtx,application/vnd.visio
+			.vsw,application/vnd.visio
+			.wps,application/vnd.ms-works
+			.potx,application/vnd.openxmlformats-officedocument.presentationml.template
+			.ps,application/postscript
+			.p7c,application/pkcs7-mime
+			.thn,application/octet-stream
+			.mso,application/octet-stream
+			.dot,application/msword
+			.doc,application/msword
+			.sgml,text/sgml
+			.nws,message/rfc822
+			.pbm,image/x-portable-bitmap
+			.ief,image/ief
+			.wav,audio/wav
+			.texi,application/x-texinfo
+			.mvb,application/x-msmediaview
+			.hdf,application/x-hdf
+			.vsx,application/vnd.visio
+			.dotm,application/vnd.ms-word.template.macroEnabled.12
+			.docm,application/vnd.ms-word.document.macroEnabled.12
+			.pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation
+			.psm,application/octet-stream
+			.java,application/octet-stream
+			.eot,application/octet-stream
+			.jar,application/java-archive
+			.mpeg,video/mpeg
+			.xsf,text/xml
+			.map,text/plain
+			.uls,text/iuls
+			.rf,image/vnd.rn-realflash
+			.m3u,audio/x-mpegurl
+			.wma,audio/x-ms-wma
+			.aifc,audio/aiff
+			.mdb,application/x-msaccess
+			.mvc,application/x-miva-compiled
+			.stl,application/vnd.ms-pki.stl
+			.ppsx,application/vnd.openxmlformats-officedocument.presentationml.slideshow
+			.xlsb,application/vnd.ms-excel.sheet.binary.macroEnabled.12
+			.setpay,application/set-payment-initiation
+			.prm,application/octet-stream
+			.mix,application/octet-stream
+			.lzh,application/octet-stream
+			.hhk,application/octet-stream
+			.onepkg,application/onenote
+			.xaf,x-world/x-vrml
+			.flr,x-world/x-vrml
+			.IVF,video/x-ivf
+			.cnf,text/plain
+			.asm,text/plain
+			.tiff,image/tiff
+			.wax,audio/x-ms-wax
+			.ms,application/x-troff-ms
+			.tcl,application/x-tcl
+			.shar,application/x-shar
+			.sh,application/x-sh
+			.nc,application/x-netcdf
+			.hlp,application/winhlp
+			.oda,application/oda
+			.pfb,application/octet-stream
+			.fla,application/octet-stream
+			.wm,video/x-ms-wm
+			.rgb,image/x-rgb
+			.ppm,image/x-portable-pixmap
+			.ram,audio/x-pn-realaudio
+			.sit,application/x-stuffit
+			.dir,application/x-director
+			.mpp,application/vnd.ms-project
+			.xla,application/vnd.ms-excel
+			.ssm,application/streamingmedia
+			.axs,application/olescript
+			.ods,application/oleobject
+			.psp,application/octet-stream
+			.jpb,application/octet-stream
+			.wrz,x-world/x-vrml
+			.m1v,video/mpeg
+			.mno,text/xml
+			.cmx,image/x-cmx
+			.jpeg,image/jpeg
+			.dib,image/bmp
+			.rmi,audio/mid
+			.aiff,audio/aiff
+			.wmd,application/x-ms-wmd
+			.wri,application/x-mswrite
+			.pub,application/x-mspublisher
+			.ins,application/x-internet-signup
+			.wks,application/vnd.ms-works
+			.xls,application/vnd.ms-excel
+			.ai,application/postscript
+			.crl,application/pkix-crl
+			.qxd,application/octet-stream
+			.dwp,application/octet-stream
+			.xof,x-world/x-vrml
+			.wmv,video/x-ms-wmv
+			.nsc,video/x-ms-asf
+			.mpa,video/mpeg
+			.pnm,image/x-portable-anymap
+			.rpm,audio/x-pn-realaudio-plugin
+			.aif,audio/x-aiff
+			.me,application/x-troff-me
+			.pml,application/x-perfmon
+			.trm,application/x-msterminal
+			.m13,application/x-msmediaview
+			.js,application/x-javascript
+			.dxr,application/x-director
+			.potm,application/vnd.ms-powerpoint.template.macroEnabled.12
+			.xltx,application/vnd.openxmlformats-officedocument.spreadsheetml.template
+			.xlt,application/vnd.ms-excel
+			.xlc,application/vnd.ms-excel
+			.p10,application/pkcs10
+			.smi,application/octet-stream
+			.sea,application/octet-stream
+			.hqx,application/mac-binhex40
+			.spl,application/futuresplash
+			.movie,video/x-sgi-movie
+			.lsf,video/x-la-asf
+			.txt,text/plain
+			.jfif,image/pjpeg
+			.jpe,image/jpeg
+			.zip,application/x-zip-compressed
+			.wmf,application/x-msmetafile
+			.m14,application/x-msmediaview
+			.latex,application/x-latex
+			.wcm,application/vnd.ms-works
+			.pptm,application/vnd.ms-powerpoint.presentation.macroEnabled.12
+			.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+			.hhp,application/octet-stream
+			.aca,application/octet-stream
+			.accdb,application/msaccess
+			.jcz,application/liquidmotion
+			.wrl,x-world/x-vrml
+			.wmx,video/x-ms-wmx
+			.asr,video/x-ms-asf
+			.lsx,video/x-la-asf
+			.xsl,text/xml
+			.html,text/html
+			.tif,image/tiff
+			.der,application/x-x509-ca-cert
+			.pfx,application/x-pkcs12
+			.p12,application/x-pkcs12
+			.ppsm,application/vnd.ms-powerpoint.slideshow.macroEnabled.12
+			.cur,application/octet-stream
+			.accdt,application/msaccess
+			.hdml,text/x-hdml
+			.htm,text/html
+			.xbm,image/x-xbitmap
+			.jpg,image/jpeg
+			.texinfo,application/x-texinfo
+			.ppam,application/vnd.ms-powerpoint.addin.macroEnabled.12
+			.xlw,application/vnd.ms-excel
+			.rm,application/vnd.rn-realmedia
+			.pdf,application/pdf
+			.rar,application/octet-stream
+			.psd,application/octet-stream
+			.inf,application/octet-stream
+			.emz,application/octet-stream
+			.dsp,application/octet-stream
+			.onea,application/onenote
+			.jck,application/liquidmotion
+			.mpe,video/mpeg
+			.mp2,video/mpeg
+			.sct,text/scriptlet
+			.ras,image/x-cmu-raster
+			.swf,application/x-shockwave-flash
+			.wmz,application/x-ms-wmz
+			.gtar,application/x-gtar
+			.dcr,application/x-director
+			.sldx,application/vnd.openxmlformats-officedocument.presentationml.slide
+			.pps,application/vnd.ms-pps
+			.p7m,application/pkcs7-mime
+			.xsn,application/octet-stream
+			.ocx,application/octet-stream
+			.accde,application/msaccess
+			.mov,video/quicktime
+			.wmls,text/vnd.wap.wmlscript
+			.cpp,text/plain
+			.c,text/plain
+			.bas,text/plain
+			.css,text/css
+			.art,image/x-jg
+			.mp3,audio/mpeg
+			.t,application/x-troff
+			.roff,application/x-troff
+			.tar,application/x-tar
+			.hhc,application/x-oleobject
+			.scd,application/x-msschedule
+			.pko,application/vnd.ms-pki.pko
+			.sst,application/vnd.ms-pki.certstore
+			.ppt,application/vnd.ms-powerpoint
+			.xtp,application/octet-stream
+			.u32,application/octet-stream
+			.pcx,application/octet-stream
+			.msi,application/octet-stream
+			.exe,application/octet-stream
+			.asd,application/octet-stream
+			.onetoc2,application/onenote
+			.fif,application/fractals
+			.mpg,video/mpeg
+			.vml,text/xml
+			.xdr,text/plain
+			.vcs,text/plain
+			.hxt,text/html
+			.eml,message/rfc822
+			.xpm,image/x-xpixmap
+			.ico,image/x-icon
+			.gif,image/gif
+			.dwf,drawing/x-dwf
+			.src,application/x-wais-source
+			.tr,application/x-troff
+			.pmr,application/x-perfmon
+			.pma,application/x-perfmon
+			.dll,application/x-msdownload
+			.bcpio,application/x-bcpio
+			.wmlc,application/vnd.wap.wmlc
+			.wdb,application/vnd.ms-works
+			.dotx,application/vnd.openxmlformats-officedocument.wordprocessingml.template
+			.docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document
+			.pot,application/vnd.ms-powerpoint
+			.xltm,application/vnd.ms-excel.template.macroEnabled.12
+			.rtf,application/rtf
+			.prf,application/pics-rules
+			.snp,application/octet-stream
+			.cab,application/octet-stream
+			.avi,video/x-msvideo
+			.asf,video/x-ms-asf
+			.dtd,text/xml
+			.wml,text/vnd.wap.wml
+			.vbs,text/vbscript
+			.rtx,text/richtext
+			.dlm,text/dlm
+			.xwd,image/x-xwindowdump
+			.pgm,image/x-portable-graymap
+			.bmp,image/bmp
+			.crt,application/x-x509-ca-cert
+			.ustar,application/x-ustar
+			.tex,application/x-tex
+			.sv4cpio,application/x-sv4cpio
+			.tgz,application/x-compressed
+			.cdf,application/x-cdf
+			.vss,application/vnd.visio
+			.cat,application/vnd.ms-pki.seccat
+			.thmx,application/vnd.ms-officetheme
+			.xlsm,application/vnd.ms-excel.sheet.macroEnabled.12
+			.prx,application/octet-stream
+			.pcz,application/octet-stream
+			.onetmp,application/onenote
+			.acx,application/internet-property-stream
+			.wsdl,text/xml
+			.disco,text/xml
+			.xsd,text/xml
+			.wbmp,image/vnd.wap.wbmp
+			.png,image/png
+			.pnz,image/png
+			.smd,audio/x-smd
+			.smz,audio/x-smd
+			.smx,audio/x-smd
+			.mmf,application/x-smaf
+			.application,application/x-ms-application
+			.manifest,application/x-ms-manifest
+			.deploy,application/octet-stream"
+	>
+</IIsMimeMap>
+<IIsWebService	Location ="/LM/W3SVC"
+		AllowKeepAlive="TRUE"
+		AnonymousUserName="IUSR_CFD"
+		AnonymousUserPass="4963446270000000220000004000000039be3a2e5c36af77ccd5d4c507badfd5ea49272853f6f0a1e7077e5b9c884269174349004e004400abe44a38a23f68cbd8b632ba992830c5999e5c6bbe9e88eefe6a8fef0547ffc3fd2edb30f2659ebdbadca71f22b8cb1fe4e2c2825f1c25d06bcf16999c764f56"
+		AppAllowClientDebug="FALSE"
+		AppAllowDebugging="FALSE"
+		AppPoolId="DefaultAppPool"
+		ApplicationDependencies="Active Server Pages;ASP
+			Internet 数据连接器;HTTPODBC
+			在服务器端的包含文件;SSINC
+			WebDAV;WEBDAV
+			ASP.NET v1.1.4322;ASP.NET v1.1.4322
+			ASP.NET v2.0.50727;ASP.NET v2.0.50727
+			ASP.NET v4.0.30319;ASP.NET v4.0.30319"
+		AspAllowOutOfProcComponents="TRUE"
+		AspAllowSessionState="TRUE"
+		AspAppServiceFlags="0"
+		AspBufferingLimit="4194304"
+		AspBufferingOn="TRUE"
+		AspCalcLineNumber="TRUE"
+		AspCodepage="0"
+		AspDiskTemplateCacheDirectory="%windir%\system32\inetsrv\ASP Compiled Templates"
+		AspEnableApplicationRestart="TRUE"
+		AspEnableAspHtmlFallback="FALSE"
+		AspEnableChunkedEncoding="TRUE"
+		AspEnableParentPaths="TRUE"
+		AspEnableTypelibCache="TRUE"
+		AspErrorsToNTLog="FALSE"
+		AspExceptionCatchEnable="TRUE"
+		AspExecuteInMTA="0"
+		AspKeepSessionIDSecure="0"
+		AspLCID="2048"
+		AspLogErrorRequests="TRUE"
+		AspMaxDiskTemplateCacheFiles="2000"
+		AspMaxRequestEntityAllowed="204800"
+		AspProcessorThreadMax="25"
+		AspQueueConnectionTestTime="3"
+		AspQueueTimeout="4294967295"
+		AspRequestQueueMax="3000"
+		AspRunOnEndAnonymously="TRUE"
+		AspScriptEngineCacheMax="250"
+		AspScriptErrorMessage="处理 URL 时服务器出错。请与系统管理员联系。"
+		AspScriptErrorSentToBrowser="TRUE"
+		AspScriptFileCacheSize="500"
+		AspScriptLanguage="VBScript"
+		AspScriptTimeout="90"
+		AspSessionMax="4294967295"
+		AspSessionTimeout="20"
+		AspTrackThreadingModel="FALSE"
+		AuthChangeURL="/iisadmpwd/achg.asp"
+		AuthExpiredURL="/iisadmpwd/aexp.asp"
+		AuthExpiredUnsecureURL="/iisadmpwd/aexp3.asp"
+		AuthFlags="AuthAnonymous"
+		AuthNotifyPwdExpURL="/iisadmpwd/anot.asp"
+		AuthNotifyPwdExpUnsecureURL="/iisadmpwd/anot3.asp"
+		CGITimeout="300"
+		CacheISAPI="TRUE"
+		CentralBinaryLoggingEnabled="FALSE"
+		ConnectionTimeout="600"
+		ContentIndexed="TRUE"
+		DefaultDoc="Default.htm,Default.asp,index.htm,Default.aspx"
+		DirBrowseFlags="DirBrowseShowDate | DirBrowseShowTime | DirBrowseShowSize | DirBrowseShowExtension | DirBrowseShowLongDate | EnableDefaultDoc"
+		DownlevelAdminInstance="1"
+		HttpCustomHeaders="X-Powered-By: ASP.NET"
+		HttpErrors="400,*,FILE,C:\WINDOWS\help\iisHelp\common\400.htm
+			401,1,FILE,C:\WINDOWS\help\iisHelp\common\401-1.htm
+			401,2,FILE,C:\WINDOWS\help\iisHelp\common\401-2.htm
+			401,3,FILE,C:\WINDOWS\help\iisHelp\common\401-3.htm
+			401,4,FILE,C:\WINDOWS\help\iisHelp\common\401-4.htm
+			401,5,FILE,C:\WINDOWS\help\iisHelp\common\401-5.htm
+			401,7,FILE,C:\WINDOWS\help\iisHelp\common\401-1.htm
+			403,1,FILE,C:\WINDOWS\help\iisHelp\common\403-1.htm
+			403,2,FILE,C:\WINDOWS\help\iisHelp\common\403-2.htm
+			403,3,FILE,C:\WINDOWS\help\iisHelp\common\403-3.htm
+			403,4,FILE,C:\WINDOWS\help\iisHelp\common\403-4.htm
+			403,5,FILE,C:\WINDOWS\help\iisHelp\common\403-5.htm
+			403,6,FILE,C:\WINDOWS\help\iisHelp\common\403-6.htm
+			403,7,FILE,C:\WINDOWS\help\iisHelp\common\403-7.htm
+			403,8,FILE,C:\WINDOWS\help\iisHelp\common\403-8.htm
+			403,9,FILE,C:\WINDOWS\help\iisHelp\common\403-9.htm
+			403,10,FILE,C:\WINDOWS\help\iisHelp\common\403-10.htm
+			403,11,FILE,C:\WINDOWS\help\iisHelp\common\403-11.htm
+			403,12,FILE,C:\WINDOWS\help\iisHelp\common\403-12.htm
+			403,13,FILE,C:\WINDOWS\help\iisHelp\common\403-13.htm
+			403,15,FILE,C:\WINDOWS\help\iisHelp\common\403-15.htm
+			403,16,FILE,C:\WINDOWS\help\iisHelp\common\403-16.htm
+			403,17,FILE,C:\WINDOWS\help\iisHelp\common\403-17.htm
+			403,18,FILE,C:\WINDOWS\help\iisHelp\common\403.htm
+			403,19,FILE,C:\WINDOWS\help\iisHelp\common\403.htm
+			403,20,FILE,C:\WINDOWS\help\iisHelp\common\403-20.htm
+			404,*,FILE,C:\WINDOWS\help\iisHelp\common\404b.htm
+			404,2,FILE,C:\WINDOWS\help\iisHelp\common\404b.htm
+			404,3,FILE,C:\WINDOWS\help\iisHelp\common\404b.htm
+			405,*,FILE,C:\WINDOWS\help\iisHelp\common\405.htm
+			406,*,FILE,C:\WINDOWS\help\iisHelp\common\406.htm
+			407,*,FILE,C:\WINDOWS\help\iisHelp\common\407.htm
+			412,*,FILE,C:\WINDOWS\help\iisHelp\common\412.htm
+			414,*,FILE,C:\WINDOWS\help\iisHelp\common\414.htm
+			415,*,FILE,C:\WINDOWS\help\iisHelp\common\415.htm
+			500,12,FILE,C:\WINDOWS\help\iisHelp\common\500-12.htm
+			500,13,FILE,C:\WINDOWS\help\iisHelp\common\500-13.htm
+			500,15,FILE,C:\WINDOWS\help\iisHelp\common\500-15.htm
+			500,16,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,17,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,18,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,19,FILE,C:\WINDOWS\help\iisHelp\common\500.htm"
+		IIs5IsolationModeEnabled="FALSE"
+		InProcessIsapiApps="C:\WINDOWS\system32\inetsrv\httpext.dll
+			C:\WINDOWS\system32\inetsrv\httpodbc.dll
+			C:\WINDOWS\system32\inetsrv\ssinc.dll
+			C:\WINDOWS\system32\msw3prt.dll
+			C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_isapi.dll
+			C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll
+			C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_isapi.dll"
+		LogExtFileFlags="LogExtFileDate | LogExtFileTime | LogExtFileClientIp | LogExtFileUserName | LogExtFileSiteName | LogExtFileServerIp | LogExtFileMethod | LogExtFileUriStem | LogExtFileUriQuery | LogExtFileHttpStatus | LogExtFileWin32Status | LogExtFileServerPort | LogExtFileUserAgent | LogExtFileHttpSubStatus"
+		LogFileDirectory="C:\WINDOWS\system32\LogFiles"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogInUTF8="FALSE"
+		LogOdbcDataSource="HTTPLOG"
+		LogOdbcPassword="4963446260000000120000004000000039be3a2e4336a077e8d582c513ba84d5c04900001396e6a9524cc17f95351c6ef1b406d330d43d4c3676a6646ba59b8b2c2b95d36e568e560903ab2b2a28d4b897d6469abb8785fea9f75a97784ae7ab47795adc4aadb85a"
+		LogOdbcTableName="InternetLog"
+		LogOdbcUserName="InternetAdmin"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="4294967295"
+		MaxGlobalBandwidth="4294967295"
+		MinFileBytesPerSec="0"
+		PasswordChangeFlags="AuthChangeDisable | AuthAdvNotifyDisable"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.ascx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.ashx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.axd,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.cdx,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.cer,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.config,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cs,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.csproj,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.idc,C:\WINDOWS\system32\inetsrv\httpodbc.dll,5,GET,POST
+			.licx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.rem,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.resources,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.resx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.shtm,C:\WINDOWS\system32\inetsrv\ssinc.dll,5,GET,POST
+			.shtml,C:\WINDOWS\system32\inetsrv\ssinc.dll,5,GET,POST
+			.soap,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.stm,C:\WINDOWS\system32\inetsrv\ssinc.dll,5,GET,POST
+			.vb,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.vbproj,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.vsdisco,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.webinfo,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		WAMUserName="IWAM_CFD"
+		WAMUserPass="4963446270000000220000004000000039be3a2e0136e377b0d58dc500bac5d5f7495d284df6eea1f7074f5bca881e69174349004e004400d640fb6c47ef3c08107169c5916db84dba39684804ce0a37e87b276ffbc657973171bb438fc4a207b9442411ae1675d001df75a14584331725feabb7ccdea68b"
+		WebSvcExtRestrictionList="0,C:\WINDOWS\system32\inetsrv\httpodbc.dll,0,HTTPODBC,Internet 数据连接器
+			0,C:\WINDOWS\system32\inetsrv\ssinc.dll,0,SSINC,在服务器端的包含文件
+			1,C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\aspnet_isapi.dll,0,ASP.NET v4.0.30319,ASP.NET v4.0.30319
+			1,C:\WINDOWS\system32\inetsrv\asp.dll,0,ASP,Active Server Pages
+			1,C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_isapi.dll,0,ASP.NET v2.0.50727,ASP.NET v2.0.50727
+			1,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,ASP.NET v1.1.4322,ASP.NET v1.1.4322
+			0,*.exe
+			0,C:\WINDOWS\system32\inetsrv\httpext.dll,0,WEBDAV,WebDAV
+			0,*.dll
+			1,D:\php5\php5isapi.dll,1,,php"
+	>
+	<Custom
+		Name="MD_ISM_ACCESS_CHECK"
+		ID="6269"
+		Value="65535"
+		Type="DWORD"
+		UserType="IIS_MD_UT_FILE"
+		Attributes="NO_ATTRIBUTES"
+	/>
+	<Custom
+		Name="UnknownName_2166"
+		ID="2166"
+		Value="1"
+		Type="DWORD"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="NO_ATTRIBUTES"
+	/>
+	<Custom
+		Name="UnknownName_9202"
+		ID="9202"
+		Value="4294967295"
+		Type="DWORD"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="NO_ATTRIBUTES"
+	/>
+</IIsWebService>
+<IIsWebServer	Location ="/LM/W3SVC/1"
+		AppPoolId="DefaultAppPool"
+		DefaultDoc="Default.htm,Default.asp,index.htm,iisstart.htm,Default.aspx"
+		ServerAutoStart="FALSE"
+		ServerBindings=":80:"
+		ServerComment="默认网站"
+		ServerSize="1"
+	>
+</IIsWebServer>
+<IIsFilters	Location ="/LM/W3SVC/1/Filters"
+		AdminACL="49634462f0000000a40000004000000039be3a2e3136d6f704d5eec5ecbae3d5c0491e2815f689a1a107715baf8863691743db40e1c61b30f1e0d4e3def70cc98fbdb640340a03ecd4156228982532eac44a80de3fe6f5205d94bb37ad7e8bcb98aa2f41135fe77b726c75b1a06000a8c04c9fb04ad6516f10886c15d478007ccb90fcf3eb62fd60e3cb58ef26c1f9bf973ce3bb78c67e6f68880406bcc84ce4937572c22c21ef98b21c23813f0238de814a2ff03a1e5a242d32b9483f81d8ebf479bdabeaf7b131068a324d8edb0cbc2c8c8938d9d7ce67e379f8556c0cf4b228d5161ba5838ba937ae68003609279cbf7a74640f666e58"
+	>
+</IIsFilters>
+<IIsCertMapper	Location ="/LM/W3SVC/1/IIsCertMapper"
+	>
+</IIsCertMapper>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/1/ROOT"
+		AccessFlags="AccessRead | AccessScript"
+		AppFriendlyName="默认应用程序"
+		AppIsolated="2"
+		AppPoolId="DefaultAppPool"
+		AppRoot="/LM/W3SVC/1/ROOT"
+		Path="c:\inetpub\wwwroot"
+	>
+</IIsWebVirtualDir>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/1/ROOT/AspJpeg"
+		AppFriendlyName=""
+		AppIsolated="1"
+		AppPackageID="{99DBDB55-3DD7-45C8-BFA9-62BD52F527F2}"
+		AppPackageName="IIS-{默认网站//Root/AspJpeg}"
+		AppRoot="/LM/W3SVC/1/Root/AspJpeg"
+		AppWamClsid="{3C7C9381-6874-4E01-9E9F-77BBE6435084}"
+		Path="C:\Program Files\Persits Software\AspJpeg\Samples"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/1/ROOT/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/10"
+		LogFileDirectory="e:\w3clog\w150623781"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:fjxxkx.com
+			211.102.91.212:80:w150623781.dodogo.cn
+			211.102.91.212:80:www.fjxxkx.com"
+		ServerComment="w150623781"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/10/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w150623781"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0936e977b4d5d7c54fbadad5c04900001396e6a931985ebdeee04b92100e3d9bcdf9d4608730931d2a1085e02571b490b2557d8a2d435dfbfaa55e6f5e526b58f78ccad0d4955a8568a211a6f936f128b02b834c"
+		AppFriendlyName="w150623781"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/10/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w150623781"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/11"
+		LogFileDirectory="e:\w3clog\w120615342"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="200"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w120615342.dodogo.cn
+			211.102.91.212:80:zhinfo.org
+			211.102.91.212:80:www.zhinfo.org"
+		ServerComment="w120615342"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/11/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w120615342"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0436e277b3d5d6c548bad6d5c04900001396e6a96efae35045368f64f7e1c2d9dca8ddabe025d04efa284c447ccc314c6c996a56b1ef545d5c95348761e32cf4e800509353f68feca8ec25d9b38052efc8c4e903"
+		AppFriendlyName="w120615342"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/11/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="default.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w120615342"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/11/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/1125555183"
+		AuthFlags="0"
+		ServerAutoStart="TRUE"
+		ServerBindings=":80:control.days.net.cn"
+		ServerComment="ControlaPanel"
+	>
+</IIsWebServer>
+<IIsFilters	Location ="/LM/W3SVC/1125555183/filters"
+		AdminACL="49634462f0000000a40000004000000039be3a2e3136d6f704d5eec5ecbae3d5c0491e2815f689a1a107715baf8863691743db40e1c61b30f1e0d4e3def70cc98fbdb640340a03ecd4156228982532eac44a80de3fe6f5205d94bb37ad7e8bcb98aa2f41135fe77b726c75b1a06000a8c04c9fb04ad6516f10886c15d478007ccb90fcf3eb62fd60e3cb58ef26c1f9bf973ce3bb78c67e6f68880406bcc84ce4937572c22c21ef98b21c23813f0238de814a2ff03a1e5a242d32b9483f81d8ebf479bdabeaf7b131068a324d8edb0cbc2c8c8938d9d7ce67e379f8556c0cf4b228d5161ba5838ba937ae68003609279cbf7a74640f666e58"
+	>
+</IIsFilters>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/1125555183/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="MasterSite"
+		AnonymousUserPass="49634462680000001c0000004000000039be3a2e5c36be77f2d58bc51dba8ed5b9492f2832f6b8a197071d5b000000182d5219fe9ec8ee672701cd02735b4355e7896f61a1228f89ce3734b467c07b05ba3c8e7920b81a8924431be2fc4303e721c5ab470d531b0607a6de34496ab80d"
+		AppFriendlyName="默认应用程序"
+		AppIsolated="2"
+		AppPoolId="mastersite"
+		AppRoot="/LM/W3SVC/1125555183/Root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="login.aspx,Default.aspx,Default.htm,Default.asp,index.htm"
+		DirBrowseFlags="DirBrowseShowDate | DirBrowseShowTime | DirBrowseShowSize | DirBrowseShowExtension | DirBrowseShowLongDate | EnableDefaultDoc"
+		Path="D:\mastersite\ControlPanel"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/12"
+		LogFileDirectory="e:\w3clog\w131220912"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:hdimage.cn
+			211.102.91.212:80:w131220912.dodogo.cn
+			211.102.91.212:80:www.hdimage.cn"
+		ServerComment="w131220912"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/12/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w131220912"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0936e077b6d5dcc548bad2d5c04900001396e6a92f2a68473d7f7337ca7b9b8b027e5fedec5b244237db0204e87e7edac13d13e7088fe64c932384c1f4ab120b9f71f0fe7bd9d6ff66c9e17b42fd802ab0924d16"
+		AppFriendlyName="w131220912"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/12/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w131220912"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/1275384026"
+		AuthFlags="0"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		ServerAutoStart="TRUE"
+		ServerBindings=":80:www.days.net.cn
+			:80:days.net.cn
+			:80:www.800kefu.com"
+		ServerComment="MasterSite"
+	>
+</IIsWebServer>
+<IIsFilters	Location ="/LM/W3SVC/1275384026/filters"
+		AdminACL="49634462f0000000a40000004000000039be3a2e3136d6f704d5eec5ecbae3d5c0491e2815f689a1a107715baf8863691743db40e1c61b30f1e0d4e3def70cc98fbdb640340a03ecd4156228982532eac44a80de3fe6f5205d94bb37ad7e8bcb98aa2f41135fe77b726c75b1a06000a8c04c9fb04ad6516f10886c15d478007ccb90fcf3eb62fd60e3cb58ef26c1f9bf973ce3bb78c67e6f68880406bcc84ce4937572c22c21ef98b21c23813f0238de814a2ff03a1e5a242d32b9483f81d8ebf479bdabeaf7b131068a324d8edb0cbc2c8c8938d9d7ce67e379f8556c0cf4b228d5161ba5838ba937ae68003609279cbf7a74640f666e58"
+	>
+</IIsFilters>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/1275384026/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="MasterSite"
+		AnonymousUserPass="49634462680000001c0000004000000039be3a2e5c36be77f2d58bc51dba8ed5b9492f2832f6b8a197071d5b000000182d5219fe9ec8ee672701cd02735b4355e7896f61a1228f89ce3734b467c07b05ba3c8e7920b81a8924431be2fc4303e721c5ab470d531b0607a6de34496ab80d"
+		AppFriendlyName="默认应用程序"
+		AppIsolated="2"
+		AppPoolId="mastersite"
+		AppRoot="/LM/W3SVC/1275384026/Root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="Default.aspx,Default.htm,Default.asp,index.htm"
+		DirBrowseFlags="DirBrowseShowDate | DirBrowseShowTime | DirBrowseShowSize | DirBrowseShowExtension | DirBrowseShowLongDate | EnableDefaultDoc"
+		Path="D:\mastersite\Web"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.ascx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.ashx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.axd,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.cdx,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.cer,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.config,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cs,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.csproj,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.idc,C:\WINDOWS\system32\inetsrv\httpodbc.dll,5,GET,POST
+			.licx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.rem,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.resources,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.resx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.shtm,C:\WINDOWS\system32\inetsrv\ssinc.dll,5,GET,POST
+			.shtml,C:\WINDOWS\system32\inetsrv\ssinc.dll,5,GET,POST
+			.soap,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.stm,C:\WINDOWS\system32\inetsrv\ssinc.dll,5,GET,POST
+			.vb,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.vbproj,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.vsdisco,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.webinfo,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/1275384026/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/13"
+		LogFileDirectory="e:\w3clog\w130609432"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="35000"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w130609432.dodogo.cn
+			211.102.91.212:80:old.humenwx.com"
+		ServerComment="w130609432"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/13/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w130609432"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e277b1d5dfc544badbd5c04900001396e6a97a81024f9e94835208294bcabbf61aa9dbf20df4b4ad78f59f5eb9d040788a419a936e02f6bee1db78ffe9e97cc3d50132267d8cd1e53912e4d3295c508b3d6b"
+		AppFriendlyName="w130609432"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/13/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.html,index.php"
+		Path="d:\VirHost\wwwroot\w130609432"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/14"
+		LogFileDirectory="e:\w3clog\w120629947"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w120629947.dodogo.cn
+			211.102.91.212:80:day168.cn
+			211.102.91.212:80:www.day168.cn"
+		ServerComment="w120629947"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/14/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w120629947"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0236e177bdd5d9c549bad1d5c04900001396e6a9f38cb224db1d102e81bbba8a97e5f1898058157fbbf65832a7e8019d348e35cfd9d4d7dcaccd05dbdf0905f3e2ac27881ca8ed215859c9a530cfc658d35e4aa4"
+		AppFriendlyName="w120629947"
+		AppIsolated="0"
+		AppPoolId="AppPool_11"
+		AppRoot="/LM/W3SVC/14/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w120629947"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/15"
+		LogFileDirectory="e:\w3clog\w120313672"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w120313672.dodogo.cn
+			211.102.91.212:80:www.zlqz.cn
+			211.102.91.212:80:zlqz.cn"
+		ServerComment="w120313672"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/15/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w120313672"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e477b7d5dfc54ebad3d5c04900001396e6a92b1cf019681fb682a22cf7135baf02a47e7ae0c72a429a0c0e24f29781bdf38839da37fcfa88e034b29fb72872b00d252be469c5887e4fa83fcd4b283f2b9c3c"
+		AppFriendlyName="w120313672"
+		AppIsolated="0"
+		AppPoolId="AutoSite2"
+		AppRoot="/LM/W3SVC/15/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w120313672"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/15/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/16"
+		LogFileDirectory="e:\w3clog\w151018685"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="500"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:100pty.com
+			211.102.91.212:80:w151018685.dodogo.cn
+			211.102.91.212:80:www.100pty.com
+			211.102.91.212:80:old.100pty.com"
+		ServerComment="w151018685"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/16/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w151018685"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e777b1d5dbc54abadbd5c04900001396e6a9f01fb75ce18aa04e6a407db8a5273b80b318413885e9cd2891b1f6f44a202c7373ffbed59df30a69c047d496eaaf7b47be96331e73837d55e70aea0721f2ec9d"
+		AppFriendlyName="w151018685"
+		AppIsolated="0"
+		AppPoolId="100pty"
+		AppRoot="/LM/W3SVC/16/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="e:\100pty"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/17"
+		LogFileDirectory="e:\w3clog\w120106861"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w120106861.dodogo.cn
+			211.102.91.212:80:hcssx.cn
+			211.102.91.212:80:www.hcssx.cn
+			211.102.91.212:80:海南澄迈思源实验学校.com
+			211.102.91.212:80:www.海南澄迈思源实验学校.com
+			211.102.91.212:80:xn--6kR80Q1E10Ph3Lb5Hj2BzxC915KsrwA.com
+			211.102.91.212:80:www.xn--6kR80Q1E10Ph3Lb5Hj2BzxC915KsrwA.com"
+		ServerComment="w120106861"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/17/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w120106861"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0436e977bdd5d7c54bbad5d5c04900001396e6a97d1b99547a93a1aa8d242c19439922fea2682236c46d946b0318b98ee13f314092e7b7c2e4966163dcab54af53274f57fb53c1059c2eccd794c8a7ca8cfd7600"
+		AppFriendlyName="w120106861"
+		AppIsolated="0"
+		AppPoolId="AutoSite3"
+		AppRoot="/LM/W3SVC/17/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="default.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w120106861"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/17/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/1779956392"
+		AuthFlags="0"
+		ServerAutoStart="TRUE"
+		ServerBindings=":8877:"
+		ServerComment="VirSystem"
+	>
+</IIsWebServer>
+<IIsFilters	Location ="/LM/W3SVC/1779956392/filters"
+		AdminACL="49634462f0000000a40000004000000039be3a2e3136d6f704d5eec5ecbae3d5c0491e2815f689a1a107715baf8863691743db40e1c61b30f1e0d4e3def70cc98fbdb640340a03ecd4156228982532eac44a80de3fe6f5205d94bb37ad7e8bcb98aa2f41135fe77b726c75b1a06000a8c04c9fb04ad6516f10886c15d478007ccb90fcf3eb62fd60e3cb58ef26c1f9bf973ce3bb78c67e6f68880406bcc84ce4937572c22c21ef98b21c23813f0238de814a2ff03a1e5a242d32b9483f81d8ebf479bdabeaf7b131068a324d8edb0cbc2c8c8938d9d7ce67e379f8556c0cf4b228d5161ba5838ba937ae68003609279cbf7a74640f666e58"
+	>
+</IIsFilters>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/1779956392/root"
+		AccessFlags="AccessRead | AccessScript"
+		AppFriendlyName="默认应用程序"
+		AppIsolated="2"
+		AppPoolId="VirSystem"
+		AppRoot="/LM/W3SVC/1779956392/Root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DirBrowseFlags="DirBrowseShowDate | DirBrowseShowTime | DirBrowseShowSize | DirBrowseShowExtension | DirBrowseShowLongDate | EnableDefaultDoc"
+		Path="D:\VirSystem\Web"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/1779956392/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsConfigObject	Location ="/LM/W3SVC/1779956392/root/bin"
+	>
+	<Custom
+		Name="AccessFlags"
+		ID="6016"
+		Value="0"
+		Type="DWORD"
+		UserType="IIS_MD_UT_FILE"
+		Attributes="INHERIT"
+	/>
+	<Custom
+		Name="DirBrowseFlags"
+		ID="6005"
+		Value="0"
+		Type="DWORD"
+		UserType="IIS_MD_UT_FILE"
+		Attributes="INHERIT"
+	/>
+</IIsConfigObject>
+<IIsWebServer	Location ="/LM/W3SVC/18"
+		LogFileDirectory="e:\w3clog\w110812349"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w110812349.dodogo.cn
+			211.102.91.212:80:move888.com
+			211.102.91.212:80:www.move888.com
+			211.102.91.212:80:move888.cn
+			211.102.91.212:80:www.move888.cn
+			211.102.91.212:80:dodogo.cn
+			211.102.91.212:80:www.dodogo.cn
+			211.102.91.212:80:800kefu.com
+			211.102.91.212:80:www.800kefu.com
+			211.102.91.212:80:800kefu.cn
+			211.102.91.212:80:www.800kefu.cn
+			211.102.91.212:80:seo138.com
+			211.102.91.212:80:www.seo138.com
+			211.102.91.212:80:day123.cn
+			211.102.91.212:80:www.day123.cn
+			211.102.91.212:80:seo138.cn
+			211.102.91.212:80:www.seo138.cn
+			211.102.91.212:80:move8.cn
+			211.102.91.212:80:www.move8.cn"
+		ServerComment="w110812349"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/18/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110812349"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e877b1d5d7c54dbad3d5c04900001396e6a928460145038fc4c142affb01b3520e1b51700570b7ae4b2cc667b77705a74c56a2bbb29d61eb0d25c73f380f2d51d5609a3c51501769455e7dddf0de2bf5e0a9"
+		AppFriendlyName="w110812349"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/18/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.htm,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w110812349"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/19"
+		LogFileDirectory="e:\w3clog\w101223234"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w101223234.dodogo.cn
+			211.102.91.212:80:www.qiwangame.com
+			211.102.91.212:80:qiwangame.com"
+		ServerComment="w101223234"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/19/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w101223234"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e677b1d5d9c54cbad6d5c04900001396e6a93c10cb0e4c8ff5e1fa20f924c986462198e72809ca1fd7c8760dacb4ce315a92956ea1745dec5cfa4d70b6db22b8124bf7567d1efaa2badb355a3f4380788b0f"
+		AppFriendlyName="w101223234"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/19/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.php,default.asp,index.asp,default.asp,index.htm"
+		Path="d:\VirHost\wwwroot\w101223234\www"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/2"
+		LogFileDirectory="e:\w3clog\w140101588"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w140101588.dodogo.cn
+			211.102.91.212:80:www.redpg.cn
+			211.102.91.212:80:redpg.cn"
+		ServerComment="w140101588"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/2/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w140101588"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e877b2d5d9c549bad0d5c04900001396e6a9c2c54f7afc559f218722910fbc55dccddc51c85d5f9aa59aa10a0a4a5043edba705a756bf1be41f695fa426ce37dde4a282c68813053565fea87df4a3ac5b0ac"
+		AppFriendlyName="w140101588"
+		AppIsolated="0"
+		AppPoolId="AppPool_11"
+		AppRoot="/LM/W3SVC/2/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		MimeMap=".flv,video/x-flv"
+		Path="d:\VirHost\wwwroot\w140101588"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/20"
+		LogFileDirectory="e:\w3clog\w160725491"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w160725491.dodogo.cn"
+		ServerComment="w160725491"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/20/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w160725491"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0136e677b0d5dcc54cbad6d5c04900001396e6a969911d90e80ce553f7b7c6e2b297b2cb24a987886ac8cfd8776fc98c0aa1e964d417ed3104a891c36e4ec7fe2e53008e3570571b242888580ad92689400c3c9d"
+		AppFriendlyName="w160725491"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/20/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w160725491"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/21"
+		LogFileDirectory="e:\w3clog\w131117172"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="200"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerBindings="211.102.91.212:80:w131117172.dodogo.cn"
+		ServerComment="w131117172"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/21/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w131117172"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e677b6d5dfc54bbad0d5c04900001396e6a97ea8e43d95575cabdaaf685f6d43435ce5d4a343ff9fde4495b0053c3e223e2d0533d2d2b98ebe4f27a22a3f3eb20bf615dedcb58a91a34393bf5d95c469f213"
+		AppFriendlyName="w131117172"
+		AppIsolated="0"
+		AppPoolId="piano_net20"
+		AppRoot="/LM/W3SVC/21/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx"
+		Path="d:\VirHost\wwwroot\w131117172"
+		ScriptMaps=".ad,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.adprototype,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.browser,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cd,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.compiled,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.dd,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.exclude,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.java,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.jsl,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5
+			.ldb,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.ldd,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.lddprototype,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.ldf,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.master,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.mdb,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.mdf,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.msgx,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.refresh,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.sd,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.sdm,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.sdmDocument,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.sitemap,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.skin,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.svc,c:\windows\microsoft.net\framework\v2.0.50727\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/22"
+		LogFileDirectory="e:\w3clog\w160729153"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w160729153.dodogo.cn
+			211.102.91.212:80:humenwx.com
+			211.102.91.212:80:www.humenwx.com"
+		ServerComment="w160729153"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/22/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w160729153"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0136e177b6d5ddc54ebad4d5c04900001396e6a99baf6392a2158426f297633bd1ed5c006ee70973a222aaa3bdfeca9e386f669f11a9a744c5bdffd11914f7481740e1ee648ebd7fada5d8c99c95c6b6c595700f"
+		AppFriendlyName="w160729153"
+		AppIsolated="0"
+		AppPoolId="apppool_php"
+		AppRoot="/LM/W3SVC/22/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.html,index.php"
+		Path="d:\VirHost\wwwroot\w160729153"
+		ScriptMaps=".php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/23"
+		LogFileDirectory="e:\w3clog\w111027644"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w111027644.dodogo.cn
+			211.102.91.212:80:s1107005.seo138.com
+			211.102.91.212:80:s1111001.seo138.com
+			211.102.91.212:80:dg-xt.cn
+			211.102.91.212:80:www.dg-xt.cn"
+		ServerComment="w111027644"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/23/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w111027644"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e277b1d5dcc544bad5d5c04900001396e6a9eea5ae832d149513d7a2f0820097fd240d8df85133d3132d62452c89139d22523d530f9ee4d6b6631d93eface44b2e6903a7fb1a4cfa89226ceb7e9d57f47212"
+		AppFriendlyName="w111027644"
+		AppIsolated="0"
+		AppPoolId="dgxt_cn"
+		AppRoot="/LM/W3SVC/23/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w111027644"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/23/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/24"
+		LogFileDirectory="e:\w3clog\w160803237"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="500"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w160803237.dodogo.cn
+			211.102.91.212:80:www.coko.com.cn
+			211.102.91.212:80:coko.com.cn
+			211.102.91.212:80:www.xiaocai.cn
+			211.102.91.212:80:xiaocai.cn
+			211.102.91.212:80:www.tct.hk
+			211.102.91.212:80:tct.hk"
+		ServerComment="w160803237"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/24/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w160803237"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0136e677b5d5d8c54dbad7d5c04900001396e6a9801f48318dd38f940e9f8a9e4c384514ef2caa4ab0a52b4a127ac5a3cd719243cb04f6d68540e8fcc0d53eddc401bd355e46dcdfb05398b702702b9bfa144448"
+		AppFriendlyName="w160803237"
+		AppIsolated="0"
+		AppPoolId="apppool_php"
+		AppRoot="/LM/W3SVC/24/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.html,default.asp,index.php,default.php"
+		Path="D:\VirHost\wwwroot\w160803237\cokoshop"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/25"
+		LogFileDirectory="e:\w3clog\w160804479"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerBindings="211.102.91.212:80:w160804479.dodogo.cn"
+		ServerComment="w160804479"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/25/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w160804479"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0136e077b7d5dfc544bad5d5c04900001396e6a9d5823a049f40d39bb718ef8b2c356535a1d4aa5a8a5c1157f88683e269fcdd2431b11ad566becd22900c5dc3f1cdbe325b19ae19943551df4269258885effe61"
+		AppFriendlyName="w160804479"
+		AppIsolated="0"
+		AppPoolId="apppool_php"
+		AppRoot="/LM/W3SVC/25/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.php"
+		Path="d:\VirHost\wwwroot\w160804479\cokoshop"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/26"
+		LogFileDirectory="e:\w3clog\w131123865"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w131123865.dodogo.cn
+			211.102.91.212:80:gdmj.net.cn
+			211.102.91.212:80:www.gdmj.net.cn
+			211.102.91.212:80:www.xxmj.net.cn
+			211.102.91.212:80:xxmj.net.cn"
+		ServerComment="w131123865"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/26/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w131123865"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0336e377b1d5d7c549bad3d5c04900001396e6a97695a57f3762c651fe53897c184517e8040660ebb42b1e675c6ee10fc49c3e861491b126961d184ea2bb9d3de1afc89d9ef11c7a2123af397c398c5c897b5a15"
+		AppFriendlyName="w131123865"
+		AppIsolated="0"
+		AppPoolId="AppPool_11"
+		AppRoot="/LM/W3SVC/26/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		MimeMap=".flv,video/x-flv"
+		Path="d:\VirHost\wwwroot\w131123865"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/27"
+		LogFileDirectory="e:\w3clog\w131123423"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w131123423.dodogo.cn
+			211.102.91.212:80:zxjxw.com
+			211.102.91.212:80:www.zxjxw.com
+			211.102.91.212:80:gzzxjx.com
+			211.102.91.212:80:www.gzzxjx.com"
+		ServerComment="w131123423"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/27/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w131123423"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e377b5d5d9c54cbadad5c04900001396e6a963c9ea90ff76e8427f9b84f08e80caf750ac8894299786be07d839242bed6e75f0cc3b25909dc0e9244a0e38688758a0d7043b8d39a7cec17febfe2f6ae5d10c"
+		AppFriendlyName="w131123423"
+		AppIsolated="0"
+		AppPoolId="dgxt_cn"
+		AppRoot="/LM/W3SVC/27/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="default.aspx,index.asp,default.asp,index.asp,default.asp,index.php,default.php,index.aspx,index.cgi,index.cgi,index.cgi"
+		MimeMap=".flv,video/x-flv
+			.mp4,video/mp4"
+		Path="d:\VirHost\wwwroot\w131123423"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,1,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/28"
+		LogFileDirectory="e:\w3clog\w140101127"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w140101127.dodogo.cn
+			211.102.91.212:80:en.gdmj.net.cn"
+		ServerComment="w140101127"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/28/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w140101127"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0236e977b3d5dfc544bad4d5c04900001396e6a9c69841a950924548dbfe6f5a23de94b9fa9185ea2e91d564bd636628d6f1b574d318ae2cdc754b9a64b9f33f744506654ba486666571f6ceb83b1dfac17ff44f"
+		AppFriendlyName="w140101127"
+		AppIsolated="0"
+		AppPoolId="yc-antenna"
+		AppRoot="/LM/W3SVC/28/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w140101127"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/29"
+		LogFileDirectory="e:\w3clog\w161108879"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerBindings="211.102.91.212:80:w161108879.dodogo.cn
+			211.102.91.212:80:zhxinke.cn
+			211.102.91.212:80:www.zhxinke.cn"
+		ServerComment="w161108879"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/29/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w161108879"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e977b5d5d8c54abad1d5c04900001396e6a9612197fb9a49ae258d587128d57507421b20da7252ebb049c619b6fc9f8302d9e797f55eea12d195e6ffcaca6a9b62566e11c541aca9da647adf678d8f1daeaa"
+		AppFriendlyName="w161108879"
+		AppIsolated="0"
+		AppPoolId="AppPool_11"
+		AppRoot="/LM/W3SVC/29/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,index.html"
+		Path="d:\VirHost\wwwroot\w161108879"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/3"
+		LogFileDirectory="e:\w3clog\w130905389"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w130905389.dodogo.cn
+			211.102.91.212:80:cycma.com
+			211.102.91.212:80:www.cycma.com"
+		ServerComment="w130905389"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/3/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w130905389"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e277b2d5ddc54fbad0d5c04900001396e6a9e28e0ee1920a1a362c64d8a6acf01a7213d16d624b3a46574e80bc50e12811a16e07d498f447deb65006dcecad41d8c8f9fb1f11f3a2719e391543f1345ca39e"
+		AppFriendlyName="w130905389"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/3/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,index.html,zhindex.asp,index.htm,default.htm"
+		Path="d:\VirHost\wwwroot\w130905389"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/30"
+		LogFileDirectory="e:\w3clog\w140901389"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w140901389.dodogo.cn
+			211.102.91.212:80:cemtx.com.cn
+			211.102.91.212:80:www.cemtx.com.cn"
+		ServerComment="w140901389"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/30/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w140901389"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0336e377bdd5dcc54bbad6d5c04900001396e6a9b68e16dc30cb4885b3e7d1dbe3152d73ecac4c6af1957ec6ac98076158c7d9fee143ed583d94a2dbe300fce9db5c738b6da13d30248c61ffdd846bfcd753a440"
+		AppFriendlyName="w140901389"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/30/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w140901389"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/31"
+		LogFileDirectory="e:\w3clog\w110808437"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w110808437.dodogo.cn
+			211.102.91.212:80:www.chinakoho.com
+			211.102.91.212:80:chinakoho.com"
+		ServerComment="w110808437"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/31/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110808437"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0336e377b6d5dec54cbadad5c04900001396e6a9f35a51991e9abd02a12edb11551a29c34f8d96a98021efb7bd4d82e0326e3f3fd8c87112abbab5f04af047a934f62e456473844dd388c458d04bccf2b508683f"
+		AppFriendlyName="w110808437"
+		AppIsolated="0"
+		AppPoolId="AppPool_37"
+		AppRoot="/LM/W3SVC/31/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w110808437"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/31/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/34"
+		LogFileDirectory="e:\w3clog\w110727178"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w110727178.dodogo.cn
+			211.102.91.212:80:www.xiaolantown.org
+			211.102.91.212:80:www.xiaolantown.net
+			211.102.91.212:80:www.xiaolantown.com
+			211.102.91.212:80:www.xiaolantown.com.cn
+			211.102.91.212:80:www.xiaolantown.cn
+			211.102.91.212:80:xiaolantown.com
+			211.102.91.212:80:xiaolantown.com.cn
+			211.102.91.212:80:eiocn.cn
+			211.102.91.212:80:www.eiocn.cn
+			211.102.91.212:80:xiaolantown.org
+			211.102.91.212:80:xiaolantown.net
+			211.102.91.212:80:www.eio.tw
+			211.102.91.212:80:eio.tw"
+		ServerComment="w110727178"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/34/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110727178"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0736e177b1d5d8c54bbad6d5c04900001396e6a91f093ea1d3011365bd4a669e86045999daa2658d2368cd446dfe1644b479951451065b5e740cf16a6974ee5a6f27df899a6dd2bfb460a35e6a01450e3d7106a9"
+		AppFriendlyName="w110727178"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/34/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w110727178"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/34/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/36"
+		LogFileDirectory="e:\w3clog\w140109831"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:ttlsoft.com
+			211.102.91.212:80:w140109831.dodogo.cn
+			211.102.91.212:80:www.ttlsoft.com"
+		ServerComment="w140109831"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/36/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w140109831"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0136e577b3d5ddc54dbadbd5c04900001396e6a9ebef861c7ebc97add08545f6627934706d04a19e48f66ce90c8dafc37a5816068bb3534afe60ed54e9414948f5e8e6752e626ffc340db0caaba354562f7b8c61"
+		AppFriendlyName="w140109831"
+		AppIsolated="0"
+		AppPoolId="yc-antenna"
+		AppRoot="/LM/W3SVC/36/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,index.html,zhindex.asp,default.asp,index.htm"
+		Path="d:\VirHost\wwwroot\w140109831"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/38"
+		LogFileDirectory="e:\w3clog\w110808614"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w110808614.dodogo.cn
+			211.102.91.212:80:zhlpd.com
+			211.102.91.212:80:www.zhlpd.com"
+		ServerComment="w110808614"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/38/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110808614"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e077bcd5dcc549bad6d5c04900001396e6a9716f13accc40ff7d813b781c8d8101afe0334f99baf14d42384de82115af5b0cccf814e3069f69e5bb98eb1a48bcf5305be1af73bddb37e470e76c94e0ab6c94"
+		AppFriendlyName="w110808614"
+		AppIsolated="0"
+		AppPoolId="zhlpd"
+		AppRoot="/LM/W3SVC/38/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,default.aspx,index.aspx"
+		Path="d:\VirHost\wwwroot\w110808614"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/38/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/39"
+		LogFileDirectory="e:\w3clog\w150210342"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w150210342.dodogo.cn"
+		ServerComment="w150210342"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/39/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w150210342"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0236e077b1d5d7c54fbad7d5c04900001396e6a94c733887350d57d4c591a4afe3cb3adac57d7945c7fa9d9aa549169dddb3c7b424294a0b81c211882574643ad6651ee8710dc835785cb2b91eb6138d10ae56a8"
+		AppFriendlyName="w150210342"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/39/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.htm,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w150210342"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/4"
+		LogFileDirectory="e:\w3clog\w130306193"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w130306193.dodogo.cn
+			211.102.91.212:80:klwplw.com
+			211.102.91.212:80:www.klwplw.com"
+		ServerComment="w130306193"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/4/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w130306193"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e477b4d5dfc54dbadbd5c04900001396e6a99411e9871f372bcce13d101977b6a3b5f0a2fce8c50daadccaa0fc8486a85da40c41385477c9f4e492170c5b61b0773ed6cf4c2b4ab83e89e78e5ef077b3211c"
+		AppFriendlyName="w130306193"
+		AppIsolated="0"
+		AppPoolId="AutoSite3"
+		AppRoot="/LM/W3SVC/4/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w130306193"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/40"
+		LogFileDirectory="e:\w3clog\w141106796"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerBindings="211.102.91.212:80:zhxrd.com
+			211.102.91.212:80:w141106796.dodogo.cn
+			211.102.91.212:80:www.zhxrd.com"
+		ServerComment="w141106796"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/40/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w141106796"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e377bdd5d9c548bad5d5c04900001396e6a93840f21bde83a1222e63cb61c5eebbe8009f42057dc8794238f2f849d67dd00695919c18968d9d2d94290edd41e4dbffd55a01e47eec60ad21184dc25c4fb622"
+		AppFriendlyName="w141106796"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/40/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,index.html"
+		Path="d:\VirHost\wwwroot\w141106796"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/41"
+		LogFileDirectory="e:\w3clog\w110524261"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w110524261.dodogo.cn
+			211.102.91.212:80:w1105242611.dodogo.cn"
+		ServerComment="w110524261"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/41/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110524261"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e577b7d5d8c548bad2d5c04900001396e6a9c351d9aaeaf9cdb503e6d73e057e22f1a1b36a868f44df5f6915a45cc552f9562b43683a95308b4a6fd06a5fa690807ed22224fdbc38117291836ad31bbc8003"
+		AppFriendlyName="w110524261"
+		AppIsolated="0"
+		AppPoolId="yc-antenna"
+		AppRoot="/LM/W3SVC/41/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w110524261"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/41/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/42"
+		LogFileDirectory="e:\w3clog\w140213862"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w140213862.dodogo.cn
+			211.102.91.212:80:19online.gs.cn
+			211.102.91.212:80:www.19online.gs.cn"
+		ServerComment="w140213862"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/42/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w140213862"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0336e377b7d5d9c54abad3d5c04900001396e6a9144d03ebdc579db0e837ad3e56a3a03394189abf4e906d2d6d29bcc63009750627f4c200ed01185d585ba1f40f3f8a909bbb7e10682769c7a619d5a007fc389e"
+		AppFriendlyName="w140213862"
+		AppIsolated="0"
+		AppPoolId="APPNet20_1"
+		AppRoot="/LM/W3SVC/42/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.htm,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w140213862\shopex"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/43"
+		LogFileDirectory="e:\w3clog\w110407815"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="500"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w110407815.dodogo.cn
+			211.102.91.212:80:water.800kefu.com
+			211.102.91.212:80:www.jhscw.cn
+			211.102.91.212:80:jhscw.cn
+			211.102.91.212:80:v1.jhscw.cn
+			211.102.91.212:80:v2.jhscw.cn
+			211.102.91.212:80:v3.jhscw.cn
+			211.102.91.212:80:v4.jhscw.cn
+			211.102.91.212:80:v5.jhscw.cn"
+		ServerComment="w110407815"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/43/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110407815"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e677b0d5dec54fbad4d5c04900001396e6a987fb7034b038d464d8629825920b6f03379b62b08bc4f0c8e6ccd9f298cc84aacf9e525e13a56ad29e16c42156be735a2a8dae506064283c15f36487d3b10d42"
+		AppFriendlyName="w110407815"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/43/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="home.aspx,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w110407815"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/43/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/46"
+		LogFileDirectory="e:\w3clog\w100701492"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w100701492.dodogo.cn
+			211.102.91.212:80:zhyueyx.cn
+			211.102.91.212:80:www.zhyueyx.cn
+			:80:1.days.net.cn"
+		ServerComment="w100701492"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/46/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w100701492"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e577b0d5dcc549bad0d5c04900001396e6a94ef95416e4e32da998771a323ea92d3b6a01ce5574485432826464968daeb0464c53112a95670de301a5b582d09ed9ebb517c657bde63248f858fc80b0a81c02"
+		AppFriendlyName="w100701492"
+		AppIsolated="0"
+		AppPoolId="basicA1"
+		AppRoot="/LM/W3SVC/46/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w100701492"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/46/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/47"
+		LogFileDirectory="e:\w3clog\w140421453"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w140421453.dodogo.cn
+			211.102.91.212:80:guanghuahongmu.com
+			211.102.91.212:80:www.guanghuahongmu.com"
+		ServerComment="w140421453"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/47/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w140421453"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0736e277bcd5d7c54cbadbd5c04900001396e6a9a0f80dc178207c98c26a91ecf06ece9cff418353e4fdc6b380a307d5086eadddd17329b9f7a2f150297b0e454b7abdbc8e300f0b1e800842163a96d410634b67"
+		AppFriendlyName="w140421453"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/47/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w140421453"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/48"
+		LogFileDirectory="e:\w3clog\w111101478"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w111101478.dodogo.cn
+			211.102.91.212:80:zhmeter.net
+			211.102.91.212:80:www.zhmeter.net"
+		ServerComment="w111101478"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/48/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w111101478"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0936e577b7d5ddc54ebad1d5c04900001396e6a923c7195acc81190f80e2ace42b1702afe3819d83245270345d580636d3de5ff3f35fa50dafa952fd684d10aa4e4a7de92b036d45bdac8525aa35c11f10f75228"
+		AppFriendlyName="w111101478"
+		AppIsolated="0"
+		AppPoolId="yc-antenna"
+		AppRoot="/LM/W3SVC/48/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w111101478"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/49"
+		LogFileDirectory="e:\w3clog\w101108187"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w101108187.dodogo.cn
+			211.102.91.212:80:jhsqycs.cn"
+		ServerComment="w101108187"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/49/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w101108187"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0336e677bdd5d7c544badad5c04900001396e6a9332468edd71de91ab6c489e73408782edc539d3ddef83c3283ed0762206dc97698c238756ddb4a73f641fd55d19cc9dfc8fad02c4596c575bc226a510821e815"
+		AppFriendlyName="w101108187"
+		AppIsolated="0"
+		AppPoolId="jhsqycs"
+		AppRoot="/LM/W3SVC/49/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w101108187"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/49/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/5"
+		LogFileDirectory="e:\w3clog\w081103145"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w081103145.dodogo.cn
+			211.102.91.212:80:www.hkep.cn
+			211.102.91.212:80:hkep.cn"
+		ServerComment="w081103145"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/5/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w081103145"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e677b0d5ddc54abad4d5c04900001396e6a92d162ca864f7690457aebb35a36ba2150ceec66093dd85fe30b008c9453e3b5022e871e54972dace93fb72d2670d6deb26f373c5ebec91041f2257608278075d"
+		AppFriendlyName="w081103145"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/5/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.html,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w081103145"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/51"
+		LogFileDirectory="e:\w3clog\w101007261"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w101007261.dodogo.cn
+			211.102.91.212:80:xylwfb.com
+			211.102.91.212:80:www.xylwfb.com"
+		ServerComment="w101007261"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/51/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w101007261"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e377b0d5dcc54ebadbd5c04900001396e6a9caa0b858ea466670d9fcac78c77608887046a114ce545c0ac8c5e4798d43f89c0f47ded37bf6bb3a5de49fafa4a4f7c7db74285a2c0a431a04d6fee7794f5b23"
+		AppFriendlyName="w101007261"
+		AppIsolated="0"
+		AppPoolId="AutoSite3"
+		AppRoot="/LM/W3SVC/51/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w101007261"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/51/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/53"
+		LogFileDirectory="e:\w3clog\w140630193"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:ksyic.cn
+			211.102.91.212:80:w140630193.dodogo.cn
+			211.102.91.212:80:www.ksyic.cn"
+		ServerComment="w140630193"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/53/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w140630193"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e177bdd5dcc54dbad4d5c04900001396e6a9ae3b8dae2c49fa4a8721af1aa7405828a29a2827ca0e63580abadf971abed163b3284834347d85b648bb0c77810de1d9a80ff78447564d044d1afff22927a859"
+		AppFriendlyName="w140630193"
+		AppIsolated="0"
+		AppPoolId="yc-antenna"
+		AppRoot="/LM/W3SVC/53/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w140630193"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/54"
+		LogFileDirectory="e:\w3clog\w110817954"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w110817954.dodogo.cn
+			211.102.91.212:80:www.zhrongcheng.com
+			211.102.91.212:80:zhrongcheng.com"
+		ServerComment="w110817954"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/54/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w110817954"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e377b4d5ddc545bad6d5c04900001396e6a95a712e79c30275a1328e65a1444ad86f87051ce9e5ffdf5aadc60b6e112aba457c3401900607fb0d95636b704983becea987bcdcb9f8b45d6e01a2f0ad871d1e"
+		AppFriendlyName="w110817954"
+		AppIsolated="0"
+		AppPoolId="yc-antenna"
+		AppRoot="/LM/W3SVC/54/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w110817954"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/55"
+		LogFileDirectory="e:\w3clog\w100808493"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+		ServerBindings="211.102.91.212:80:w100808493.dodogo.cn
+			211.102.91.212:80:ruifengwater.com
+			211.102.91.212:80:www.ruifengwater.com"
+		ServerComment="w100808493"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/55/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w100808493"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e777bcd5d7c54cbad0d5c04900001396e6a96303c7f2b966af57c33aeb72ab00f943a2521722ca41324a4935595ba78d5590a79a76dfd28919b4dff7d8fb5b1f7e485edb4c3e7f13bf9726dc27cb07225d00"
+		AppFriendlyName="w100808493"
+		AppIsolated="0"
+		AppPoolId="AppPool_37"
+		AppRoot="/LM/W3SVC/55/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,default.aspx,index.aspx"
+		Path="d:\VirHost\wwwroot\w100808493"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/55/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/57"
+		LogFileDirectory="e:\w3clog\w100416168"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w100416168.dodogo.cn
+			211.102.91.212:80:zhyjiantech.com
+			211.102.91.212:80:www.zhyjiantech.com"
+		ServerComment="w100416168"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/57/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w100416168"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e277b6d5dcc548bad4d5c04900001396e6a98de38216d35d87d1eee4d6db9c12f60a57147ad4416880587549c6384a8c211397e426c91082ce0de2829108a21ba703568d6bd09ebc896aa4b575c50fba9678"
+		AppFriendlyName="w100416168"
+		AppIsolated="0"
+		AppPoolId="AutoSite3"
+		AppRoot="/LM/W3SVC/57/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="default.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		HttpErrors="400,*,FILE,C:\WINDOWS\help\iisHelp\common\400.htm
+			401,1,FILE,C:\WINDOWS\help\iisHelp\common\401-1.htm
+			401,2,FILE,C:\WINDOWS\help\iisHelp\common\401-2.htm
+			401,3,FILE,C:\WINDOWS\help\iisHelp\common\401-3.htm
+			401,4,FILE,C:\WINDOWS\help\iisHelp\common\401-4.htm
+			401,5,FILE,C:\WINDOWS\help\iisHelp\common\401-5.htm
+			401,7,FILE,C:\WINDOWS\help\iisHelp\common\401-1.htm
+			403,1,FILE,C:\WINDOWS\help\iisHelp\common\403-1.htm
+			403,2,FILE,C:\WINDOWS\help\iisHelp\common\403-2.htm
+			403,3,FILE,C:\WINDOWS\help\iisHelp\common\403-3.htm
+			403,4,FILE,C:\WINDOWS\help\iisHelp\common\403-4.htm
+			403,5,FILE,C:\WINDOWS\help\iisHelp\common\403-5.htm
+			403,6,FILE,C:\WINDOWS\help\iisHelp\common\403-6.htm
+			403,7,FILE,C:\WINDOWS\help\iisHelp\common\403-7.htm
+			403,8,FILE,C:\WINDOWS\help\iisHelp\common\403-8.htm
+			403,9,FILE,C:\WINDOWS\help\iisHelp\common\403-9.htm
+			403,10,FILE,C:\WINDOWS\help\iisHelp\common\403-10.htm
+			403,11,FILE,C:\WINDOWS\help\iisHelp\common\403-11.htm
+			403,12,FILE,C:\WINDOWS\help\iisHelp\common\403-12.htm
+			403,13,FILE,C:\WINDOWS\help\iisHelp\common\403-13.htm
+			403,15,FILE,C:\WINDOWS\help\iisHelp\common\403-15.htm
+			403,16,FILE,C:\WINDOWS\help\iisHelp\common\403-16.htm
+			403,17,FILE,C:\WINDOWS\help\iisHelp\common\403-17.htm
+			403,18,FILE,C:\WINDOWS\help\iisHelp\common\403.htm
+			403,19,FILE,C:\WINDOWS\help\iisHelp\common\403.htm
+			403,20,FILE,C:\WINDOWS\help\iisHelp\common\403-20.htm
+			404,*,FILE,C:\WINDOWS\help\iisHelp\common\404b.htm
+			404,2,FILE,C:\WINDOWS\help\iisHelp\common\404b.htm
+			404,3,FILE,C:\WINDOWS\help\iisHelp\common\404b.htm
+			405,*,FILE,C:\WINDOWS\help\iisHelp\common\405.htm
+			406,*,FILE,C:\WINDOWS\help\iisHelp\common\406.htm
+			407,*,FILE,C:\WINDOWS\help\iisHelp\common\407.htm
+			412,*,FILE,C:\WINDOWS\help\iisHelp\common\412.htm
+			414,*,FILE,C:\WINDOWS\help\iisHelp\common\414.htm
+			415,*,FILE,C:\WINDOWS\help\iisHelp\common\415.htm
+			500,12,FILE,C:\WINDOWS\help\iisHelp\common\500-12.htm
+			500,13,FILE,C:\WINDOWS\help\iisHelp\common\500-13.htm
+			500,15,FILE,C:\WINDOWS\help\iisHelp\common\500-15.htm
+			500,16,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,17,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,18,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,19,FILE,C:\WINDOWS\help\iisHelp\common\500.htm
+			500,*,URL,/500-100.asp"
+		Path="d:\VirHost\wwwroot\w100416168"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/57/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/59"
+		LogFileDirectory="e:\w3clog\w091223692"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w091223692.dodogo.cn
+			211.102.91.212:80:lojade.cn
+			211.102.91.212:80:www.lojade.cn"
+		ServerComment="w091223692"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/59/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w091223692"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e477b2d5dbc548bad1d5c04900001396e6a97690fa9b1bdf01b3b72f3a21d49c7c4733b33e416a093844f035daca00ecca31b4cd4db96b21151ef9c791cd622359f715ee62bd01f424009948d25347d71650"
+		AppFriendlyName="w091223692"
+		AppIsolated="0"
+		AppPoolId="basica"
+		AppRoot="/LM/W3SVC/59/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w091223692"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/59/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/6"
+		LogFileDirectory="e:\w3clog\w121105999"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w121105999.dodogo.cn
+			211.102.91.212:80:zhayj.cn
+			211.102.91.212:80:www.zhayj.cn"
+		ServerComment="w121105999"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/6/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w121105999"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0636e477bdd5ddc54fbadad5c04900001396e6a9e83c788dd040019521a11523d691b84423bacf4e91bceb9610cfbccf5b9458a5bf0c20313bdf360210a675a0cb1bdd68bbbc7ebe8016d08358755b657732f315"
+		AppFriendlyName="w121105999"
+		AppIsolated="0"
+		AppPoolId="AppPool_30"
+		AppRoot="/LM/W3SVC/6/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w121105999"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/6/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/60"
+		LogFileDirectory="e:\w3clog\w091215992"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="200"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:w091215992.dodogo.cn
+			211.102.91.212:80:gzflower.net
+			211.102.91.212:80:www.gzflower.net"
+		ServerComment="w091215992"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/60/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w091215992"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0236e177b5d5d8c54ebad4d5c04900001396e6a9323d131c6f087a2173747acf8cbd34f78f56ec32fb5529fc531bc70e0383dc6fd722179863f098681f5587d2483bb609efc75649f90b7dd750a39f06aaca50b9"
+		AppFriendlyName="w091215992"
+		AppIsolated="0"
+		AppPoolId="788job"
+		AppRoot="/LM/W3SVC/60/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w091215992"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/60/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/65"
+		LogFileDirectory="e:\w3clog\w090622763"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w090622763.dodogo.cn
+			211.102.91.212:80:zhjlxx.com
+			211.102.91.212:80:www.zhjlxx.com"
+		ServerComment="w090622763"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/65/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w090622763"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0336e577b4d5dbc54ebad2d5c04900001396e6a982dba267ac09806e01e5805f90abfac1abafd2b5e7125253f3b63f7822fb1bc245c172c6cad9b6dc9ad958165c3e280346a05d470079ecbd71d077eb3d91076d"
+		AppFriendlyName="w090622763"
+		AppIsolated="0"
+		AppPoolId="AutoSite3"
+		AppRoot="/LM/W3SVC/65/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w090622763"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/65/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/7"
+		LogFileDirectory="e:\w3clog\w101007789"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="350"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w101007789.dodogo.cn"
+		ServerComment="w101007789"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/7/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="w101007789"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0736e177b1d5ddc54fbad0d5c04900001396e6a9378c7444989ed727522fd970d3cfc95b3e49bbbdd89624b6509eecfa1098f80b23e3797212824368869b408a604c37b04fdc3bebefb6b5fc57f960556535e779"
+		AppFriendlyName="w101007789"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/7/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.html,index.php"
+		Path="d:\VirHost\wwwroot\w101007789"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/71"
+		LogFileDirectory="e:\w3clog\w081226678"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="500"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w081226678.dodogo.cn
+			211.102.91.212:80:www.meilanboats.com
+			211.102.91.212:80:meilanboats.com"
+		ServerComment="w081226678"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/71/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w081226678"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e877b7d5d6c54ebad7d5c04900001396e6a9e6e200d716040fc893566c4f787b99467a14de8fa7d1ddbc26a04990b846832549d5815a3de0e770f3f9a2eb53ff888c1aedca6205fc84a66c5a1d5cd08c201d"
+		AppFriendlyName="w081226678"
+		AppIsolated="0"
+		AppPoolId="AutoSite3"
+		AppRoot="/LM/W3SVC/71/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.html,default.asp,index.asp,default.asp,index.asp,default.php"
+		MimeMap=".flv,flv-application/octet-stream"
+		Path="d:\VirHost\wwwroot\w081226678"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/71/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/74"
+		LogFileDirectory="e:\w3clog\w090210455"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="150"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="FALSE"
+		ServerBindings="211.102.91.212:80:w090210455.dodogo.cn
+			211.102.91.212:80:www.zhhydl.com
+			211.102.91.212:80:zhhydl.com"
+		ServerComment="w090210455"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/74/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w090210455"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0436e777bcd5dac54abad2d5c04900001396e6a9bf2fd58c5a106b863bfe3416438bd3447bc4ff3e2d8aa2ae2f6700f331c6040ae2a5502265a519c10fe24795c7a1940adbd9d87ad59090ba8bfe9f3060ac3852"
+		AppFriendlyName="w090210455"
+		AppIsolated="0"
+		AppPoolId="AppPool_36"
+		AppRoot="/LM/W3SVC/74/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp"
+		Path="d:\VirHost\wwwroot\w090210455"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/74/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/79"
+		LogFileDirectory="e:\w3clog\web8284628"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="100"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:web8284628.dodogo.cn
+			211.102.91.212:80:wxyqwl.com
+			211.102.91.212:80:www.wxyqwl.com"
+		ServerComment="web8284628"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/79/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="web8284628"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0436e477b2d5dec54fbad5d5c04900001396e6a9c5dcc8e191df7038a292209cec228e845751af11e1f9eae98438033c54d179200e9ad35ead09d6c967b597e682f7bbf4bb21f305932c75ad24bfe88b6d2a84b5"
+		AppFriendlyName="web8284628"
+		AppIsolated="0"
+		AppPoolId="BasicA3"
+		AppRoot="/LM/W3SVC/79/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.htm,index.html,default.htm,default.html"
+		Path="d:\VirHost\wwwroot\web8284628"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/79/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/8"
+		LogFileDirectory="e:\w3clog\web8329598"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="100"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerBindings="211.102.91.212:80:web8329598.dodogo.cn
+			211.102.91.212:80:zhptn.com
+			211.102.91.212:80:www.zhptn.com"
+		ServerComment="web8329598"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/8/root"
+		AccessFlags="AccessExecute | AccessRead | AccessScript"
+		AnonymousUserName="web8329598"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0536e177b4d5d9c548bad7d5c04900001396e6a915135099e17a7014780ddafdc9442ed580c4dfd835f85c62e5de021f7fa0c766c5574f0ac4222ba379565bcfd4765103a6e14f22e08578a5282a7dd42740796a"
+		AppFriendlyName="web8329598"
+		AppIsolated="0"
+		AppPoolId="AppPool_25"
+		AppRoot="/LM/W3SVC/8/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\web8329598"
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/80"
+		LogFileDirectory="e:\w3clog\w080926499"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="200"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w080926499.dodogo.cn
+			211.102.91.212:80:xufeivision.com
+			211.102.91.212:80:www.xufeivision.com"
+		ServerComment="w080926499"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/80/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w080926499"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0836e977b2d5dfc54dbad1d5c04900001396e6a9a6055426f73110ff4f0a95f92d9164259da6580367c7570fca819ff8ee0dd6c8fad9e890f891cbf75b7379fb756023e99e74fc76eda87506eeb21732995ebc49"
+		AppFriendlyName="w080926499"
+		AppIsolated="0"
+		AppPoolId="AppPool #1"
+		AppRoot="/LM/W3SVC/80/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.htm,default.asp,index.asp,default.asp,index.php,default.php"
+		Path="d:\VirHost\wwwroot\w080926499"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+	>
+</IIsWebVirtualDir>
+<IIsWebDirectory	Location ="/LM/W3SVC/80/root/aspnet_client"
+		AccessFlags="AccessRead"
+		DirBrowseFlags="0"
+	>
+</IIsWebDirectory>
+<IIsWebServer	Location ="/LM/W3SVC/9"
+		LogFileDirectory="e:\w3clog\w130908928"
+		LogFilePeriod="1"
+		LogFileTruncateSize="20971520"
+		LogPluginClsid="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogType="1"
+		MaxConnections="4294967295"
+		ScriptMaps=".asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE"
+		ServerAutoStart="TRUE"
+		ServerBindings="211.102.91.212:80:w130908928.dodogo.cn
+			211.102.91.212:80:www.gdpiano.com.cn
+			211.102.91.212:80:gdpiano.com.cn"
+		ServerComment="w130908928"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/9/root"
+		AccessFlags="AccessRead | AccessScript"
+		AnonymousUserName="w130908928"
+		AnonymousUserPass="4963446260000000120000004000000039be3a2e0036e877b1d5d7c54fbad4d5c04900001396e6a9c5b7f824aa34d272ad7eefde4d87e4fb99722b433d5c121e27b8685979b0ad0bb2fba4febf7ba729c6d534ab3f76e0c21a46f673975da28c43cec9d8db834d6a"
+		AppFriendlyName="w130908928"
+		AppIsolated="0"
+		AppPoolId="AppPool_38"
+		AppRoot="/LM/W3SVC/9/root"
+		AuthFlags="AuthAnonymous | AuthNTLM"
+		DefaultDoc="index.asp,default.asp,index.asp,default.asp,index.php,default.php,default.aspx,index.aspx,index.cgi,index.cgi,index.cgi"
+		Path="d:\VirHost\wwwroot\w130908928"
+		ScriptMaps=".asa,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.asax,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asmx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\spnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.asp,C:\WINDOWS\system32\inetsrv\asp.dll,5,GET,HEAD,POST,TRACE
+			.aspx,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,5,GET,HEAD,POST,DEBUG
+			.cgi,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			.php,d:\PHP5\php5isapi.dll,5,GET,HEAD,POST,TRACE
+			.pl,d:\Perl\bin\perl.exe &quot;%s&quot; %s ,5,GET,HEAD,POST,TRACE
+			.plx,d:\Perl\bin\perl.exe &quot;%s&quot; %s,5,GET,HEAD,POST,TRACE
+			*,C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\aspnet_isapi.dll,0,全部"
+		UNCPassword="4963446250000000060000004000000039be3a2e303600003d7e173b82732835fdbc81f7a2fbb69a6f25692cc57a7c5eaab76749db72f64747600902bf7def69489335dc17c87e5e518d12094afb0595f6a5d8e137a7363f"
+	>
+</IIsWebVirtualDir>
+<IIsApplicationPools	Location ="/LM/W3SVC/AppPools"
+		AdminACL="49634462f0000000a40000004000000039be3a2e3136d6f704d5eec5ecbae3d5c0491e2815f689a1a107715baf8863691743db40eac61b30f1e0d4e3def70cc98fbdb640340a03ecdf156228982532eac44a80de3fe6f5205d94bb37a67e8bcb98aa2f41135fe77b726c75b1a06000a8c04c9fb04ad6516f10886c15d478007ccb90fcf3eb62fd60e3cb58ef26c1f9bf973ce3bb78c67e6f68880406bcc84ce4937572c22c21ef98b21c23813f0238de814a2ff03a1e5a246e18e5517c83bbf17c57d7ea75517664edfa90d33fa5f905e14a1eaf065434eb0288c8dc6d22460d4d04dc79f2c076e51856c5d54c43984c58477d0b41ba2c34"
+		AppPoolIdentityType="2"
+		AppPoolQueueLength="1000"
+		CPULimit="0"
+		CPUResetInterval="5"
+		DisallowOverlappingRotation="FALSE"
+		DisallowRotationOnConfigChange="FALSE"
+		IdleTimeout="20"
+		LoadBalancerCapabilities="2"
+		LogEventOnRecycle="AppPoolRecycleTime | AppPoolRecycleMemory | AppPoolRecyclePrivateMemory"
+		MaxProcesses="1"
+		OrphanWorkerProcess="FALSE"
+		PeriodicRestartMemory="0"
+		PeriodicRestartPrivateMemory="0"
+		PeriodicRestartRequests="0"
+		PeriodicRestartTime="1740"
+		PingInterval="30"
+		PingResponseTime="90"
+		PingingEnabled="TRUE"
+		RapidFailProtection="TRUE"
+		RapidFailProtectionInterval="5"
+		RapidFailProtectionMaxCrashes="5"
+		SMPAffinitized="FALSE"
+		SMPProcessorAffinityMask="4294967295"
+		ShutdownTimeLimit="90"
+		StartupTimeLimit="90"
+	>
+</IIsApplicationPools>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/100pty"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/788job"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/APPNet20_1"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool #1"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool #2"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_11"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_25"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_26"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_30"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_33"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_36"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_37"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool_38"
+		AppPoolAutoStart="TRUE"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/apppool_php"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AppPool2"
+		AppPoolAutoStart="TRUE"
+		AppPoolQueueLength="10000"
+		IdleTimeout="0"
+		PeriodicRestartMemory="512000"
+		PeriodicRestartPrivateMemory="256000"
+		PeriodicRestartRequests="0"
+		PeriodicRestartSchedule="2:00"
+		PeriodicRestartTime="0"
+	>
+	<Custom
+		Name="AppPoolCommand"
+		ID="9026"
+		Value="1"
+		Type="DWORD"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="NO_ATTRIBUTES"
+	/>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AutoSite1"
+		AppPoolAutoStart="TRUE"
+		IdleTimeout="0"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AutoSite2"
+		AppPoolAutoStart="TRUE"
+		IdleTimeout="0"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/AutoSite3"
+		AppPoolAutoStart="TRUE"
+		IdleTimeout="0"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/basica"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/BasicA Pool"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/basicA1"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/BasicA3"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/DefaultAppPool"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/dgxt_cn"
+		AppPoolAutoStart="TRUE"
+		PeriodicRestartTime="180"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/igo"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/jhsqycs"
+		AppPoolAutoStart="TRUE"
+		IdleTimeout="0"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/mastersite"
+		AppPoolAutoStart="TRUE"
+		IdleTimeout="0"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/Net20"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/piano_net20"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/VirSystem"
+		AppPoolAutoStart="TRUE"
+		AppPoolIdentityType="0"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/yc-antenna"
+		AppPoolAutoStart="TRUE"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/zhlpd"
+		AppPoolAutoStart="TRUE"
+		PeriodicRestartTime="30"
+	>
+</IIsApplicationPool>
+<IIsApplicationPool	Location ="/LM/W3SVC/AppPools/zhzxgs.com"
+		AppPoolAutoStart="TRUE"
+		PeriodicRestartTime="90"
+	>
+</IIsApplicationPool>
+<IIsFilters	Location ="/LM/W3SVC/Filters"
+		AdminACL="49634462f0000000a40000004000000039be3a2e3136d6f704d5eec5ecbae3d5c0491e2815f689a1a107715baf8863691743db40e1c61b30f1e0d4e3def70cc98fbdb640340a03ecd4156228982532eac44a80de3fe6f5205d94bb37ad7e8bcb98aa2f41135fe77b726c75b1a06000a8c04c9fb04ad6516f10886c15d478007ccb90fcf3eb62fd60e3cb58ef26c1f9bf973ce3bb78c67e6f68880406bcc84ce4937572c22c21ef98b21c23813f0238de814a2ff03a1e5a242d32b9483f81d8ebf479bdabeaf7b131068a324d8edb0cbc2c8c8938d9d7ce67e379f8556c0cf4b228d5161ba5838ba937ae68003609279cbf7a74640f666e58"
+		FilterLoadOrder="ASP.NET_4.0.30319.0"
+	>
+</IIsFilters>
+<IIsFilter	Location ="/LM/W3SVC/Filters/ASP.NET_4.0.30319.0"
+		FilterDescription="ASP.NET Cookieless Session Filter"
+		FilterEnableCache="TRUE"
+		FilterFlags="NotifyPreProcHeaders | NotifyUrlMap | NotifyLog | NotifyEndOfNetSession | NotifyOrderLow"
+		FilterPath="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\\aspnet_filter.dll"
+		FilterState="1"
+	>
+</IIsFilter>
+<IIsFilter	Location ="/LM/W3SVC/Filters/Compression"
+	>
+</IIsFilter>
+<IIsCompressionScheme	Location ="/LM/W3SVC/Filters/Compression/deflate"
+		HcCompressionDll="%windir%\system32\inetsrv\gzip.dll"
+		HcCreateFlags="0"
+		HcDoDynamicCompression="TRUE"
+		HcDoOnDemandCompression="TRUE"
+		HcDoStaticCompression="FALSE"
+		HcDynamicCompressionLevel="0"
+		HcFileExtensions="htm
+			html
+			txt"
+		HcOnDemandCompLevel="10"
+		HcPriority="1"
+		HcScriptFileExtensions="asp
+			dll
+			exe"
+	>
+</IIsCompressionScheme>
+<IIsCompressionScheme	Location ="/LM/W3SVC/Filters/Compression/gzip"
+		HcCompressionDll="%windir%\system32\inetsrv\gzip.dll"
+		HcCreateFlags="1"
+		HcDoDynamicCompression="TRUE"
+		HcDoOnDemandCompression="TRUE"
+		HcDoStaticCompression="TRUE"
+		HcDynamicCompressionLevel="0"
+		HcFileExtensions="htm
+			html
+			txt"
+		HcOnDemandCompLevel="10"
+		HcPriority="1"
+		HcScriptFileExtensions="asp
+			dll
+			exe"
+	>
+</IIsCompressionScheme>
+<IIsCompressionSchemes	Location ="/LM/W3SVC/Filters/Compression/Parameters"
+		HcCacheControlHeader="max-age=86400"
+		HcCompressionBufferSize="8192"
+		HcCompressionDirectory="%windir%\IIS Temporary Compressed Files"
+		HcDoDiskSpaceLimiting="FALSE"
+		HcDoDynamicCompression="FALSE"
+		HcDoOnDemandCompression="TRUE"
+		HcDoStaticCompression="FALSE"
+		HcExpiresHeader="Wed, 01 Jan 1997 12:00:00 GMT"
+		HcFilesDeletedPerDiskFree="256"
+		HcIoBufferSize="8192"
+		HcMaxDiskSpaceUsage="100000000"
+		HcMaxQueueLength="1000"
+		HcMinFileSizeForComp="1"
+		HcNoCompressionForHttp10="TRUE"
+		HcNoCompressionForProxies="TRUE"
+		HcNoCompressionForRange="FALSE"
+		HcSendCacheHeaders="FALSE"
+	>
+</IIsCompressionSchemes>
+<IIsWebInfo	Location ="/LM/W3SVC/Info"
+		AdminACL="49634462a0000000580000004000000039be3a2e3136d6f7b0d5eec538bae3d5c0491e2815f689a1a1073d5baa8863691743d740c1c61f30f1e3d4e3def70cc9bcbdb640140817ec5e176228992432efe44a80db0be4f5205c969f37267e8bceb9af2f41335de77e3723ce79841951580f4da28407f655a3fcb4a5a79bce9bbc00e793934b3149001a95076b95b8284937caedb740d4fbe161f15296c3a737ea95595b779e60bf45"
+		CustomErrorDescriptions="400,0,Bad Request,,0
+			401,1,Unauthorized,Logon failed,1
+			401,2,Unauthorized,Logon failed due to server configuration,1
+			401,3,Unauthorized,Unauthorized due to ACL on resource,1
+			401,4,Unauthorized,Authorization failed by filter,1
+			401,5,Unauthorized,Authorization failed by ISAPI/CGI app,1
+			401,7,Unauthorized,Denied due to URL Authorization policy,0
+			403,1,Forbidden,Execute access denied,0
+			403,2,Forbidden,Read access denied,0
+			403,3,Forbidden,Write access denied,0
+			403,4,Forbidden,SSL required,0
+			403,5,Forbidden,SSL128 required,0
+			403,6,Forbidden,IP address rejected,0
+			403,7,Forbidden,Client certificate required,0
+			403,8,Forbidden,Site access denied,0
+			403,9,Forbidden,Too many users,0
+			403,10,Forbidden,Invalid Configuration,0
+			403,11,Forbidden,Password Change,0
+			403,12,Forbidden,Mapper Denied Access,0
+			403,13,Forbidden,Client certificate revoked,0
+			403,14,Forbidden,Directory Listing Denied,0
+			403,15,Forbidden,Client Access Licenses Exceeded,0
+			403,16,Forbidden,Client certificate untrusted or ill-formed,0
+			403,17,Forbidden,Client certificate has expired or is not yet valid,0
+			403,18,Forbidden,Cannot execute request from this application pool,0
+			403,19,Forbidden,CGI Access denied,0
+			403,20,Forbidden,Passport Login failed,0
+			404,0,Not Found,,0
+			404,2,Not Found,Denied due to Lockdown Policy,0
+			404,3,Not Found,Denied due to MIMEMAP Policy,0
+			405,0,Method Not Allowed,,0
+			406,0,Not Acceptable,,0
+			407,0,Proxy Authentication Required,,1
+			412,0,Precondition Failed,,0
+			414,0,Request-URI Too Long,,0
+			415,0,Unsupported Media Type,,0
+			500,0,Internal Server Error,,0
+			500,12,Internal Server Error,Application restarting,0
+			500,13,Internal Server Error,Server too busy,0
+			500,15,Internal Server Error,Direct requests for GLOBAL.ASA forbidden,0
+			500,16,Internal Server Error,UNC Access Error,0
+			500,17,Internal Server Error,URL Authorization store not found,0
+			500,18,Internal Server Error,URL Authorization store cannot be opened,0
+			500,19,Internal Server Error,Bad file metadata,0
+			500,100,Internal Server Error,ASP error,0
+			501,0,Not Implemented,,0
+			502,0,Bad Gateway,,1"
+		LogModuleList="NCSA 公用日志文件格式,Microsoft IIS 日志文件格式,W3C 扩展日志文件格式,ODBC 日志记录"
+		MD_SERVER_CAPABILITIES="129983"
+		MD_SERVER_PLATFORM="1"
+		MajorIIsVersionNumber="6"
+		MinorIIsVersionNumber="0"
+	>
+</IIsWebInfo>
+<IIsConfigObject	Location ="/LM/W3SVC/Info/Templates"
+	>
+</IIsConfigObject>
+<IIsWebServer	Location ="/LM/W3SVC/Info/Templates/Public Web Site"
+		ServerComment="允许所有用户浏览静态和动态内容。"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/Info/Templates/Public Web Site/Root"
+		AccessFlags="AccessRead | AccessScript"
+		AuthFlags="AuthAnonymous"
+		IPSecurity=""
+	>
+</IIsWebVirtualDir>
+<IIsWebServer	Location ="/LM/W3SVC/Info/Templates/Secure Web Site"
+		ServerComment="允许具有 Windows 帐户的所有用户查看静态和动态内容。"
+	>
+</IIsWebServer>
+<IIsWebVirtualDir	Location ="/LM/W3SVC/Info/Templates/Secure Web Site/Root"
+		AccessFlags="AccessRead | AccessScript"
+		AuthFlags="AuthBasic | AuthNTLM | AuthMD5"
+		IPSecurity=""
+	>
+</IIsWebVirtualDir>
+</MBProperty>
+</configuration>

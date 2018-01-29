@@ -1,0 +1,234 @@
+
+
+{% block title %}
+<title>退款信息(连锁商户)</title>
+{% end %}
+
+{% block css %}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<link rel="stylesheet" href="/static/common/libs/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/static/common/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/common/css/sb-admin-2.css"/>
+<link rel="stylesheet" href="/static/merchant/css/style.css"/>
+<link rel="stylesheet" href="/static/common/libs/layer/css/layer.css"/>
+{% end %}
+
+{% block content %}
+
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navber-img" href="/chain/">
+                <img src="/static/common/image/logo.png"/>
+                <span class="uline-lg">ULINE</span>
+                <span class="uline-ht">连锁商户后台</span>
+            </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="iBox"><i class="fa fa-user fa-fw"></i></span>
+                    <span class="dt-name">{{ handler.session['chain_name'] }}</span>
+                    <i class="fa fa-caret-down"></i>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="row index-row">
+        <div id="main-content" class="refunds">
+            <div class="formlist">
+                <h4>基本信息</h4>
+                <div>
+                    <label>ULINE交易单号</label>
+                    <span>{{ data['out_trade_no'] }}</span>
+                    <input name="mch_id" type="hidden" value="{{ data['mch_id'] }}"/>
+                </div>
+                <div>
+                    <label>商户交易单号</label>
+                    <span>{{ data['mch_trade_no'] }}</span>
+                </div>
+                <div>
+                    <label>交易金额</label>
+                    <span>{{ data['total_fee'] }}</span>
+                </div>
+                <div>
+                    <label>已申请退款金额</label>
+                    <span>
+                        {{ data['has_refund_fee'] }}
+                        <a href="/chain/transaction/refund?out_trade_no={{ data['out_trade_no'] }}">退款记录</a>
+                    </span>
+                </div>
+            </div>
+
+            <div class="refunds-num">
+                <h4>退款信息</h4>
+                <div>
+                    <label>退款金额</label>
+                    <span>
+                        <input type="text" class="form-control" value="0" placeholder="请输入金额" id="enter-amount" autocomplete="off" oninput = "amount(event)" onkeyup="clearNoNum(this)" maxlength="10"/>
+                        <span class='remain-num'>剩余可退款金额￥{{ data['can_refund_fee'] }}<a id="withdraw" onclick="withdrawNum()">全部退款</a></span>
+                    </span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="submit-btn">提交</button>
+
+
+            <div class="modal fade" id="sub-btn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                输入退款密码
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="password" maxlength="6" placeholder="输入6位数字密码" autocomplete="off" id="num-pwd" oninput="changeNum()"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="confirm-num">确认</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+</div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript" src="/static/common/libs/jquery.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    var remaMoney = {{ data['can_refund_fee'] }};
+    var withdraw = document.getElementById('withdraw');
+    var enterAmount = document.getElementById('enter-amount');
+
+    //监听金额输入框
+    var remainNum = document.getElementsByClassName('remain-num')[0];
+    function amount(){
+        if(enterAmount.value > remaMoney){
+            remainNum.innerHTML = "<span class='add-amount'>输入金额超过可退款金额</span>";
+        }else{
+            remainNum.innerHTML = "<span class='remain-num'>剩余可退款金额￥"+ remaMoney +"<a id='withdraw' onclick='withdrawNum()'>全部退款</a></span>";
+        }
+    };
+
+    //判断当输入金额为空时
+    var submitBtn = document.getElementById('submit-btn');
+    submitBtn.onclick = function(){
+        if(enterAmount.value == ''){
+            remainNum.innerHTML = "<span class='add-amount'>不能为空</span>";
+        }else{
+            //激活弹框
+            $('#sub-btn').modal('show');
+            $('#sub-btn').modal({backdrop: 'static', keyboard: false});
+        }
+    }
+
+    //全部提现
+    function withdrawNum(){
+        enterAmount.value = remaMoney;
+        enterAmount.focus ();
+    }
+
+    //限制输入数字
+    function clearNoNum(obj){
+        //清除“数字”和“.”以外的字符
+        obj.value = obj.value.replace(/[^\d.]/g,"");
+        //只保留第一个. 清除多余的
+        obj.value = obj.value.replace(/\.{2,}/g,".");
+        obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+        obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数
+        if(obj.value.indexOf(".")< 0 && obj.value !=""){
+            //首位不能为类似于 01、02的金额
+            obj.value= parseFloat(obj.value);
+        }
+    }
+
+    //密码框输入数字限制
+    var confirmNum = document.getElementById('confirm-num');
+    var numPwd = document.getElementById('num-pwd');
+    function changeNum(){
+        var reg = new RegExp("^[0-9]*$");
+        $(".num-tip").remove();
+        if(!reg.test(numPwd.value)){
+            numPwd.value = "";
+            $("#num-pwd").after("<div class='num-tip'>只能输入数字</div>");
+        }else{
+            $(".num-tip").remove();
+        }
+    }
+
+    confirmNum.onclick = function(){
+        if(numPwd.value.length < 6){
+            $("#num-pwd").after("<div class='num-tip'>请输入6位数字密码</div>")
+        }else{
+            //调用函数
+            postPassword();
+        }
+    }
+
+    function postPassword(){
+        function getCookie(name) {
+            var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+            return r ? r[1] : undefined;
+        }
+        var xsrf = getCookie("_xsrf");
+        var outTrade = "{{ data['out_trade_no'] }}";
+        var amountValue = String(enterAmount.value);
+        var pwdValue = String(numPwd.value);
+        var mch_id = "{{ data['mch_id'] }}"
+        $.ajax({
+            headers: {"X-XSRFToken":xsrf},
+            url :'/chain/transaction/refund/initiate',
+            type:'post',
+            data: {"out_trade_no":outTrade,"refund_fee":amountValue,"Pwd":pwdValue, "mch_id":mch_id},
+            success:function(data){
+                $(".num-tip").remove();
+                $(".newsBox").remove();
+                if(data.code == 200){
+                    $('#sub-btn').modal('hide');
+                    $('#wrapper').append("<div class='newsBox'>退款成功</div>");
+                    $('.newsBox').delay(1000).fadeOut(2000,function () {
+                        window.location.href = "/chain/transaction/refund?out_trade_no={{ data['out_trade_no'] }}";
+                    });
+                }else if(data.code == 405){
+                    $("#num-pwd").after("<div class='num-tip'>"+ data.msg +"</div>");
+                }else if(data.code == 406){
+                    $('#wrapper').append("<div class='newsBox'>无可退金额</div>");
+                    $('.newsBox').delay(1000).fadeOut(2000);
+                }else if(data.code == 407){
+                    $("#num-pwd").after("<div class='num-tip'>请输入有效退款金额</div>");
+                }else if(data.code == 408){
+                    $("#num-pwd").after("<div class='num-tip'>密码不正确</div>");
+                }
+
+            },
+            error: function(){
+                //请求出错处理
+                $('#wrapper').append("<div class='newsBox'>退款失败</div>");
+                $('.newsBox').delay(1000).fadeOut(2000);
+            }
+        })
+    }
+
+
+</script>
+{% end %}
+<!-- 引入js文件  end-->

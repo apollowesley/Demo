@@ -1,0 +1,35 @@
+#form-base.noborder input,#form-base.noborder select{border:none;box-shadow:none;}
+#form-base.noborder input[readonly]{background:transparent;}
+#form-base.noborder select[disabled]{background:transparent;}
+
+
+#tbodyBox a{cursor:pointer;}
+
+
+.sub-login-name{position:relative;}
+.sub-login-name span{position:absolute;top: 1px;right: 1px;background: #f1f1f1;padding-left:10px;width: 200px;line-height: 32px;text-align: left;}
+
+.role-checkbox-list li{float:left;padding-right:15px;line-height:30px;text-align: left;}
+.role-checkbox-list li input{margin-left:1px;margin-right:7px;}
+
+.staff-table{width:100%;border-radius:5px;}
+.staff-table td{padding:5px 15px !important;line-height:26px;border:1px solid #f1f1f1;text-align:left;}
+.staff-table .th{background:#f5f6fb;}
+
+.base-pop-title{font-size:14px;text-align:left;font-weight:bold;}
+.base-pop-title i{font-style:inherit;color:#e8594b;margin-right:5px;}
+.staff-record-list li{margin:0 15px;padding:10px 0;line-height:22px;text-align:left;border-bottom:1px dashed #f1f1f1;}
+.staff-record-list li p{margin:0px;}
+.staff-record-list li span{font-size:12px;}
+.staff-record-list .c-999{color:#999;}
+
+
+.role-choose-list{padding:0px;margin:0px;width:300px;height:280px;overflow-y:scroll;text-align:left;border:1px solid #ccc;border-radius:4px;}
+.role-choose-list li{display:none;padding:0px 10px;position:relative;line-height:36px;}
+.role-choose-list li h3{padding:0px 0px 0px 25px;margin:0px;line-height:36px;font-size:14px;font-weight:bold;cursor:pointer;}
+.role-choose-list h3:before{content:'+';position:absolute;top:12px;left:15px;width:13px;height:13px;line-height: 10px;text-align:center;border:1px solid #ccc;color:#ccc;}
+.role-choose-list li.on h3:before{content:'-';}
+.role-choose-list li .arrows-right{position:absolute;right:10px;top:0px;}
+.role-menu{display:none;width:100%;}
+.role-menu li{padding-left:25px;}
+.role-menu input{margin-right:5px;}

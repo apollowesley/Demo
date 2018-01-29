@@ -1,0 +1,173 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户结算(官方)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/official/balance/mch" method="post">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">搜索</button><br>
+            <button type="submit" class="btn btn-default" id="exportExcel">导出</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">创建日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control" id="create_at_start" name="create_at_start"
+                       placeholder="" value="{{ form.create_at_start.data or ''}}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control" id="create_at_end" name="create_at_end"
+                       placeholder="" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">划付状态:</p>
+            <select class="form-control" name="pay_status" id="pay_status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.pay_status.data == 1 %}selected{% end %}>等待划付</option>
+                <option value="2" {% if form.pay_status.data == 2 %}selected{% end %}>划付成功</option>
+                <option value="3" {% if form.pay_status.data == 3 %}selected{% end %}>划付失败</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">支付渠道:</p>
+            <select class="form-control search-criteria" name="channel" id="channel">
+                <option value="">全部</option>
+                <option value="weixin" {% if form.channel.data=='weixin'%}selected{% end %}>微信</option>
+                <option value="alipay" {% if form.channel.data=='alipay'%}selected{% end %}>支付宝</option>
+                {% if has_jdpay %}
+                <option value="jdpay" {% if form.channel.data=='jdpay'%}selected{% end %}>京东支付</option>
+                {% end %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户名称:</p>
+            <input type="text" class="form-control" name="mch_name" value="{{ form.mch_name.data or '' }}" id="mch_name"
+                   placeholder="请输入商户名称">
+        </div>
+
+        <div class="form-group">
+                <p class="form-control-static">商户编号:</p>
+                <input type="text" class="form-control" id="mch_id" name="mch_id" value="{{ form.mch_id.data or '' }}" placeholder="商户编号"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">门店编号:</p>
+            <input type="text" class="form-control" id="cs_mch_id" name="cs_mch_id" value="{{ form.cs_mch_id.data or '' }}" placeholder="门店编号"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">门店简称:</p>
+            <input type="text" class="form-control" id="cs_mch_shortname" name="cs_mch_shortname" value="{{ form.cs_mch_shortname.data or '' }}" placeholder="门店简称"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道商:</p>
+            <input type="text" class="form-control" name="dt_name" value="{{ form.dt_name.data or '' }}" id="dt_name"
+                   placeholder="所属渠道商">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道商编号:</p>
+            <input type="text" class="form-control" name="dt_id" id="dt_id" value="{{ form.dt_id.data or '' }}" placeholder="所属渠道商编号"/>
+        </div>
+        <div class="form-group">
+            <p class="form-control-static">结算账号:</p>
+            <input type="text" class="form-control search-criteria" name="balance_account" id="balance_account" value="{{ form.balance_account.data or '' }}" placeholder="结算账号"/>
+        </div>
+
+         {% if INTER_BANK %}
+            <div class="form-group">
+                <p class="form-control-static">拓展方式:</p>
+                <select class="form-control search-criteria" name="expand_type" id="expand_type">
+                    <option value="0">全部</option>
+                    <option value="1" {% if form.expand_type.data == 1 %}selected{% end %}>主银行拓展</option>
+                    <option value="2" {% if form.expand_type.data == 2 %}selected{% end %}>同业银行拓展</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p class="form-control-static">所属银行名称:</p>
+                <input type="text" class="form-control search-criteria" id="bk_name" name="bk_name" value="{{ form.bk_name.data or '' }}" placeholder="所属银行名称"/>
+            </div>
+
+            <div class="form-group">
+                <p class="form-control-static">所属银行编号:</p>
+                <input type="text" class="form-control search-criteria" id="bk_id" name="bk_id" value="{{ form.bk_id.data or '' }}" placeholder="所属银行编号"/>
+            </div>
+        {% end %}
+
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>结算日期</th>
+                <th>交易日期</th>
+                <th>商户名称</th>
+                <th>商户简称</th>
+                <th>所属渠道商</th>
+                <th>结算户名</th>
+                <th>支付渠道</th>
+                <th>结算账号</th>
+                <th>金额</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+
+            {% for create_at,need_pay_time,mch_name,mch_shortname,dt_name,rcvAcctName,channel,balance_account,tranAmt,pay_status,mch_daily_balance_no,dt_short_name,cs_id,_ in data %}
+            <tr>
+                <td>{{ create_at }}</td>
+                <td>{{ need_pay_time }}</td>
+                <td>{{ mch_name }}</td>
+                {% if dt_short_name %}
+                    <td>
+                        {{ dt_short_name }}
+                        <span style="color: #007FFF">({{ mch_shortname }})</span>
+                    </td>
+                {% else %}
+                    <td>{{ mch_shortname }}</td>
+                {% end %}
+                <td>{{ dt_name }}</td>
+                <td>{{ rcvAcctName }}</td>
+                <td>{{ channel }}</td>
+                <td>{{ balance_account }}</td>
+                <td class="formatting-money">{{ tranAmt }}</td>
+                <td>{{ pay_status }}</td>
+                <td>
+                    <a href="/official/balance/mch/list?mdb_no={{ mch_daily_balance_no }}&cs_id={{ cs_id }}">详情</a>
+                </td>
+            </tr>
+            {% end %}
+
+        </tbody>
+    </table>
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+</div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript" src="/static/official/js/replaceBalanceMchJumpUrl.js"></script>
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/common/js/search_criteria.js" ></script>
+{% end %}
+<!-- 引入js文件  end-->

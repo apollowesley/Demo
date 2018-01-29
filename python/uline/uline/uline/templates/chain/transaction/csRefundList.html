@@ -1,0 +1,146 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户退款详情(连锁商户)</title>
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+	<div class="hf-head">
+		<div class="headBox">
+			<span class="headLi">
+				<img src="/static/common/image/biaozhi.png"  />
+				<a href="/chain/transaction/refund">交易管理(商户退款)</a>
+				<span class="advancing">></span>
+				<a href="javascript:;" >商户退款详情</a>
+			</span>
+		</div>
+	</div>
+
+	<div id="refund-conten">
+
+		<div class="singleNumber">
+
+			<ul class='sn_left'>
+				<li>
+					<label>第三方交易号</label>
+					<span>{{ data['transaction_id'] }}</span>
+				</li>
+
+				<li>
+					<label>uline交易号</label>
+					<span>{{ data['out_trade_no'] }}</span>
+				</li>
+
+				<li>
+					<label>门店交易号</label>
+					<span>{{ data['mch_trade_no'] }}</span>
+				</li>
+			</ul>
+
+			<ul class='sn_right'>
+				<li>
+					<label>第三方退款单号</label>
+					<span>{{ data['refund_id'] }}</span>
+				</li>
+
+				<li>
+					<label>uline退款单号</label>
+					<span>{{ data['out_refund_no'] }}</span>
+				</li>
+
+				<li>
+					<label>门店退款单号</label>
+					<span>{{ data['mch_refund_no'] }}</span>
+				</li>
+			</ul>
+
+		</div>
+
+		<div class='singleNumber singleHeight'>
+			<ul class="sn_left">
+				<li>
+					<label>门店名称</label>
+					<span>{{ data['mch_name'] }}</span>
+				</li>
+
+				<li>
+					<label>门店简称</label>
+					<span>{{ data['mch_shortname'] }}</span>
+				</li>
+
+				<li>
+					<label>渠道商编号</label>
+					<span>{{ data['dt_id'] }}</span>
+				</li>
+
+				<li>
+					<label>支付类型</label>
+					<span>{{ data['trade_type'] }}</span>
+				</li>
+
+				<li>
+					<label>交易金额</label>
+					<span class="formatting-money">{{ data['total_fee'] }}</span>
+				</li>
+			</ul>
+
+			<ul class="sn_right">
+				<li>
+					<label>门店编号</label>
+					<span>{{ data['mch_id'] }}</span>
+				</li>
+
+				<li>
+					<label>所属渠道商</label>
+					<span>{{ data['dt_name'] }}</span>
+				</li>
+
+				<li>
+					<label>第三方门店号</label>
+					<span>{{ data['sub_mch_id'] }}</span>
+				</li>
+
+				<li>
+					<label>退款金额</label>
+					<span class="formatting-money">{{ data['refund_fee'] }}</span>
+				</li>
+
+				<li>
+					<label>对账状态</label>
+					<span>
+						{% if data['checked_flag'] == 1 %}
+						<a href="/chain/recon/refund/list?refund_id={{ data['refund_id'] }}"><span>对账异常</span>查看</a>
+						{% elif data['checked_flag'] == 0 %}
+						<span>对账成功</span>
+						{% else %}
+						<span>未对账</span>
+						{% end %}
+					</span>
+				</li>
+			</ul>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>变更时间</th>
+					<th>状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ data['created_at'] }}</td>
+					<td>{{ data['refund_status'] }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+{% end %}
+<!-- 引入js文件  end-->

@@ -1,0 +1,55 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>交易账单（渠道商）</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+<div class="form-horizontal" style="padding-top:50px;">
+    <form action="/common/downloads_bill" class="form-horizontal base-rec-form">
+        <input type="hidden" name="charac_id" value="1">
+        <div class="form-group ">
+            <label class="col-md-2 control-label">用户类型:</label>
+            <div class="col-md-2">
+                <select name="query_charac" class="form-control">
+                    <option value="1">渠道商</option>
+                    <option value="2">商户</option>
+                    <option value="3">门店</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" name="id" id="search_name" title="" >
+                    <option value="" ></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom:20px;">
+            <label class="col-md-2 control-label">创建时间:</label>
+            <div class="col-md-2">
+                <input type="text" class="form_datetime form-control" id="create_at_start" name="create_at_start"
+                       placeholder="请选择开始时间" value="">
+            </div>
+            <span style="float:left;">—</span>
+            <div class="col-md-2">
+                <input type="text" class="form_datetime form-control" id="create_at_end" name="create_at_end"
+                       placeholder="请选择结束时间" value="">
+            </div>
+        </div>
+        <div class="col-lg-offset-2 error-tip" style="margin-bottom:20px;display:none;"></div>
+        <div class="col-lg-offset-2" style="padding-left:5px;">
+            <button type="submit" data-click="send" class="btn btn-default">下载对账单</button>
+        </div>
+
+    </form>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script>var id="{{ id }}";var id_name="{{ name }}";</script>
+<script src="/static/common/js/downloads_bill_controller.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

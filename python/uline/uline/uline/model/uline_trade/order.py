@@ -1,0 +1,85 @@
+# coding: utf-8
+from sqlalchemy import BigInteger, Boolean, Column, DateTime, Float, Integer, String
+from sqlalchemy import Sequence
+
+from .base import Model as Base
+
+order_refunds_id_seq = Sequence('order_refunds_id_seq', metadata=Base.metadata)
+orders_id_seq = Sequence('orders_id_seq', metadata=Base.metadata)
+
+
+class OrderRefund(Base):
+    __tablename__ = 'order_refunds'
+
+    id = Column(BigInteger, primary_key=True)
+    channel = Column(String)
+    appid = Column(String)
+    mch_id = Column(String)
+    sub_appid = Column(String)
+    sub_mch_id = Column(String, index=True)
+    device_info = Column(String)
+    transaction_id = Column(String)
+    out_trade_no = Column(String, index=True)
+    out_refund_no = Column(String)
+    total_fee = Column(Integer)
+    total_refund_fee = Column(Integer)
+    refund_fee = Column(Integer)
+    refund_fee_type = Column(String)
+    op_user_id = Column(String)
+    refund_account = Column(String)
+    refund_id = Column(String, index=True)
+    refund_channel = Column(String)
+    coupon_refund_fee = Column(Integer)
+    refund_status = Column(String)
+    checked_flag = Column(Integer)
+    ul_mch_id = Column(String, index=True)
+    created_at = Column(DateTime)
+    mch_trade_no = Column(String)
+    mch_refund_no = Column(String, index=True)
+    service_fee = Column(Integer)
+    service_rate = Column(Float(53))
+
+
+class Order(Base):
+    __tablename__ = 'orders'
+
+    id = Column(BigInteger, primary_key=True)
+    channel = Column(String)
+    appid = Column(String)
+    sub_appid = Column(String)
+    mch_id = Column(String)
+    sub_mch_id = Column(String, index=True)
+    device_info = Column(String)
+    body = Column(String)
+    detail = Column(String)
+    attach = Column(String)
+    out_trade_no = Column(String, index=True)
+    total_fee = Column(Integer)
+    fee_type = Column(String)
+    spbill_create_ip = Column(String)
+    goods_tag = Column(String)
+    limit_pay = Column(String)
+    auth_code = Column(String)
+    bank_type = Column(String)
+    cash_fee_type = Column(String)
+    cash_fee = Column(Integer)
+    settlement_total_fee = Column(Integer)
+    coupon_fee = Column(Integer)
+    wx_transaction_id = Column(String, index=True)
+    time_end = Column(String)
+    trade_type = Column(String)
+    created_at = Column(DateTime)
+    complete_at = Column(DateTime)
+    notify_url = Column(String)
+    notify_queued = Column(Boolean)
+    notify_count = Column(Integer)
+    notify_successed = Column(Boolean)
+    checked_flag = Column(Integer)
+    trade_state = Column(String)
+    ul_mch_id = Column(String)
+    openid = Column(String)
+    sub_openid = Column(String)
+    mch_trade_no = Column(String)
+    service_fee = Column(Integer)
+    service_rate = Column(Float(53))
+    dt_id = Column(String)

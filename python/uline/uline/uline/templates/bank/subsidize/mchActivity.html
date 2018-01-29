@@ -1,0 +1,303 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>活动商户管理(银行)</title>
+<link rel="stylesheet" href="/static/common/css/step.css">
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/bank/subsidize/mch" method="GET">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">搜索</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">参与状态:</p>
+            <select class="form-control search-criteria" name="status" id="status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.status.data == 1 %}selected{% end %}>参与中</option>
+                <option value="2" {% if form.status.data == 2 %}selected{% end %}>已停止</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道:</p>
+            <input type="text" class="form-control search-criteria" name="dt_name" value="{{ form.dt_name.data or '' }}" id="dt_name"
+                   placeholder="请输入渠道名称">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道编号:</p>
+            <input type="text" class="form-control search-criteria" name="dt_id" value="{{ form.dt_id.data or '' }}" id="dt_id"
+                   placeholder="请输入渠道编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户名称:</p>
+            <input type="text" class="form-control search-criteria" name="mch_name" id="mch_name" value="{{ form.mch_name.data or '' }}" placeholder="请输入商户名称"/>
+        </div>
+
+       <div class="form-group">
+            <p class="form-control-static">商户编号:</p>
+            <input type="text" class="form-control search-criteria" name="mch_id" id="mch_id" value="{{ form.mch_id.data or '' }}" placeholder="请输入商户编号"/>
+        </div>
+
+    </form>
+
+    <div class="addChannl" style="margin-bottom:10px;">
+        <a class="btn btn-default add-activity-btn" href="javascript:;">新增活动商户</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>商户编号</th>
+                <th>商户名称</th>
+                <th>商户简称</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+            {% for subsidize_info in subsidize_list %}
+            <tr>
+                <td>{{subsidize_info.get('role_id', '')}}</td>
+                <td>{{subsidize_info.get('role_name', '')}}</td>
+                <td>{{subsidize_info.get('role_shortname', '')}}</td>
+                <td>
+                    {% if subsidize_info.get('valid', '') == 2 %}
+                      已停止
+                    {% elif subsidize_info.get('valid', '') == 1%}
+                      参与中
+                    {% end %}
+                </td>
+                <td>
+                    <a href="javascript:;" class="update-activity m-right-5" onclick="getInfo({{subsidize_info.get('role_id', '')}},'update','bank')">修改</a>
+                    <a href="javascript:;" class="activityInfo" onclick="getInfo({{subsidize_info.get('role_id', '')}},'info','bank')">详情</a>
+                </td>
+            </tr>
+            {% end %}
+        </tbody>
+    </table>
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+
+    <!-- 模态框（Modal）新增活动商户 -->
+    <div class="modal fade base-modal" id="addActivity" tabindex="-1" role="dialog"
+             aria-hidden="true">
+        <div class="modal-dialog batch">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">新增活动商户</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="step-list">
+                        <ul class="clearfix">
+                            <li class="on">
+                                <i>1</i>
+                                <span class="right"></span>
+                                <p>选择商户</p>
+                            </li>
+                            <li>
+                                <i>2</i>
+                                <span></span>
+                                <p>设置活动补贴</p>
+                            </li>
+                            <li>
+                                <i>3</i>
+                                <span class="left"></span>
+                                <p>完成</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pop-step-box">
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">商户编号</span>
+                            <div class="float-left base-input">
+                                <input type="text" name="role_id" class="col-md-11" maxlength="12" placeholder="请输入商户编号" value="">
+                            </div>
+                        </div>
+                        <div class="base-offset-label"><p class="base-error-c"></p></div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">商户名称</span>
+                            <div class="float-left base-input">
+                                <p class="c-999 mch-name">无需填写，自动读取商户编号相关信息</p>
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">商户简称</span>
+                            <div class="float-left base-input">
+                                <p class="c-999 mch-shortname">无需填写，自动读取商户编号相关信息</p>
+                            </div>
+                        </div>
+                        <p class="base-offset-label"><span class="base-btn cursor first-btn">下一步</span></p>
+                    </div>
+                    <div class="pop-step-box base-hide">
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">手续费补贴</span>
+                            <div class="float-left base-input">
+                                <p class="c-999">银行给商户的补贴，按百分比计算返还</p>
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">微信支付</span>
+                            <div class="float-left base-input">
+                                <input type="text" name="weixin" class=" col-md-5 m-right-5" maxlength="3" placeholder="" value=""> %
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">支付宝</span>
+                            <div class="float-left base-input">
+                                <input type="text" name="alipay" class=" col-md-5 m-right-5" maxlength="3" placeholder="" value=""> %
+                            </div>
+                        </div>
+                        <p class="base-offset-label"><span class="base-btn cursor second-btn add-send-btn">提交</span></p>
+                    </div>
+                    <div class="pop-step-box text-center base-hide">
+                        <div class="base-form-pop clearfix">
+                            <p>新增活动商户成功</p>
+                        </div>
+                        <p class=""><span class="base-btn cursor" onclick="window.location.reload();">完成</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框（Modal）修改活动商户 -->
+    <div class="modal fade base-modal" id="updateActivity" tabindex="-1" role="dialog"
+             aria-hidden="true">
+            <div class="modal-dialog batch">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">新增活动商户</h4>
+                    </div>
+                    <div class="modal-body text-left">
+
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">商户编号</span>
+                            <div class="float-left base-input">
+                                <p class="update-mch-id">10000531776</p>
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">商户名称</span>
+                            <div class="float-left base-input">
+                                <p class="update-mch-name">上海瑞然美容美发有限公司</p>
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">商户简称</span>
+                            <div class="float-left base-input">
+                                <p class="update-mch-shortname">瑞拉国际SPA会所</p>
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">参与状态</span>
+                            <div class="float-left base-input">
+                                <select name="" class="update-mch-status col-md-11">
+                                    <option value="1">参与</option>
+                                    <option value="2">停止</option>
+                                </select>
+                            </div>
+                        </div>
+                        <h4 style="margin-top:20px;font-size:16px;font-weight:bold;">手续费补贴</h4>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">微信支付</span>
+                            <div class="float-left base-input">
+                                <input type="text" class="update-mch-weixin col-md-5 m-right-5" maxlength="3" placeholder="" value=""> %
+                            </div>
+                        </div>
+                        <div class="base-form-pop clearfix">
+                            <span class="float-left base-label">支付宝</span>
+                            <div class="float-left base-input">
+                                <input type="text" class="update-mch-alipay col-md-5 m-right-5" maxlength="3" placeholder="" value=""> %
+                            </div>
+                        </div>
+                        <p class="base-offset-label"><span class="base-btn cursor second-btn" onclick="updateActivity()">确定</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- 模态框（Modal）活动商户详情 -->
+    <div class="modal fade base-modal" id="activityInfo" tabindex="-1" role="dialog"
+             aria-hidden="true">
+            <div class="modal-dialog batch" style="width:700px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">活动商户详情</h4>
+                    </div>
+                    <div class="modal-body text-left">
+                        <table class="table base-activity-table">
+                            <tr>
+                                <td>创建时间</td>
+                                <td td-name="create_at"></td>
+                            </tr>
+                            <tr>
+                                <td>商户编号</td>
+                                <td td-name="role_id"></td>
+                            </tr>
+                            <tr>
+                                <td>商户名称</td>
+                                <td td-name="role_name"></td>
+                            </tr>
+                            <tr>
+                                <td>商户简称</td>
+                                <td td-name="role_shortname"></td>
+                            </tr>
+                            <tr>
+                                <td>所属渠道名称</td>
+                                <td td-name="dt_name"></td>
+                            </tr>
+                            <tr>
+                                <td>所属渠道编号</td>
+                                <td td-name="dt_id"></td>
+                            </tr>
+                            <tr>
+                                <td>参与状态</td>
+                                <td class="table-valid"></td>
+                            </tr>
+                            <tr>
+                                <td>微信手续费补贴</td>
+                                <td class="table-weixin"></td>
+                            </tr>
+                            <tr>
+                                <td>支付宝手续费补贴</td>
+                                <td class="table-alipay"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/bank/js/mch_activity.js" ></script>
+{% end %}
+<!-- 引入js文件  end-->

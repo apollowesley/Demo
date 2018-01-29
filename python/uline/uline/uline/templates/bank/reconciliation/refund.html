@@ -1,0 +1,102 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>退款对账异常(银行)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/bank/recon/refund" method="post">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">查询</button><br>
+            <button type="submit" class="btn btn-default" id="exportExcel">导出</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">创建日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control "
+                       id="create_at_start" name="create_at_start" value="{{ form.create_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control "
+                       id="create_at_end" name="create_at_end" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户订单号:</p>
+            <input type="text" class="form-control" name="out_refund_no" id="out_refund_no"
+                   value="{{ form.out_refund_no.data or '' }}" placeholder="商户订单号"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">处理状态:</p>
+            <select class="form-control" name="handle_status" id="handle_status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.handle_status.data == 1 %}selected{% end %}>等待处理</option>
+                <option value="2" {% if form.handle_status.data == 2 %}selected{% end %}>已调账</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">异常类型:</p>
+            <select class="form-control" name="except_type" id="except_type">
+                <option value="0">全部</option>
+                <option value="1" {% if form.except_type.data == 1 %}selected{% end %}>数据错误</option>
+                <option value="2" {% if form.except_type.data == 2 %}selected{% end %}>短帐</option>
+                <option value="3" {% if form.except_type.data == 3 %}selected{% end %}>多帐</option>
+            </select>
+        </div>
+
+    </form>
+
+
+    <div id="tableBox">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>对账时间</th>
+                    <th>商户订单号</th>
+                    <th>uline对账金额</th>
+                    <th>第三方对账金额</th>
+                    <th>异常类型</th>
+                    <th>处理状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyBox">
+                {% for create_at,out_refund_no,except_type,handle_status,_,wx_fee,ul_fee in data %}
+                <tr>
+                    <td>{{ create_at }}</td>
+                    <td>{{ out_refund_no }}</td>
+                    <td class="formatting-money">{{ wx_fee }}</td>
+                    <td class="formatting-money">{{ ul_fee }}</td>
+                    <td>{{ handle_status }}</td>
+                    <td>{{ except_type }}</td>
+                    <td><a href="/bank/recon/refund/list?out_refund_no={{ out_refund_no }}">详情</a></td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/bank/js/replaceReconRefundJumpUrl.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

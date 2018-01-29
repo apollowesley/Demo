@@ -1,0 +1,179 @@
+{% extends '../base.html' %}
+{% module xsrf_form_html() %}
+
+{% block title %}
+<title>连锁门店进件(渠道商)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/dist/inlet/cs" method="post">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">查询</button><br>
+            <button type="submit" class="btn btn-default" id="exportExcel">导出</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">创建时间:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control search-criteria" id="create_at_start" name="create_at_start"
+                       placeholder="" value="{{ form.create_at_start.data or ''}}" >
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control search-criteria" id="create_at_end" name="create_at_end"
+                       placeholder="" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">激活状态:</p>
+            <select class="form-control search-criteria" name="activated_status" title="" id="activated_status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.activated_status.data== 1 %}selected{% end %}>未激活</option>
+                <option value="2" {% if form.activated_status.data== 2 %}selected{% end %}>已激活</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">审核状态:</p>
+            <select class="form-control search-criteria" name="auth_status" id="auth_status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.auth_status.data== 1 %}selected{% end %}>审核中</option>
+                <option value="2" {% if form.auth_status.data== 2 %}selected{% end %}>审核通过</option>
+                <option value="3" {% if form.auth_status.data== 3 %}selected{% end %}>审核驳回</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+                <p class="form-control-static">所属商户名称:</p>
+                <input type="text" class="form-control search-criteria" name="cs_name" id="cs_name" value="{{ form.cs_name.data or '' }}" placeholder="所属商户名称"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属商户编号:</p>
+            <input type="text" class="form-control search-criteria" name="cs_id" id="cs_id" value="{{ form.cs_id.data or '' }}" placeholder="所属商户编号"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">门店简称:</p>
+            <input type="text" class="form-control" id="short_name" name="short_name" value="{{ form.short_name.data or '' }}" placeholder="门店简称"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">门店编号:</p>
+            <input type="text" class="form-control search-criteria" id="mch_id" name="mch_id" value="{{ form.mch_id.data or '' }}" placeholder="门店编号"/>
+        </div>
+    </form>
+    <div class="btnBox">
+        <div class="addNew">
+            <a class="btn btn-default" href="/dist/inlet/cs/add">新增</a>
+        </div>
+        <div>
+            <a class="btn btn-default" href="#" data-toggle="modal" data-target="#myModal">批量导入</a>
+        </div>
+        <!-- 模态框（Modal） -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog batch">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <form action="" method="post" id="batchMchInlet">
+                        {% module xsrf_form_html() %}
+                        <div class="modal-body">
+                            <div>
+                                <h4 class="modal-title" id="myModalLabel">请选择Excel文件</h4>
+                                <div>
+                                    <a href="/static/handbook/ULINE_CS_INLET_TEMPLATE_V2.1.xlsx" class="form-control template"
+                                       style="border:none;">下载Excel导入模板</a>
+                                    <a href="/static/handbook/ULINE_INLET_INFO_REFERENCE.zip" class="form-control template"
+                                       style="border:none;">下载数据字典对照表</a>
+                                    <input type="file" name="xls_file" id="xls_file" value="" multiple
+                                           class="file-loading"/>
+                                </div>
+                            </div>
+
+                            <div id="myModalImg"></div>
+
+                            <div class="goNext" id="goNext"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tableBox">
+        <div class="tab_left">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>门店编号</th>
+                        <th>所属商户名称</th>
+                        <th>门店简称</th>
+                        <th>激活状态</th>
+                        <th>审核状态</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbodyBox">
+                    {% for chain_id,chain_name,chain_shortname,activated_status,auth_status,_,cs_short_name,_,_ in data %}
+
+                    <tr onclick="openNewTable({{ chain_id }})" id="tr_{{ chain_id }}">
+                        <td>{{ chain_id }}</td>
+                        <td>{{ chain_name }}</td>
+                        <td>{{cs_short_name}}<a style="text-decoration: none;"> ({{ chain_shortname }})</a></td>
+                        <td>{% if activated_status == 1 %}未激活{% elif activated_status == 2 %}已激活{% else %}初始状态{% end %}</td>
+                        <td>{{print_status(auth_status)}}</td>
+                    </tr>
+
+                    {% end %}
+                </tbody>
+            </table>
+
+            <!--分页-->
+            <div>
+                {% autoescape None %}
+                {{ navigate_html }}
+            </div>
+
+        </div>
+
+        <div class="pull-right" id="mchPayInfo"></div>
+
+    </div>
+
+
+</div>
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript"> var total_num={{ total_num }};var QR_SCAN_URL="{{ QR_SCAN_URL }}";</script>
+<script type="text/javascript" src="/static/common/libs/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/bootstrap-fileinput/js/locales/zh.js"></script>
+<script type="text/javascript" src="/static/common/js/zero_rate_noedit.js"></script>
+<script type="text/javascript" src="/static/distributor/js/get_cs_info.js"></script>
+<script type="text/javascript" src="/static/distributor/js/upload_chain_xls.js"></script>
+<script type="text/javascript" src="/static/common/js/search_sub_user.js"></script>
+
+<script type="text/javascript">
+    $().ready(function(){
+        var fun = 1;
+        if(fun == 2){
+          $(".addNew").after("<div class='newSuccess'>新增成功</div>");
+          $(".newSuccess").fadeIn(3000).delay(1000).fadeOut(2000)
+        }
+    });
+</script>
+{% end %}
+<!-- 引入js文件  end-->

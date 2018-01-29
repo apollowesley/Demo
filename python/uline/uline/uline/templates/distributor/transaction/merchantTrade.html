@@ -1,0 +1,207 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户交易管理(渠道商)</title>
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+    <form class="form-inline export-xls" action="/dist/transaction/trade" method="post">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right " id="search">搜索</button><br>
+            <button type="submit" class="btn btn-default" id="exportExcel">导出</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">支付日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control"
+                       id="complete_at_start" name="complete_at_start" value="{{ form.complete_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control"
+                       id="complete_at_end" name="complete_at_end" value="{{ form.complete_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户名称:</p>
+            <input type="text" class="form-control" name="mch_name" id="mch_name"
+                   value="{{ form.mch_name.data or '' }}" placeholder="商户">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户编号:</p>
+            <input type="text" class="form-control" name="mch_id" id="mch_id"
+                   value="{{ form.mch_id.data or '' }}" placeholder="商户编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户/门店简称:</p>
+            <input type="text" class="form-control inputAll" name="cs_mch_shortname" id="cs_mch_shortname"
+                   value="{{ form.cs_mch_shortname.data or '' }}" placeholder="商户">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">门店编号:</p>
+            <input type="text" class="form-control inputAll" name="cs_mch_id" id="cs_mch_id"
+                   value="{{ form.cs_mch_id.data or '' }}" placeholder="商户编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户交易号:</p>
+            <input type="text" class="form-control" name="mch_trade_no" id="mch_trade_no"
+                   value="{{ form.mch_trade_no.data or '' }}" placeholder="商户交易号">
+        </div>
+
+
+        <div class="form-group">
+            <label  class=" control-label">业务员</label>
+            <select class="form-control" style="width:150px;"  id="dt_sub_id" name="dt_sub_id" title="" all="true">
+                {% if form.dt_sub_id.data %}
+                <option value="{{ form.dt_sub_id.data or '' }}" selected></option>
+                {% end %}
+            </select>
+        </div>
+        <div class="form-group">
+            <p class="form-control-static">状态:</p>
+            <select class="form-control" name="trade_state" id="trade_state">
+                <option value="">全部</option>
+                <option value="NOTPAY" {% if form.trade_state.data=='NOTPAY'%}selected{% end %}>等待支付</option>
+                <option value="SUCCESS" {% if form.trade_state.data=='SUCCESS'%}selected{% end %}>支付成功</option>
+                <option value="REFUND" {% if form.trade_state.data=='REFUND'%}selected{% end %}>等待退款</option>
+                <option value="CLOSED" {% if form.trade_state.data=='CLOSED'%}selected{% end %}>退款成功</option>
+                <option value="REVOKED" {% if form.trade_state.data=='REVOKED'%}selected{% end %}>支付关闭</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">支付渠道:</p>
+            <select class="form-control" name="channel" id="channel">
+                <option value="">全部</option>
+                <option value="weixin" {% if form.channel.data=='weixin'%}selected{% end %}>微信</option>
+                <option value="alipay" {% if form.channel.data=='alipay'%}selected{% end %}>支付宝</option>
+                {% if has_jdpay %}
+                <option value="jdpay" {% if form.channel.data=='jdpay'%}selected{% end %}>京东支付</option>
+                {% end %}
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <p class="form-control-static">支付类型:</p>
+            <select class="form-control" name="trade_type" id="trade_type">
+                <option value="">全部</option>
+                <option value="NATIVE" {% if form.trade_type.data=='NATIVE'%}selected{% end %}>微信-扫码支付</option>
+                <option value="MICROPAY" {% if form.trade_type.data=='MICROPAY'%}selected{% end %}>微信-刷卡支付</option>
+                <option value="JSAPI" {% if form.trade_type.data=='JSAPI'%}selected{% end %}>微信-公众号支付</option>
+                <option value="APP" {% if form.trade_type.data=='APP'%}selected{% end %}>微信-APP支付</option>
+                {% if h5 %}
+                <option value="MWEB" {% if form.trade_type.data=='MWEB'%}selected{% end %}>微信-H5支付</option>
+                {% end %}
+                <option value="ALIPAY.JSAPI" {% if form.trade_type.data=='ALIPAY.JSAPI'%}selected{% end %}>支付宝-JS支付</option>
+                <option value="ALIPAY.NATIVE" {% if form.trade_type.data=='ALIPAY.NATIVE'%}selected{% end %}>支付宝-扫码支付</option>
+                <option value="ALIPAY.MICROPAY" {% if form.trade_type.data=='ALIPAY.MICROPAY'%}selected{% end %}>支付宝-刷卡支付</option>
+                {% if has_jdpay %}
+                <option value="JDPAY.JSAPI" {% if form.trade_type.data=='JDPAY.JSAPI'%}selected{% end %}>京东-JS支付</option>
+                <option value="JDPAY.NATIVE" {% if form.trade_type.data=='JDPAY.NATIVE'%}selected{% end %}>京东-扫码支付</option>
+                <option value="JDPAY.MICROPAY" {% if form.trade_type.data=='JDPAY.MICROPAY'%}selected{% end %}>京东-刷卡支付</option>
+                <option value="JDPAY.H5" {% if form.trade_type.data=='JDPAY.H5'%}selected{% end %}>京东-H5支付</option>
+                <option value="JDPAY.H5_DEBIT" {% if form.trade_type.data=='JDPAY.H5_DEBIT'%}selected{% end %}>京东-H5支付（借记卡）</option>
+                {% end %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">uline交易号:</p>
+            <input type="text" class="form-control search-criteria" name="out_trade_no" id="out_trade_no"
+                   value="{{ form.out_trade_no.data or '' }}" placeholder="uline交易号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static ">第三方交易号:</p>
+            <input type="text" class="form-control search-criteria" name="wx_transaction_id" id="wx_transaction_id"
+                   value="{{ form.wx_transaction_id.data or '' }}" placeholder="第三方交易号">
+        </div>
+    </form>
+
+    <div class="transaction-title">
+    {% if all_total_fee != '--' %}
+    交易合计: <span class="formatting-money">{{ total_num }} </span>笔 , 共<span class="formatting-money">{{ all_total_fee }}</span> 元
+    {% else %}
+    交易合计: <span  class="formatting-money">{{ all_total_fee }} </span>（合计时间范围不能超过21天）
+    {% end %}
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>支付日期</th>
+                <th>
+                    <span>uline交易号</span>
+                    <span>/</span>
+                    <span>商户交易号</span>
+                </th>
+                <th>商户名称</th>
+                <th>商户简称</th>
+                <th>支付渠道</th>
+                <th>支付类型</th>
+                <th>交易金额</th>
+                <th>当前状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+            {% for _,complete_at,out_trade_no,mch_trade_no,trade_state,trade_type,total_fee,channel,_,mch_name,mch_shortname,dt_short_name,cs_id,chain_dt_name in data %}
+            <tr>
+                <td>{{ complete_at }}</td>
+                <td>
+                    <p>{{ out_trade_no }}</p>
+                    <div>{{ mch_trade_no }}</div>
+                </td>
+                      {% if chain_dt_name %}
+                    <td>
+                        {{ chain_dt_name }}
+                    </td>
+                {% else %}
+                     <td>{{ mch_name }}</td>
+                {% end %}
+                {% if dt_short_name %}
+                    <td>
+                        {{ dt_short_name }}
+                        <span style="color: #007FFF">({{ mch_shortname }})</span>
+                    </td>
+                {% else %}
+                    <td>{{ mch_shortname }}</td>
+                {% end %}
+                <td>{{ channel }}</td>
+                <td>{{ trade_type }}</td>
+                <td class="formatting-money">{{ total_fee }}</td>
+                <td>{{ trade_state }}</td>
+                <td>
+                    <a href="/dist/transaction/trade/list?out_trade_no={{ out_trade_no }}&cs_id={{ cs_id }}">详情</a>
+                </td>
+            </tr>
+            {% end %}
+        </tbody>
+    </table>
+
+     <div>
+         {% autoescape None %}
+         {{ navigate_html }}
+     </div>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/distributor/js/replaceTranTradeJumpUrl.js"></script>
+<script type="text/javascript" src="/static/common/js/search_sub_user.js"></script>
+<script type="text/javascript" src="/static/common/js/search_payments.js"></script>
+
+{% end %}
+<!-- 引入js文件  end-->

@@ -1,0 +1,465 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户进件(商户)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+    <div id="main-content">
+        <table class="table-info m-bottom">
+            <thead>
+                <tr>
+                    <th colspan="2">商户信息</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="250px">商户编号</td>
+                    <td>
+                        {{ form['mch_id'] }}
+                        <div class="modal fade" id="qrCode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"
+                                                aria-hidden="true">&times;</button>
+                                        <h3 class="modal-title">商户固定收款码</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div id="mch_qrCode"></div>
+                                        <p class='qrcode-btn'><a class='code' href='{{ download_qr_url[0] }}'><i class='fa fa-download m-right-5'></i>5cm*5cm</a></p>
+                                        <p class='qrcode-btn'><a class='code' href='{{ download_qr_url[1] }}'><i class='fa fa-download m-right-5'></i>8cm*8cm</a></p>
+                                        <p class='qrcode-btn'><a class='code' href='{{ download_qr_url[2] }}'><i class='fa fa-download m-right-5'></i>15cm*15cm</a></p>
+                                    </div>
+                                    <div class="modal-footer center-block">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href='#' data-toggle="modal" data-target="#qrCode" class="ewm"><span style="margin-left: 18px;">二维码</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="250px">微信商户编号</td>
+                    <td>
+                        <p>线下：{% if form['wx_sub_mch_id'] %}{{ form['wx_sub_mch_id'] }}{% else %} 无 {% end %}</p>
+                        <p>线上：{% if form['wx_app_sub_mch_id'] %}{{ form['wx_app_sub_mch_id'] }}{% else %} 无 {% end %}</p>
+                    </td>
+                </tr>
+                {% if form['ali_sub_mch_id'] %}
+                <tr>
+                    <td width="250px">支付宝商户号（线下）</td>
+                    <td>{{ form['ali_sub_mch_id'] }} </td>
+                </tr>
+                {% end %}
+                {% if form['ali_level'] %}
+                <tr>
+                    <td width="250px">支付宝商户分级</td>
+                    <td><em>{{ form['ali_level'] }} </em><a href='javascript:;' onclick='updateAliLevel({{ form['mch_id'] }},$(this))'>  更新</a></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td width="250px">支付宝商户分级</td>
+                    <td><em>-- </em><a href='javascript:;' onclick='updateAliLevel({{ form['mch_id'] }},$(this))'>  更新</a></td>
+                </tr>
+                {% end %}
+                {% if form['jd_sub_mch_id'] %}
+                <tr>
+                    <td width="250px">京东商户号</td>
+                    <td>{{ form['jd_sub_mch_id'] }}</td>
+                </tr>
+                {% end %}
+                {% if form['unionpay_level'] %}
+                <tr>
+                    <td width="250px">银联商户等级</td>
+                    <td>{{ form['unionpay_level'] }}</td>
+                </tr>
+                {% end %}
+                <tr>
+                    <td width="250px">商户名称</td>
+                    <td>{{ form['mch_name'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">商户简称</td>
+                    <td>{{ form['mch_shortname'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">渠道名称</td>
+                    <td>{{ form['dt_name'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">经营类目</td>
+                    <td>{{ form['u_ind_name'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">审核状态</td>
+                    <td>{{ form['auth_status'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">激活状态</td>
+                    <td>{{ form['activated_status'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">审核记录</td>
+                    <td>
+                        <div class="record-list-overflow">
+                            {% for data in form['auth_info'] %}
+                            <div>{{ data['auth_at'] }}<span>{{ data['comment'] }}</span></div>
+                            {% end %}
+                            {% for data in form['activated_info'] %}
+                            <div>{{ data['activated_at'] }} {{data['payment_type']}} <span>{{ data['comment'] }}</span></div>
+                            {% end %}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-info m-bottom">
+            <thead>
+                <tr>
+                    <th colspan="2">基本信息</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="250px">省份城市</td>
+                    <td>{{ form['province'] }} {{ form['city'] }} {% if form['district'] %}{{ form['district'] }}{% end %}</td>
+                </tr>
+                <tr>
+                    <td width="250px">联系地址</td>
+                    <td>{{ form['address'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">联系人</td>
+                    <td>{{ form['contact'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">手机号码</td>
+                    <td>{{ form['mobile'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">电子邮箱</td>
+                    <td>{{ form['email'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-info m-bottom">
+            <thead>
+                <tr>
+                    <th colspan="2">结算信息</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="250px">结算账号类型</td>
+                    <td>{% if form['balance_type']==1 %}企业{% elif form['balance_type']==2 %}个人{% end %}</td>
+                </tr>
+                <tr>
+                    <td width="250px">结算户名</td>
+                    <td>{{ form['balance_name'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">结算银行</td>
+                    <td>{{ form['bank_name'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">结算帐号</td>
+                    <td>{{ form['balance_account'] }}</td>
+                </tr>
+                {% if form['head_type'] %}
+                <tr>
+                    <td width="250px">负责人类型</td>
+                    <td>{{ head_type_map.get(form['head_type'], '') }}</td>
+                </tr>
+                {% end %}
+                {% if form['head_name'] %}
+                <tr>
+                    <td width="250px">负责人姓名</td>
+                    <td>{{ form['head_name'] }}</td>
+                </tr>
+                {% end %}
+                {% if form['head_mobile'] %}
+                <tr>
+                    <td width="250px">负责人电话</td>
+                    <td>{{ form['head_mobile'] }}</td>
+                </tr>
+                {% end %}
+                <tr>
+                    <td width="250px">身份证号码</td>
+                    <td>{{ form['id_card_no'] }}</td>
+                </tr>
+                <tr>
+                    <td width="250px">身份证照片</td>
+                    <td>
+                        <div class="displayImg">
+                            <a href="{{ form['id_card_img_f'] }}" target="_blank"><img src="{{ form['id_card_img_f'] }}"/></a>
+                            <a href="{{ form['id_card_img_b'] }}" target="_blank"><img src="{{ form['id_card_img_b'] }}"/></a>
+                            {% if form['img_with_id_card'] %}
+                            <a href="{{ form['img_with_id_card'] }}" target="_blank"><img src="{{ form['img_with_id_card'] }}"/></a>
+                            {% end %}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table-info m-bottom">
+            <thead>
+                <tr>
+                    <th colspan="2">营业执照信息</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if form['license_type'] %}
+                <tr>
+                    <td width="250px">商户证件类型</td>
+                    <td>{{ license_type_map.get(form['license_type'], '') }}</td>
+                </tr>
+                {% end %}
+                <tr>
+                    <td width="250px">营业执照注册号</td>
+                    <td>{% if form['license_scope'] %}{{ form['license_num'] }}{% end %}</td>
+                </tr>
+                <tr>
+                    <td width="250px">营业期限</td>
+                    <td>
+                        {% if form['license_start_date'] %}
+                            {{ form['license_start_date'] }} -
+                        {% end %}
+                        {% if form['license_period'] == 2 %}
+                            长期
+                        {% else %}
+                            {% if form['license_end_date'] %}
+                                {{ form['license_end_date'] }}
+                            {% end %}
+                        {% end %}
+                    </td>
+                </tr>
+                <tr>
+                    <td width="250px">营业范围</td>
+                    <td>{% if form['license_scope'] %}{{ form['license_scope'] }}{% end %}</td>
+                </tr>
+                {% if form['license_img'] %}
+                <tr>
+                    <td width="250px">营业执照照片</td>
+                    <td>
+                        <div class="displayImg">
+                            <a href="{{ form['license_img'] }}" target="_blank"><img src="{{ form['license_img'] }}"/></a>
+                        </div>
+                    </td>
+                </tr>
+                {% end %}
+                {% if form['annex_img1'] or form['annex_img2'] or form['annex_img3'] or form['annex_img4'] or form['annex_img5'] %}
+                <tr>
+                    <td width="250px">补充材料</td>
+                    <td>
+                        <div class="displayImg">
+                            {% if form['annex_img1'] %}<a href="{{ form['annex_img1'] }}" target="_blank"><img src="{{ form['annex_img1'] }}"/></a>{% end %}
+                            {% if form['annex_img2'] %}<a href="{{ form['annex_img2'] }}" target="_blank"><img src="{{ form['annex_img2'] }}"/></a>{% end %}
+                            {% if form['annex_img3'] %}<a href="{{ form['annex_img3'] }}" target="_blank"><img src="{{ form['annex_img3'] }}"/></a>{% end %}
+                            {% if form['annex_img4'] %}<a href="{{ form['annex_img4'] }}" target="_blank"><img src="{{ form['annex_img4'] }}"/></a>{% end %}
+                            {% if form['annex_img5'] %}<a href="{{ form['annex_img5'] }}" target="_blank"><img src="{{ form['annex_img5'] }}"/></a>{% end %}
+                        </div>
+                    </td>
+                </tr>
+                {% end %}
+                {% if form['mch_desk_img'] %}
+                <tr>
+                    <td width="250px">围餐补充材料</td>
+                    <td>
+                        <div class="displayImg">
+                            <a href="{{ form['mch_desk_img'] }}" target="_blank"><img src="{{ form['mch_desk_img'] }}"/></a>
+                            <a href="{{ form['mch_front_img'] }}" target="_blank"><img src="{{ form['mch_front_img'] }}"/></a>
+                            <a href="{{ form['mch_inner_img'] }}" target="_blank"><img src="{{ form['mch_inner_img'] }}"/></a>
+                        </div>
+                    </td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+        <table class="table-info m-bottom">
+            <thead>
+                <tr>
+                    <th colspan="2">商户配置</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="250px">二维码回调地址</td>
+                    <td>{{ form['pay_notify_url'] or ''}}</td>
+                </tr>
+                {% for each_config in form['wx_pay_configs'] %}
+                    {% if each_config%}
+                        <tr>
+                            <td colspan="2"><h4>微信支付配置（{{each_config['channel_str']}}通道）</h4></td>
+                        </tr>
+                        <tr>
+                            <td width="250px">推荐关注公众号</td>
+                            <td>{{ each_config['default_subscribe'] or '无' }}</td>
+                        </tr>
+                        {% if each_config['jsapi_path_list'] %}
+                        <tr>
+                            <td width="250px">公众号支付授权目录（支付相关域名）</td>
+                            <td>
+                                {% for index, js_path in enumerate(each_config['jsapi_path_list']) %}
+                                    <p>{{js_path}}</p>
+                                {% end %}
+                            </td>
+                        </tr>
+                        {% end %}
+                        {% if each_config['appid_config_list'] %}
+                        <tr>
+                            <td width="250px">微信APPID</td>
+                            <td style="padding:0 !important; overflow:hidden;">
+                                <table style="width:100%;border-width:0;margin:-1px !important;" border="0">
+                                    <tr>
+                                        <td>序号</td>
+                                        <td>APPID</td>
+                                    </tr>
+                                    {% for index, appid in enumerate(each_config['appid_config_list']) %}
+                                    <tr>
+                                        <td>{{ index + 1}}</td>
+                                        <td>{{appid.get('sub_appid','') or ''}}</td>
+                                    </tr>
+                                    {% end %}
+                                </table>
+                            </td>
+                        </tr>
+                        {% end %}
+                    {% end %}
+                {% end %}
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>支付类型</th>
+                    <th>费率</th>
+                    <th>激活状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pay_data in form['payment']%}
+                <tr>
+                    <td>{{ pay_data['pay_type_name'] }}</td>
+                    <td>{{ pay_data['pay_rate'] }}‰</td>
+                    <td>{{ pay_data['activated_status'] }}</td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+        {% if form['role']['wx_draw_rate'] or  form['role']['wx_draw_fee'] or  form['role']['ali_draw_rate'] or  form['role']['ali_draw_fee'] %}
+        <table class="table">
+            <tbody>
+                {% if form['role']['wx_draw_rate'] %}
+                <tr>
+                    <td width="200">微信支付D0垫资费率:</td>
+                    <td>{{ form['role']['wx_draw_rate'] }} ‰</td>
+                </tr>
+                {% end %}
+                {% if form['role']['wx_draw_fee'] %}
+                <tr>
+                    <td width="200">微信支付D0代付费用:</td>
+                    <td>{{ form['role']['wx_draw_fee'] }} 元/笔</td>
+                </tr>
+                {% end %}
+                {% if form['role']['ali_draw_rate'] %}
+                <tr>
+                    <td width="200">支 付 宝 D0垫资费率:</td>
+                    <td>{{ form['role']['ali_draw_rate'] }} ‰</td>
+                </tr>
+                {% end %}
+                {% if form['role']['ali_draw_fee'] %}
+                <tr>
+                    <td width="200">支 付 宝 D0代付费用:</td>
+                    <td>{{ form['role']['ali_draw_fee'] }} 元/笔</td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+        {% end %}
+        {% if form['subsidize_info'] %}
+        <table class="table">
+            <tbody>
+                {% if form['subsidize_info'].get('weixin') %}
+                <tr>
+                    <td width="200">微信支付手续费补贴:</td>
+                    <td >{{ form['subsidize_info']['weixin'] }}%</td>
+                </tr>
+                {% end %}
+
+                {% if form['subsidize_info'].get('alipay') %}
+                <tr>
+                    <td width="200">支 付 宝 手续费补贴:</td>
+                    <td >{{ form['subsidize_info']['alipay'] }}%</td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+        {% end %}
+        {% if form['credit_status'] %}
+        <table class="table">
+            <tbody>
+                {% if form['credit_status'].get('weixin') == 1 %}
+                <tr>
+                    <td width="200">微信支付信用卡支付权限:</td>
+                    <td>已关闭</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td width="200">微信支付信用卡支付权限:</td>
+                    <td>正常</td>
+                </tr>
+                {% end %}
+                {% if form['credit_status'].get('alipay') == 1 %}
+                <tr>
+                    <td width="200">支 付 宝 信用卡支付权限:</td>
+                    <td>已关闭</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td width="200">支 付 宝 信用卡支付权限:</td>
+                    <td>正常</td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+        {% end %}
+        {% if form['unionpay_limit'] %}
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td width="200">银联限额:</td>
+                    <td >{{ form['unionpay_limit'] }}%</td>
+                </tr>
+            </tbody>
+        </table>
+        {% end %}
+    </div>
+</div>
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">
+    var mch_id = {{ form['mch_id'] }};
+    var text = "{{ QR_SCAN_URL }}" + "/r?m=" + mch_id;
+    console.log(text);
+    $("#mch_qrCode").qrcode({
+        render: "canvas",
+        width: 200, //宽度
+        height: 200, //高度
+        color: "#3a3",
+        text: text
+    });
+</script>
+<script type="text/javascript" src="/static/common/js/role.js"></script>
+<script type="text/javascript" src="/static/common/js/update_ali_level.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

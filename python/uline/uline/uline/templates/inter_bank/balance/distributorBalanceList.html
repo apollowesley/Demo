@@ -1,0 +1,155 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>渠道结算详情(同业银行)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+	<div class="hf-head">
+		<div class="headBox">
+			<span class="headLi">
+				<img src="/static/common/image/biaozhi.png"  />
+				<a href="/inter_bank/balance/dt">结算管理(渠道结算)</a>
+				<span class="advancing">></span>
+				<a href="javascript:;" >渠道结算详情</a>
+			</span>
+		</div>
+	</div>
+
+	<div id="main-content">
+
+		<div class='formlist'>
+			<h4>渠道详情</h4>
+			<div>
+				<label>日结日期</label>
+				<span>{{ data['create_at'] }}</span>
+			</div>
+
+			<div>
+				<label>交易日期</label>
+				<span>{{ data['need_pay_time'] }}</span>
+			</div>
+
+			<div>
+				<label>渠道商名称</label>
+				<span>{{ data['dt_name'] }}</span>
+			</div>
+
+			<div>
+				<label>支付渠道</label>
+				<span>{{ data['channel'] }}</span>
+			</div>
+
+			<div>
+				<label>渠道商编号</label>
+				<span>{{ data['dt_id'] }}</span>
+			</div>
+
+{#			<div>#}
+{#				<label>分润金额</label>#}
+{#				<span class="formatting-money">{{ data['day_profit_amount'] }}</span>#}
+{#			</div>#}
+
+			<div>
+				<label>金额</label>
+				<span class="formatting-money">{{ data['tranAmt'] }}</span>
+			</div>
+
+			<div>
+				<label>状 态</label>
+				<span>{{ data['pay_status'] }}</span>
+			</div>
+
+            <div>
+                <label>详情</label>
+                <span>{{ data['failure_details'] or '' }}</span>
+            </div>
+		</div>
+
+		<div class='formlist'>
+			<h4>结算详情</h4>
+			<div>
+				<label>结算户名</label>
+				<span>{{ data['rcvAcctName'] }}</span>
+			</div>
+
+			<div>
+				<label>结算银行</label>
+				<span>{{ data['rcvBankName'] }}</span>
+			</div>
+
+			<div>
+				<label>结算账号</label>
+				<span>{{ data['balance_account'] }}</span>
+			</div>
+
+		</div>
+
+		<!--<table class="table table-striped">-->
+			<!--<h4>划付记录：</h4>-->
+			<!--<thead>-->
+				<!--<tr>-->
+					<!--<th>时间</th>-->
+					<!--<th>状态</th>-->
+					<!--<th>操作</th>-->
+				<!--</tr>-->
+			<!--</thead>-->
+			<!--<tbody id="tbodyBox">-->
+				<!--<tr>-->
+					<!--<td>2016-09-01</td>-->
+					<!--<td>划付失败</td>-->
+					<!--<td>-->
+						<!--<div class="modal fade" id="myModal-li" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+							<!--<div class="modal-dialog">-->
+								<!--<div class="modal-content">-->
+									<!--<div class="modal-header">-->
+										<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+									<!--</div>-->
+									<!--<div class="modal-body">-->
+										<!--<h3>你提交的申请与银行的对账金额不符合1313</h3>-->
+									<!--</div>-->
+									<!--<div class="modal-footer center-block">-->
+									<!--</div>-->
+								<!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+							<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+						<!--</div>-->
+						<!--<a href='#' data-toggle="modal" data-target="#myModal-li">详情</a>-->
+					<!--</td>-->
+				<!--</tr>-->
+				<!--<tr>-->
+					<!--<td>2016-09-01</td>-->
+					<!--<td>划付成功</td>-->
+					<!--<td>-->
+						<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+							<!--<div class="modal-dialog">-->
+								<!--<div class="modal-content">-->
+									<!--<div class="modal-header">-->
+										<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+									<!--</div>-->
+									<!--<div class="modal-body">-->
+										<!--<h3>你提交的申请与银行的对账金额不符合</h3>-->
+									<!--</div>-->
+									<!--<div class="modal-footer center-block">-->
+									<!--</div>-->
+								<!--</div>&lt;!&ndash; /.modal-content &ndash;&gt;-->
+							<!--</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+						<!--</div>-->
+						<!--<a class="spanLi" data-toggle="modal" data-target="#myModal">详情</a>-->
+					<!--</td>-->
+				<!--</tr>-->
+			<!--</tbody>-->
+		<!--</table>-->
+	</div>
+</div>
+
+{% end %}
+s
+<!-- 引入js文件  start-->
+{% block js %}
+{% end %}
+<!-- 引入js文件  end-->

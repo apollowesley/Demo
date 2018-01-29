@@ -1,0 +1,85 @@
+{% extends '../base.html' %}
+{% module xsrf_form_html() %}
+
+{% block title %}
+<title>商户开户邮件汇总</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/distributor/css/subUser.css">
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+    <form class="form-inline" action="/dist/settings/email" method="get">
+
+
+    </form>
+
+    <div id="tableBox">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>邮件标题</th>
+                    <th>发送时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbodyBox">
+                {% for _data in emails %}
+                <tr >
+                    <td>{{ _data["email_title"]}} </td>
+                    <td>{{ _data["create_at"]}}</td>
+                    <td><a href="javascript:;" onclick="sendEmail('{{ _data["create_at"]}}')">重发邮件</a></td>
+                </tr>
+
+                {% end %}
+            </tbody>
+        </table>
+
+        <!--分页-->
+        <div>
+            {% autoescape None %}
+            {{ navigate_html }}
+        </div>
+
+
+    </div>
+
+</div>
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script>
+    function getCookie(name) {
+        var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+        return r ? r[1] : undefined;
+    }
+    var xsrf = getCookie("_xsrf");
+    function sendEmail(time){
+        $.ajax({
+            headers: {"X-XSRFToken":xsrf},
+            type: 'POST',
+            data: {
+               resend_date:time
+            },
+            dataType: 'json',
+            url: '/dist/settings/resend_email',
+            beforeSend: function () {
+            },
+            success: function (res) {
+                errorTip(res.msg);
+            },
+            error: function (err) {
+                errorTip('请求失败，请重试')
+            }
+
+        });
+    }
+</script>
+{% end %}
+<!-- 引入js文件  end-->

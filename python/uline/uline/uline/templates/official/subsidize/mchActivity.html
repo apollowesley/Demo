@@ -1,0 +1,155 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>活动商户管理(官方)</title>
+<link rel="stylesheet" href="/static/common/css/step.css">
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/official/subsidize/mch" method="GET">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">搜索</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">参与状态:</p>
+            <select class="form-control search-criteria" name="status" id="status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.status.data == 1 %}selected{% end %}>参与中</option>
+                <option value="2" {% if form.status.data == 2 %}selected{% end %}>已停止</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道:</p>
+            <input type="text" class="form-control search-criteria" name="dt_name" value="{{ form.dt_name.data or '' }}" id="dt_name"
+                   placeholder="请输入渠道名称">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道编号:</p>
+            <input type="text" class="form-control search-criteria" name="dt_id" value="{{ form.dt_id.data or '' }}" id="dt_id"
+                   placeholder="请输入渠道编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户名称:</p>
+            <input type="text" class="form-control search-criteria" name="mch_name" id="mch_name" value="{{ form.mch_name.data or '' }}" placeholder="请输入商户名称"/>
+        </div>
+
+       <div class="form-group">
+            <p class="form-control-static">商户编号:</p>
+            <input type="text" class="form-control search-criteria" name="mch_id" id="mch_id" value="{{ form.mch_id.data or '' }}" placeholder="请输入商户编号"/>
+        </div>
+
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>商户编号</th>
+                <th>商户名称</th>
+                <th>商户简称</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+            {% for subsidize_info in subsidize_list %}
+            <tr>
+                <td>{{subsidize_info.get('role_id', '')}}</td>
+                <td>{{subsidize_info.get('role_name', '')}}</td>
+                <td>{{subsidize_info.get('role_shortname', '')}}</td>
+                <td>
+                    {% if subsidize_info.get('valid', '') == 2 %}
+                      已停止
+                    {% elif subsidize_info.get('valid', '') == 1%}
+                      参与中
+                    {% end %}
+                </td>
+                <td>
+                    <a href="javascript:;" class="activityInfo" onclick="getInfo({{subsidize_info.get('role_id', '')}},'info','official')">详情</a>
+                </td>
+            </tr>
+            {% end %}
+        </tbody>
+    </table>
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+
+
+    <!-- 模态框（Modal）活动商户详情 -->
+    <div class="modal fade base-modal" id="activityInfo" tabindex="-1" role="dialog"
+             aria-hidden="true">
+            <div class="modal-dialog batch" style="width:700px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">活动商户详情</h4>
+                    </div>
+                    <div class="modal-body text-left">
+                        <table class="table base-activity-table">
+                            <tr>
+                                <td>创建时间</td>
+                                <td td-name="create_at"></td>
+                            </tr>
+                            <tr>
+                                <td>商户编号</td>
+                                <td td-name="role_id"></td>
+                            </tr>
+                            <tr>
+                                <td>商户名称</td>
+                                <td td-name="role_name"></td>
+                            </tr>
+                            <tr>
+                                <td>商户简称</td>
+                                <td td-name="role_shortname"></td>
+                            </tr>
+                            <tr>
+                                <td>所属渠道名称</td>
+                                <td td-name="dt_name"></td>
+                            </tr>
+                            <tr>
+                                <td>所属渠道编号</td>
+                                <td td-name="dt_id"></td>
+                            </tr>
+                            <tr>
+                                <td>参与状态</td>
+                                <td class="table-valid"></td>
+                            </tr>
+                            <tr>
+                                <td>微信手续费补贴</td>
+                                <td class="table-weixin"></td>
+                            </tr>
+                            <tr>
+                                <td>支付宝手续费补贴</td>
+                                <td class="table-alipay"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/bank/js/mch_activity.js" ></script>
+{% end %}
+<!-- 引入js文件  end-->

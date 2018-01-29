@@ -1,0 +1,8 @@
+.browser-box{position:absolute;top:50%;left:25%;width:50%;margin-top:-50px;}
+.ie-logo{float:left;width:225px;height:109px;margin-right:20px;background:#000 url("../image/ie_logo.jpg") no-repeat;}
+.browser-title{padding-top:25px;font-weight:bold;font-size:16px;}
+.browser-text{padding-top:10px;font-size:14px;}
+.browser-text a{position:relative;margin-left:10px;margin-right:10px;padding-left:20px;color:#12a3e6;}
+.icon-google{display:inline-block;position:absolute;left:0px;top:2px;width:16px;height:16px;background:url("../image/google.png") no-repeat;}
+.icon-ie{display:inline-block;position:absolute;left:0px;top:10px;width:16px;height:16px;background:url("../image/ie.png") no-repeat;}
+.icon-qq{display:inline-block;position:absolute;left:0px;top:10px;width:16px;height:16px;background:url("../image/qq.png") no-repeat;}

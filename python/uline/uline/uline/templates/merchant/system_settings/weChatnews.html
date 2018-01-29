@@ -1,0 +1,178 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>公众号交易提醒(商户)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/common/css/switch.css">
+{% end %}
+
+
+{% block content %}
+    <div class="row index-row">
+        <div class="hf-head">
+            <div class="headBox">
+                <span class="headLi">
+                    <a>系统设置(公众号交易提醒)</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <label class="control-label">
+        <p>开通此功能后,您可以在关注的银行公众号里接收交易提醒信息</p>
+        <p>简单两步,开通提醒,交易提醒不错过</p>
+    </label>
+
+    <!-- 显示是否开通或者关闭-->
+    {% if open_or_close == 2 %}
+    <div class="panel panel-default" style="background:#F8F8F8">
+        <div class="panel-body">
+            <span id="sign_status" class="glyphicon glyphicon-ok-sign" aria-hidden="true" style="line-height:40px;margin-right:10px;font-size:16px;float:left;color:#64a764;"></span>
+            <p id="status_p"
+               style="text-align:left; width:200px; margin-top:7px; margin-bottom:3px; float:left;font-size:20px">已开通</p>
+            <button id="butt_status" type="button" class="btn btn-default" data-dismiss="modal"
+                    style="text-align:center; width:100px; margin-top:3px;margin-bottom:2px; float:right;">关闭提醒
+            </button>
+        </div>
+    </div>
+    {% elif open_or_close == 3 %}
+    <div class="panel panel-default" style="background:#F8F8F8">
+        <div class="panel-body">
+                <span id="sign_status" class="glyphicon glyphicon-remove-sign" aria-hidden="true"
+                      style="color:red;line-height:40px;margin-right:10px;font-size:16px;float:left;"></span>
+            <p id="status_p"
+               style="text-align:left; width:200px; margin-top:7px; margin-bottom:3px; float:left;font-size:20px">已关闭</p>
+            <button id="butt_status" type="button" class="btn btn-success" data-dismiss="modal"
+                    style="text-align:center; width:100px; margin-top:3px;margin-bottom:2px; float:right;">
+                开通提醒
+            </button>
+        </div>
+    </div>
+    {% else %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+                <span id="sign_status" class="glyphicon glyphicon-info-sign" aria-hidden="true"
+                      style="color:#3366FF;line-height:40px;margin-right:10px;font-size:16px;float:left;"></span>
+            <p id="status_p"
+               style="text-align:left; width:200px; margin-top:7px; margin-bottom:3px; float:left;font-size:20px">未开通</p>
+            <button id="butt_status" type="button" class="btn btn-success" data-dismiss="modal"
+                    style="text-align:center; width:100px; margin-top:3px;margin-bottom:2px; float:right;">
+                开通提醒
+            </button>
+        </div>
+    </div>
+    {% end %}
+
+
+    {% if open_or_close == 2 %}
+    <label class="col-md-1 control-label">
+        <p>配置支付类型</p>
+    </label>
+
+    <div id="tableBox">
+        <table class="table">
+            <thead style="background:#F8F8F8">
+            <tr>
+                <th>支付类型</th>
+                <th>是否接收通知</th>
+            </tr>
+            </thead>
+
+            <tbody id="tbodyBox">
+            {% for payment_type,open_status,pay_num in data %}
+            <tr>
+                <td>{{ payment_type }}</td>
+                <td>
+                    <div class="switch" open-status="{{ open_status }}" payment-type="{{ pay_num }}"><i></i></div>
+                </td>
+            </tr>
+            {% end %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <label class="control-label">
+            <p><span id="sign_status" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color:red;"></span>温馨提示:需要绑定员工微信才能提示消息,已绑定的商户可以跳过,<a
+                    href="/common/settings/sub_user/index">去绑定</a></p>
+        </label>
+    </div>
+{% end %}
+<!-- 显示需要推送的支付类型-->
+
+{% end %}
+
+
+
+{% block js %}
+<script src="/static/common/libs/jquery.color-2.1.0.min.js"></script>
+<script src="/static/common/js/switch.js"></script>
+
+<script type="text/javascript">
+    //关闭开通推送功能
+    var user_host = window.location.protocol + '//' + window.location.host
+    $("#butt_status").click(function () {
+
+        var status_id = document.getElementById("status_p");
+        var status_text = status_id.innerHTML;
+        var open_status = "";
+        if(status_text == "已开通"){ open_status = 3 }
+        else if (status_text == "未开通" || status_text == "已关闭"){open_status = 2}
+
+        $.ajax({
+                type: "get",  //提交方式
+                url: user_host + "/common/settings/send/switch?open_status=" + open_status,//路径
+                beforeSend: function (XMLHttpRequest) {
+                    // 请求前处理
+                },
+                success: function (result) {//返回数据根据结果进行相应的处理
+                    if (result.code == 200) {
+                        window.location.reload();
+                    } else {
+                        alert(result.msg);
+                    }
+                }
+            });
+        })
+</script>
+
+<script type="text/javascript">
+    function open_payment(payment_type, status) {
+        $.ajax({
+            type: "GET",  //提交方式
+            url: "/common/settings/send/choosepay",
+            data: {
+                "open_status": status,
+                "payment_type": payment_type
+            },
+            beforeSend: function (XMLHttpRequest) {
+            },
+            success: function (result) {
+                var open_id = document.getElementById(payment_type);
+                var butt_open = open_id.childNodes[1];
+                var butt_close = open_id.childNodes[3];
+                if (result.code == 406 && result.msg == "same_status"){
+                    return
+                }
+                else if (result.code == 200) {
+                    if (status == 3) {
+                        butt_close.setAttribute("class", "btn btn-success");
+                        butt_open.setAttribute("class", "btn btn-default");
+                        $("#tableBox").append("<div class='newSuccess'>修改成功</div>");
+                        $(".newSuccess").fadeIn(1000).delay(1000).fadeOut(1000);
+                    }
+                    else {
+                        butt_close.setAttribute("class", "btn btn-default");
+                        butt_open.setAttribute("class", "btn btn-success");
+                        $("#tableBox").append("<div class='newSuccess'>修改成功</div>");
+                        $(".newSuccess").fadeIn(1000).delay(1000).fadeOut(1000);
+                    }
+                } else {
+                    alert(result.msg);
+                }
+            }
+        });
+    }
+</script>
+{% end %}

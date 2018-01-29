@@ -1,0 +1,23 @@
+#form-base.noborder input,#form-base.noborder select{border:none;box-shadow:none;}
+#form-base.noborder input[readonly]{background:transparent;}
+#form-base.noborder select[disabled]{background:transparent;}
+
+
+#tbodyBox a{cursor:pointer;}
+
+
+.sub-login-name{position:relative;}
+.sub-login-name span{position:absolute;top: 1px;right: 16px;background: #f1f1f1;padding-left:10px;width: 200px;line-height: 32px;text-align: left;}
+
+
+
+
+
+
+
+
+
+
+
+
+

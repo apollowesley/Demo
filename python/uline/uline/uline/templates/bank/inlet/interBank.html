@@ -1,0 +1,83 @@
+
+{% extends '../base.html' %}
+
+{% block title %}
+<title>同业银行进件(银行)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/common/css/inter-bank.css">
+{% end %}
+
+{% block content %}
+
+	<div class="row index-row">
+
+		<form class="form-inline export-xls" action="/bank/inlet/inter_bank" method="get">
+			{% module xsrf_form_html() %}
+
+            <div class="pull-right">
+				<button type="submit" class="btn btn-default pull-right" id="search">查询</button><br>
+			</div>
+
+            <div class="form-group">
+                <p class="form-control-static">创建日期:</p>
+                <div class="input-group input-daterange">
+                    <input type="text" class="form_datetime form-control search-criteria" id="create_at_start" name="create_at_start"
+                           placeholder="" value="{{ form.create_at_start.data or ''}}">
+                    <span class="input-group-addon">—</span>
+                    <input type="text" class="form_datetime form-control search-criteria" id="create_at_end" name="create_at_end"
+                           placeholder="" value="{{ form.create_at_end.data or '' }}">
+                </div>
+            </div>
+
+			<div class="form-group">
+				<p class="form-control-static">银行名称:</p>
+				<input type="text" class="form-control search-criteria" name="bk_name" id="bk_name" value="{{ form.bk_name.data or '' }}" placeholder="请输入银行名称"/>
+			</div>
+
+            <div class="form-group">
+				<p class="form-control-static">银行编号:</p>
+				<input type="text" class="form-control search-criteria" name="bk_id" id="bk_id" value="{{ form.bk_id.data or '' }}" placeholder="请输入银行编号"/>
+			</div>
+        </form>
+
+        <div id="tableBox">
+            <div class="tab_left">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>银行编号</th>
+                            <th>银行名称</th>
+                            <th>邮箱</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyBox">
+                        {% for bk_id,bk_name,email,___ in data %}
+
+                        <tr>
+                            <td>{{ bk_id }}</td>
+                            <td>{{ bk_name }}</td>
+                            <td>{{ email }}</td>
+                        </tr>
+                        {% end %}
+                    </tbody>
+                </table>
+
+                <!--分页-->
+                <div>
+                    {% autoescape None %}
+                    {{ navigate_html }}
+                </div>
+            </div>
+            <div class="pull-right" id="dtPayInfo"></div>
+
+        </div>
+	</div>
+{% end %}
+
+
+<!-- 引入js文件  start-->
+{% block js %}
+{% end %}
+<!-- 引入js文件  end-->

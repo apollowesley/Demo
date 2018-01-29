@@ -1,0 +1,27 @@
+.base-inlet-box{padding:20px;}
+.base-padding-20{padding:20px;}
+.base-m-tb-20{margin:20px 0;}
+.base-inlet-pay-title{font-size:16px;line-height:36px;border-bottom:1px solid #ccc;}
+.base-inlet-form{line-height:36px;}
+.base-inlet-label{width:150px;font-weight:bold;}
+.base-inlet-label.no-bold{font-weight:100;}
+.base-inlet-checkbox{width:150px;}
+.base-inlet-checkbox input{margin-right:5px;}
+.base-inlet-input{width:200px;}
+.base-inlet-input input{width:100%;height:32px;border:1px solid #ccc;border-radius:3px;padding:0 10px;}
+.base-inlet-label-text{padding-left:150px;width:800px;}
+.base-inlet-label-text>div{margin-bottom:10px;}
+
+.base-inlet-table{width:100%;}
+.base-inlet-table thead{background:#f2f2f2;}
+.base-inlet-table tr:hover,.base-inlet-table tr.hover{background:transparent !important;}
+.base-inlet-table th,.base-inlet-table td{padding:5px 15px!important;line-height:30px;border:1px solid #ededed;text-align:left;}
+.base-inlet-table input[type='text']{width:100%;border:none;background:transparent;}
+.base-inlet-table input[type='text']:focus{outline:none;}
+[pay-type],[pay-rate]{display:none;}
+
+.text-bold{font-weight:bold;}
+.base-hide{display:none;}
+.base-icon-checkbox{display:block;width:12px;height:12px;border:1px solid #ccc;border-radius:2px;}
+.base-icon-checkbox.checked{border:none;background:#3b99fc url(../image/icon-checked.png) no-repeat center;background-size:8px;}
+

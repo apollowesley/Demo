@@ -1,0 +1,324 @@
+
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/common/settings/sub_user/index" method="get">
+        <input type="hidden" name="sys_type_code" value="{{ sys_type_code }}" />
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right" id="search">查询</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">创建时间:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control search-criteria" id="create_at_start" name="create_at_start"
+                       placeholder="" value="{{ form.create_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control search-criteria" id="create_at_end" name="create_at_end"
+                       placeholder="" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+       <div class="form-group">
+            <p class="form-control-static">角色权限:</p>
+            <select class="form-control search-criteria" name="role_id" title="" >
+                <option value="0">全部</option>
+                      {% for i in role %}
+                                <option value="{{ i['role_id'] }}" {% if i['role_id'] == form.role_id.data  %}selected{% end %} >{{ i['role_name'] }}</option>
+                                {% end %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">状态:</p>
+            <select class="form-control search-criteria" name="status" title="" id="mch_sub_status">
+                <option value="0">全部</option>
+                <option value="1" {% if form.status.data == 1 %}selected{% end %}>启用</option>
+                <option value="2" {% if form.status.data == 2 %}selected{% end %}>禁用</option>
+            </select>
+        </div>
+
+        {% if sys_type_code == 'mr' %}
+        <div class="form-group">
+            <p class="form-control-static">所属门店:</p>
+            <select class="form-control search-criteria" style="width:250px;"  id="mch_id" name="mch_id" title="">
+                {% if form.mch_name %}
+                <option value="{{ form.mch_id or '' }}" selected></option>
+                {% end %}
+            </select>
+        </div>
+        {% end %}
+
+        <div class="form-group">
+            <p class="form-control-static">员工编号:</p>
+            <input type="text" class="form-control search-criteria" name="employee_id"
+                   value="{{ form.employee_id.data or '' }}" placeholder="员工编号"/>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">员工姓名:</p>
+            <input type="text" class="form-control search-criteria" name="employee_name"
+                   value="{{ form.employee_name.data or '' }}" placeholder="员工姓名"/>
+        </div>
+    </form>
+
+    <div class="btnBox clearfix" style="margin-bottom: 10px;">
+        <div class="addNew">
+            <a class="btn btn-default" href="javascript:;" data-click="getAddInfo">新增</a>
+        </div>
+    </div>
+    <div id="tableBox">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>员工编号</th>
+                <th>员工姓名</th>
+                <th>登录账号</th>
+                <th>角色权限</th>
+                {% if sys_type_code == 'mr' %}
+                <th>所属门店</th>
+                {% end %}
+                <th>创建时间</th>
+                <th>状态</th>
+                <th>微信号</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+
+            <tbody id="tbodyBox">
+            {% for _data in data %}
+            <tr>
+                <td class="employee_id">{{ _data['employee_id']}}</td>
+                <td>{{ _data['employee_name'] }}</td>
+                <td>{{ _data['login_name'] }}</td>
+                <td>{{ _data['role_name'] }}</td>
+                {% if sys_type_code == 'mr' %}
+                <td>{{ _data['cs_name'] }}</td>
+                {% end %}
+                <td>{{ _data['create_at'] }}</td>
+                <td>{{ _data['status'] }}</td>
+
+                <td>{% if _data['wx_id'] == None %}未绑定{% else %}{{ _data['wx_id'] }}{% end %}</td>
+                <td>
+                    <a class="check_btn " data-click="getStaffInfo" employee_id="{{ _data['employee_id'] }}">查看</a>
+                    <a class="edit_btn" modify_id="{{ _data['employee_id']}}"   data-click="getUpdateInfo">编辑</a>
+                        {% if _data['wx_id'] == None %}
+                        <a class="checkbox bind_wx_code" data-click="getQrCode" employee_id="{{ _data['employee_id'] }}">绑定微信</a>
+                        {% else %}
+                        <a class="checkbox unbind_wx_code" data-click="qrUnBind" employee_id="{{ _data['employee_id'] }}">解绑微信</a>
+                        {% end %}
+
+                </td>
+            </tr>
+
+            {% end %}
+            </tbody>
+        </table>
+        <!-- 模态框（Modal）新增员工信息 -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog batch">
+                <div class="modal-content">
+                    <form class="form-horizontal" id="mch_sub_user_form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">新增员工账号</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">登录账号：</label>
+                                <div class="col-md-8 sub-login-name">
+                                    <input type="text" class="form-control" name="login_name"
+                                           placeholder="自定义的部分"
+                                           required="required" value="">
+                                    <span class="login-name-tip"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">员工姓名：</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="name"
+                                           placeholder="请输入员工姓名"
+                                           required="required" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">手机号码：</label>
+                                <div class="col-md-8">
+                                    <input type="text" maxlength="11" class="form-control" name="phone1"
+                                           placeholder="请输入手机号码"
+                                           required="required" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">联系邮箱：</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="email"
+                                           placeholder="请输入邮箱地址"
+                                           required="required" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="balanceType" class="col-md-4 control-label">是否启用：</label>
+                                <div class="col-md-8">
+                                    <select class="form-control" title="" id="balanceType" name="status">
+                                        <option value="1">启用</option>
+                                        <option value="2">禁用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            {% if sys_type_code == 'mr' %}
+                            <div class="form-group">
+                                <label for="balanceType" class="col-md-4 control-label">员工所属：</label>
+                                <div class="col-md-8 text-left">
+                                    <div class="role-checkbox-list" id="staffList">
+                                        <ul class="clearfix">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% end %}
+                            <div class="form-group">
+                                <label for="balanceType" class="col-md-4 control-label">角色权限：</label>
+                                <div class="col-md-8 text-left" style="height:auto;">
+                                    <div class="role-checkbox-list" id="roleList">
+                                        <ul class="clearfix">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if sys_type_code == 'mr' %}
+                            <div class="base-chain-user-box">
+                                <div class="base-chain-user-add">
+                                    <input type="text" placeholder="搜索门店" class="search-cs-list" />
+                                    <div class="base-chain-user-add-list">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="base-chain-user-remove">
+                                    <p class="title">已选门店</p>
+                                    <div class="base-chain-user-remove-list">
+                                        <ul>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% end %}
+                            <div class="change-error errors col-md-offset-4 text-left text-danger"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" data-click="changeStaff" class="btn btn-primary">提交更改</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模态框（Modal）绑定微信 -->
+        <div class="modal fade" id="bindingwx" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">
+                            绑定微信号
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <a href="#" class="thumbnail" style="width:50%;margin:0 auto;">
+                            <img id='qrimg' sr="" alt="">
+                        </a>
+                    </div>
+                    <div style="text-align:center;padding-bottom:20px;">
+                        <h4>
+                            请用微信扫描二维码,完成账号绑定.
+                        </h4>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+
+
+        <!-- 模态框（Modal）员工详情信息 -->
+        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog batch">
+                <div class="modal-content">
+                    <form class="form-horizontal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">员工账号详情</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="staff-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="th">创建时间</td>
+                                        <td data-key="create_at"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="th">员工编号</td>
+                                        <td data-key="id"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="th">员工姓名</td>
+                                        <td data-key="name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="th">登录账号</td>
+                                        <td data-key="login_name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="th">手机号码</td>
+                                        <td data-key="phone1"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="th">联系邮箱</td>
+                                        <td data-key="email"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="th">是否启用</td>
+                                        <td data-key="status"></td>
+                                    </tr>
+                                    {% if sys_type_code == 'mr' %}
+                                    <tr>
+                                        <td class="th">所属门店</td>
+                                        <td data-key="employee_cs_name"></td>
+                                    </tr>
+                                    {% end %}
+                                    <tr>
+                                        <td class="th">角色权限</td>
+                                        <td data-key="employee_role"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h3 class="base-pop-title"><i class="">|</i>修改记录</h3>
+                            <div class="staff-record-list">
+                                <ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--分页-->
+        <div>
+            {% autoescape None %}
+            {{ navigate_html }}
+        </div>
+
+
+    </div>
+
+</div>
+<script>var sys_type_code='{{ sys_type_code }}',mch_id='{{ form.mch_name or '' }}'</script>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    {% block title %}
+    <title>商户后台</title>
+    {% end %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <!--引入样式 start-->
+    <!-- build:lib_css -->
+    <link rel="stylesheet" href="/static/common/libs/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/static/common/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/common/libs/boostratp-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/static/common/libs/bootstrap-fileinput/css/fileinput.min.css">
+    <link rel="stylesheet" href="/static/common/libs/bootstrap-validator/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/static/common/libs/city-picker/css/cityPicker.css">
+    <link rel="stylesheet" href="/static/common/libs/select2/css/select2.min.css">
+    <!-- endbuild -->
+
+    <!-- build:common_css -->
+    <link rel="stylesheet" href="/static/common/css/metisMenu.min.css"/>
+    <link rel="stylesheet" href="/static/common/css/sb-admin-2.css"/>
+    <link rel="stylesheet" href="/static/common/css/ulaiber-loading.css">
+    <!-- endbuild -->
+
+    <!-- build:mch_css -->
+    <link rel="stylesheet" href="/static/merchant/css/style.css"/>
+    <!-- endbuild -->
+
+    {% block css %}
+    {% end %}
+    <!--引入样式 end-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navber-img" href="/merchant/">
+                <img src="/static/common/image/logo.png"/>
+                <span class="uline-lg">ULINE</span>
+                <span class="uline-ht">商户后台</span>
+            </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            {% if handler.session['cs_name'] is not None and handler.session['sys_type_code']=="mch" %}
+                   <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="dt-name">{{ handler.session['cs_name'] }}</span>
+                    <i class="fa fa-caret-down m-left-5"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="javascript:;" id="chooseCs">
+                            <i class="fa fa-lock fa-fw m-right-5"></i>切换门店
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {% end %}
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="iBox"><i class="fa fa-user fa-fw"></i></span>
+                    <span class="dt-name">{{ handler.session['mch_name'] }}</span>
+                    <i class="fa fa-caret-down m-left-5"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                                 <li>
+                        <a href="/common/settings/sub_user/info?employee_id={{ handler.session["employee_id"] }}&profile_location=webpage">
+                            <i class="fa fa-lock fa-fw"></i>用户信息
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/account/forgetpwd?type=reset">
+                            <i class="fa fa-lock fa-fw m-right-5"></i>修改密码
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span class="borLine"></span>
+            </li>
+            <li class="dropdown box-border">
+                                <a href="/account/logout">
+
+                    <span>退出</span>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="/merchant/utils/download" id="download" rel="popover" target="_blank">
+                    <i class="fa fa-cloud-download m-right-5"></i>下载
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="http://docs.uline.cc/" target="_blank">
+                    <i class="fa fa-file-text m-right-5"></i>开发文档
+                </a>
+            </li>
+        </ul>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">进件管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level" id="navImg">
+                            <li>
+                                <a href="/merchant/inlet/mch">商户进件</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">对账管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/common/downloads_bill?charac_id=4">商户对账单</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">结算管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/merchant/balance/mch">商户结算</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">交易管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/merchant/transaction/trade">商户交易</a>
+                            </li>
+                            <li>
+                                <a href="/merchant/transaction/refund">商户退款</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dt-dzero-choose">
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">资金管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/merchant/capital/">资金流水</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">数据统计</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/merchant/stats/transaction">交易统计</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="/static/common/image/fangkuai.png"/>
+                            <span class="spanAll">系统设置</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/common/settings/send">公众号交易提醒</a>
+                            </li>
+                            <li>
+                                <a href="/merchant/settings/refund/password">退款密码管理</a>
+                            </li>
+                            <li>
+                                <a href="/common/role">角色管理</a>
+                            </li>
+                            <li>
+                                <a href="/common/settings/sub_user/index">员工账号管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--<div class="nav-foot">-->
+                <!--<a href="/static/handbook/ULINE_DISTRIBUTOR_HANDBOOK_V1.0.pdf"><i class="fa fa-download"></i>操作說明手冊</a>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </nav>
+
+    <div id="page-wrapper">
+        {% block content %}
+        {% end %}
+    </div>
+</div>
+
+<!-- 模态框（Modal）角色权限 -->
+<div class="modal fade" id="topChooseCs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+    <div class="modal-dialog batch" style="width: 400px !important;">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title">选择门店</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="搜索门店" class="index-top-search-cs" />
+                    <div class="index-top-choose-cs">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>var env='{{env}}'</script>
+<!-- build:lib_js -->
+<script type="text/javascript" src="/static/common/libs/jquery.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="/static/common/libs/boostratp-datetimepicker/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript"
+        src="/static/common/libs/boostratp-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/static/common/libs/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/bootstrap-validator/js/language/zh_CN.js"></script>
+<script type="text/javascript" src="/static/common/libs/distpicker/distpicker.data.js"></script>
+<script type="text/javascript" src="/static/common/libs/distpicker/distpicker.js"></script>
+<script type="text/javascript" src="/static/common/libs/select2/js/select2.js"></script>
+<script type="text/javascript" src="/static/common/libs/select2/js/i18n/zh-CN.js"></script>
+<script type="text/javascript" src="/static/common/libs/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/metisMenu.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/sb-admin-2.js"></script>
+<script type="text/javascript" src="/static/common/libs/raphael.min.js"></script>
+<script type="text/javascript" src="/static/common/libs/highcharts.js"></script>
+<script type="text/javascript" src="/static/common/libs/exporting.js"></script>
+<!-- endbuild -->
+<!-- build:common_js -->
+<script type="text/javascript" src="/static/common/js/init_time.js"></script>
+<script type="text/javascript" src="/static/common/js/clickActive.js"></script>
+<script type="text/javascript" src="/static/common/js/tbody_noData.js"></script>
+<script type="text/javascript" src="/static/common/js/navigate.js"></script>
+<script type="text/javascript" src="/static/common/js/industry.js"></script>
+<script type="text/javascript" src="/static/common/js/job.js"></script>
+<script type="text/javascript" src="/static/common/js/download.js"></script>
+<script type="text/javascript" src="/static/common/js/ulaiber_loading.js" ></script>
+<script type="text/javascript" src="/static/common/js/value_sort.js" ></script>
+<script type="text/javascript" src="/static/common/js/formatting_money.js" ></script>
+<script type="text/javascript" src="/static/common/js/nav_controller.js" ></script>
+<script type="text/javascript" src="/static/common/js/export_xls.js" ></script>
+
+<!-- endbuild -->
+<script>
+    $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: '/merchant/capital/status',
+        beforeSend: function (XMLHttpRequest) {
+        },
+        success: function (res) {
+            if(!res.OPEN_D0){
+                $('.dt-dzero-choose').remove();
+            }
+        },
+        error: function (xhr) {
+        }
+
+    });
+    $('#chooseCs').on('click',function(){
+        loadingShow();
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '/account/employee_cs',
+            beforeSend: function (XMLHttpRequest) {
+            },
+            success: function (res) {
+                loadingHide();
+                if(res.code==200){
+                    var _html='';
+                    var employee_cs_list=res.data;
+                    for(var i=0;i<employee_cs_list.length;i++){
+                        _html+='<li cs_id="'+employee_cs_list[i].id+'">'+employee_cs_list[i].name+'</li>'
+                    }
+                    $('.index-top-choose-cs ul').html(_html);
+                    $('#topChooseCs').modal('show');
+
+                    //门店选择模糊查询
+                    $('.index-top-search-cs').keyup(function(){
+                        var val=$(this).val();
+                        var _html='';
+                        if(val.length>0){
+                            csFindEach(val,employee_cs_list);
+                        }else{
+                            for(var i=0;i<employee_cs_list.length;i++){
+                                _html+='<li cs_id="'+employee_cs_list[i].id+'">'+employee_cs_list[i].name+'</li>'
+                            }
+                            $('.index-top-choose-cs ul').html(_html);
+                        }
+                    });
+
+                }else{
+                    errorTip(res.msg);
+                }
+            },
+            error: function (xhr) {
+                loadingHide();
+                errorTip('网络出错，请重试');
+            }
+        });
+    });
+    $('.index-top-choose-cs').on('click','li',function(){
+        var self=$(this);
+        loadingShow();
+        $.ajax({
+            type: 'POST',
+            data: {cs_id:self.attr('cs_id')},
+            dataType: 'json',
+            url: '/account/change_cs',
+            beforeSend: function (XMLHttpRequest) {
+            },
+            success: function (res) {
+                loadingHide();
+                if(res.code==200){
+                    window.location.reload();
+                }else{
+                    errorTip(res.msg);
+                }
+            },
+            error: function (xhr) {
+                loadingHide();
+                errorTip('网络出错，请重试');
+            }
+        });
+    })
+
+    //模糊匹配方法
+    function csFindEach(val,dataList){
+        var list=dataList;
+        var len = list.length;
+        var arr = [];
+        var arrstr='';
+        var _html='';
+        for(var i=0;i<len;i++){
+            //如果字符串中不包含目标字符会返回-1
+            if(list[i].name.indexOf(val)>=0 || list[i].id.toString().indexOf(val)>=0){
+                arrstr='{"name":"'+list[i].name+'","id":"'+list[i].id+'"}';
+                arr.push(JSON.parse(arrstr));
+            }
+        }
+
+        for(var j=0;j<arr.length;j++){
+            _html+='<li cs_id="'+arr[j].id+'">'+arr[j].name+'</li>'
+        }
+        $('.index-top-choose-cs ul').html(_html);
+        //return arr;
+    }
+
+</script>
+{% block js %}
+{% end %}
+</body>
+</html>
+

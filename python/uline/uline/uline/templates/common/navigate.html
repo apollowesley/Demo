@@ -1,0 +1,66 @@
+{% if counts > 8 %}
+<div>
+    <div class="pageBox">
+        <ul class="pagination" id="pagination">
+            {% if is_pre %}
+            <li>
+                <a href="?p={{ pageindex - 1 }}{{query_info}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled">
+                <a aria-label="Previous" readonly="readonly" href="?p=1{{query_info}}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% end %}
+
+            {% if pageindex <= 4 %}
+            {% for page in range(1,min(5,page_number) + 1) %}
+            <li {% if page == pageindex %}class="active"{% end %}><a href="?p={{ page }}{{query_info}}">{{ page }}</a></li>
+            {% end %}
+            {% elif pageindex >4 and pageindex+2<page_number %}
+            {% for page in range(pageindex - 2 , pageindex + 3) %}
+            <li {% if page == pageindex %}class="active"{% end %}><a href="?p={{ page }}{{query_info}}">{{ page }}</a></li>
+            {% end %}
+            {% else %}
+            {% for page in range(page_number - 4 , page_number + 1) %}
+            <li {% if page == pageindex %}class="active"{% end %}><a href="?p={{ page }}{{query_info}}">{{ page }}</a></li>
+            {% end %}
+            {% end %}
+
+            {% if is_next %}
+            <li>
+                <a href="?p={{ pageindex + 1 }}{{query_info}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="disabled">
+                <a aria-label="Next" href="#">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% end %}
+
+            <li>
+                <a style="padding:1px;">
+                    <input type="number" name="jump" min="0" id="input_v"
+                           style="padding:1px; height: 30px;margin: 0;border: none;width: 40px"/>
+                </a>
+            </li>
+            <li>
+                <a href="" id="id_jump_to">跳转</a>
+            </li>
+            <li><a>共{{ counts }}条记录</a></li>
+
+
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="/static/common/libs/jquery.min.js"></script>
+<!--添加新的查询条件时统一使用一下js (只需在添加的查询条件input/select标签添加 class="search-criteria"即可)  -->
+<script type="text/javascript" src="/static/common/js/search_criteria.js" ></script>
+<script type="text/javascript">var page_number = {{ page_number }}</script>
+{% end %}

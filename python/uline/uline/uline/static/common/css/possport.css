@@ -1,0 +1,80 @@
+*{padding:0px;margin:0px;box-sizing:border-box;color:#555;font-size:14px;font-family: 微软雅黑, "Microsoft Yahei", Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", sans-self, Simsun;}
+ul,li{list-style-type: none;}
+a{text-decoration: none;}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+input:focus{outline: none;}
+.c-blue{ color: #50abec;}
+.fl{float:left;}
+.fr{float:right;}
+.tc{ text-align: center;}
+.tr{ text-align: right;}
+.fs12{font-size:12px;}
+.m-left-5{margin-left:5px;}
+.m-left-10{margin-left:10px;}
+.m-left-15{margin-left:15px;}
+.m-left-20{margin-left:20px;}
+.m-right-5{margin-right:5px;}
+.m-right-10{margin-right:10px;}
+.m-right-15{margin-right:15px;}
+.m-right-20{margin-right:20px;}
+.m-bottom-10{margin-bottom:10px;}
+.m-bottom-15{margin-bottom:15px;}
+.m-top-10{margin-top:10px;}
+.m-top-15{margin-top:15px;}
+.m-top-20{margin-top:20px;}
+.m-top-30{margin-top:30px;}
+
+.btn{display:block;width:100%;height:36px;line-height:36px;text-align:center;font-size:14px;border-radius:3px;cursor:pointer;}
+.btn-blue{background:#50abec;color:#fff;}
+.btn-red{background:#ed7171;color:#fff;}
+.btn:hover{opacity:.95;}
+.c-999{color:#999;}
+table, caption, tbody, tfoot, thead, tr, th, td { background: transparent; border: 0; margin: 0; padding: 0; vertical-align: baseline; font-size: 100%; font: inherit; -webkit-text-size-adjust: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+.possport-bg{background:#f5f6fa;}
+.possport-header{padding:0px 20px;width:100%;height:50px;line-height:50px;background:#fff;border-bottom:1px solid #f2f2f2;}
+.possport-header span{font-size:16px;}
+
+.possport-content{margin:50px auto;padding:30px 50px 80px;width:900px;background:#fff;border-radius:5px;}
+.login-title{padding-bottom:10px;line-height:36px;font-weight:400;font-size:16px;border-bottom:1px solid #f2f2f2;}
+.login-form-box{width:350px;padding-top:40px;}
+.login-form{width:100%;line-height: 36px;}
+.login-form p{font-size:14px;font-weight:bold;}
+.login-input{position:relative;}
+.login-input-btn{position:absolute;right:1px;top:1px;height:34px;width:150px;background:#f2f2f2;cursor:pointer;}
+.login-input input{width:100%;height:36px;padding:0 10px;border:1px solid #d3d5de;border-radius:3px;}
+
+.step-list-forget li i,.step-list-reset li i{width:40px;height:40px;line-height:40px;}
+.step-list-forget li span,.step-list-reset li span{top:20px;}
+
+
+.tip-error{color:#ff671a;}
+.step-hide{display:none;}
+
+.icon-error{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;background:#FF6666;border-radius:50%;font-style:inherit;color:#fff;}
+.login-tip{cursor:pointer;}
+
+.login-pop{display:none;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:99;}
+.login-pop .mask{position:fixed;top:0px;left:0px;width:100%;height:100%;background:#000;opacity:.6;}
+.login-pop-box{position:absolute;top:50%;left:50%;width:520px;padding:30px 40px;margin:-170px 0px 0px -260px;background:#fff;border-radius:5px;z-index:100;}
+.login-pop-header h3{font-size:16px;}
+.login-pop-header i{top:20px;right:40px;}
+.login-table{width:100%;border:1px solid #f1f1f1;}
+.login-table thead{background:#f5f6fa;}
+.login-table tr{border-bottom:1px solid #f1f1f1;}
+.login-table td{padding:10px;}
+
+
+
+
+

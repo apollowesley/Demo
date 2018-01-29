@@ -1,0 +1,88 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>交易对账异常(同业银行)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <div class="hf-head">
+        <div class="headBox">
+				<span class="headLi">
+					<img src="/static/common/image/biaozhi.png"/>
+					<a href="/bank/recon/transaction">交易管理(交易对账异常)</a>
+					<span class="advancing">></span>
+					<a href="javascript:;">交易对账详情</a>
+				</span>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="formlist license">
+            <h4>交易信息</h4>
+            <div>
+                <label>对账时间</label>
+                <span>{{ data['create_at'] }}</span>
+            </div>
+
+            <div>
+                <label>商户交易号</label>
+                <span>{{ data['out_trade_no'] }}</span>
+            </div>
+
+            <div>
+                <label>所属渠道商</label>
+                <span>{{ data['dt_name'] }}</span>
+            </div>
+
+            <div>
+                <label>渠道商编号</label>
+                <span>{{ data['dt_id'] }}</span>
+            </div>
+
+            <div>
+                <label>商户名称</label>
+                <span>{{ data['mch_name'] }}</span>
+            </div>
+
+            <div>
+                <label>商户编号</label>
+                <span>{{ data['mch_id'] }}</span>
+            </div>
+
+            <div>
+                <label>异常类型</label>
+                <span>{{ data['except_type'] }}</span>
+            </div>
+
+            <div>
+                <label>处理状态</label>
+                <span>{{ data['handle_status'] }}</span>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="thLine">Uline</th>
+                    <th>第三方</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% autoescape None %}
+                {{ recon_error_html }}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+{% end %}
+<!-- 引入js文件  end-->

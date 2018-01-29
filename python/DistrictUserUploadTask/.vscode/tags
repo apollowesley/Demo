@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ConfigParser	../main.py	/^import ConfigParser$/;"	kind:namespace	line:6
+MySQLdb	../task.py	/^import MySQLdb$/;"	kind:namespace	line:10
+UploadTask	../main.py	/^from task import UploadTask$/;"	kind:namespace	line:13
+UploadTask	../task.py	/^class UploadTask:$/;"	kind:class	line:15
+__init__	../task.py	/^    def __init__(self, excel_path, mysql, logger):$/;"	kind:member	line:16
+config	../main.py	/^import logging.config$/;"	kind:namespace	line:5
+f	../test.py	/^def f(x):$/;"	kind:function	line:12
+get_area_id	../task.py	/^    def get_area_id(self):$/;"	kind:member	line:22
+getpass	../main.py	/^import getpass$/;"	kind:namespace	line:11
+load_config	../main.py	/^def load_config():$/;"	kind:function	line:22
+logger	../main.py	/^logger = logging.getLogger("example01")$/;"	kind:variable	line:17
+logging	../main.py	/^import logging$/;"	kind:namespace	line:4
+logging	../main.py	/^import logging.config$/;"	kind:namespace	line:5
+main	../main.py	/^def main():$/;"	kind:function	line:48
+main	../test.py	/^def main():$/;"	kind:function	line:17
+main.py	../main.py	1;"	kind:file	line:1
+os	../main.py	/^import os$/;"	kind:namespace	line:8
+prn_obj	../main.py	/^def prn_obj(obj):$/;"	kind:function	line:44
+quicksort	../test.py	/^def quicksort(array):$/;"	kind:function	line:1
+re	../main.py	/^import re$/;"	kind:namespace	line:10
+re	../task.py	/^import re$/;"	kind:namespace	line:8
+shutil	../task.py	/^import shutil$/;"	kind:namespace	line:12
+string	../main.py	/^import string$/;"	kind:namespace	line:7
+sys	../main.py	/^import sys$/;"	kind:namespace	line:9
+task.py	../task.py	1;"	kind:file	line:1
+test.py	../test.py	1;"	kind:file	line:1
+time	../task.py	/^import time$/;"	kind:namespace	line:11
+upload	../task.py	/^    def upload(self):$/;"	kind:member	line:54
+verify_records	../task.py	/^    def verify_records(self):$/;"	kind:member	line:26
+xlrd	../task.py	/^import xlrd$/;"	kind:namespace	line:9

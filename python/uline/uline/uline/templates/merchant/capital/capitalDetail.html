@@ -1,0 +1,100 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>资金流水详情(商户)</title>
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+    <div class="hf-head">
+        <div class="headBox">
+			<span class="headLi">
+				<img src="/static/common/image/biaozhi.png"/>
+				<a href="/merchant/capital/">资金流水</a>
+				<span class="advancing">></span>
+				<a href="javascript:;">资金流水详情</a>
+			</span>
+        </div>
+    </div>
+    <div id="main-content">
+
+        <div class='formlist license'>
+            <h4>资金详情</h4>
+            <div>
+                <label>创建时间</label>
+                <span>{{ print_datetime(data["create_at"]) }}</span>
+            </div>
+
+            {% if data["cleared"] %}
+            <div>
+                <label>业务单号</label>
+                <span>{{ data["mch_clear_no"] }}</span>
+            </div>
+            {% end %}
+            <div>
+                <label>业务类型</label>
+                <span>{{print_bussiness_type(data["business_type"])}}</span>
+            </div>
+            <div>
+                <label>业务名称</label>
+                <span>{{clear_action.get(data["business_type"]) + print_money(abs(data.get("trade_amount")/100.0))}}</span>
+            </div>
+            {% if data["business_type"] in [1, 2] %}
+            <div>
+                <label>UILINE交易号</label>
+                <span>{{data.get('out_trade_no', '')}}</span>
+            </div>
+            <div>
+                <label>第三方交易号</label>
+                <span>{{data.get("transaction_id") or "  "}}</span>
+            </div>
+            <div>
+                <label>商户交易号</label>
+                <span>{{data.get("mch_trade_no") or "  "}}</span>
+            </div>
+
+            {% end %}
+            {% if data['business_type']== 2 %}
+            <div>
+                <label>UILINE退款单号</label>
+                <span>{{data.get("out_refund_no", "") or ""}}</span>
+            </div>
+            <div>
+                <label>第三方退款单号</label>
+                <span> {{data.get("refund_id", "") or ""}}</span>
+            </div>
+            <div>
+                <label>商户退款单号</label>
+                <span> {{data.get("mch_refund_no") or ""}}
+            </div>
+            {% end %}
+            <div>
+                <label>收支金额</label>
+                <span class="formatting-money">￥{{ print_money(data["real_amount"]/100.0) }}</span>
+            </div>
+            {% if data["cleared"] %}
+            <div>
+                <label>账户结余</label>
+                <span class="formatting-money">￥{{ print_money(current_balance/100.0) }}</span>
+            </div>
+            <div>
+                <label>变更前金额</label>
+                <span class="formatting-money">￥{{ print_money(last_balance/100.0) }}</span>
+            </div>
+            {% end %}
+            <div>
+                <label>备注</label>
+                <span>{{data.get("remark") or ""}}</span>
+            </div>
+
+        </div>
+    </div>
+    {% end %}
+</div>
+<!-- 引入js文件  start-->
+{% block js %}
+<script>
+</script>
+{% end %}
+<!-- 引入js文件  end-->

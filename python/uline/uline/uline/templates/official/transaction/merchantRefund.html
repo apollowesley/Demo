@@ -1,0 +1,212 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户退款(官方)</title>
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/official/transaction/refund" method="post">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right " id="search">搜索</button><br>
+            <button type="submit" class="btn btn-default" id="exportExcel">导出</button>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static ">创建日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control"
+                       id="create_at_start" name="create_at_start" value="{{ form.create_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control"
+                       id="create_at_end" name="create_at_end" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户名称:</p>
+            <input type="text" class="form-control inputAll" name="mch_name" id="mch_name"
+                   value="{{ form.mch_name.data or '' }}" placeholder="商户">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户编号:</p>
+            <input type="text" class="form-control inputAll" name="mch_id" id="mch_id"
+                   value="{{ form.mch_id.data or '' }}" placeholder="商户编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户/门店简称:</p>
+            <input type="text" class="form-control inputAll" name="cs_mch_shortname" id="cs_mch_shortname"
+                   value="{{ form.cs_mch_shortname.data or '' }}" placeholder="商户">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">门店编号:</p>
+            <input type="text" class="form-control inputAll" name="cs_mch_id" id="cs_mch_id"
+                   value="{{ form.cs_mch_id.data or '' }}" placeholder="商户编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道商:</p>
+            <input type="text" class="form-control inputAll" name="dt_name" id="dt_name"
+                   value="{{ form.dt_name.data or '' }}" placeholder="所属渠道商">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">所属渠道商编号:</p>
+            <input type="text" class="form-control inputAll" name="dt_id" id="dt_id"
+                   value="{{ form.dt_id.data or '' }}" placeholder="所属渠道商编号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">支付渠道:</p>
+            <select class="form-control" name="channel" id="channel">
+                <option value="">全部</option>
+                <option value="weixin" {% if form.channel.data=='weixin'%}selected{% end %}>微信</option>
+                <option value="alipay" {% if form.channel.data=='alipay'%}selected{% end %}>支付宝</option>
+                {% if has_jdpay %}
+                <option value="jdpay" {% if form.channel.data=='jdpay'%}selected{% end %}>京东支付</option>
+                {% end %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">退款状态:</p>
+            <select class="form-control inputAll" name="refund_status" id="refund_status">
+                <option value="">全部</option>
+                <option value="SUCCESS" {% if form.refund_status.data=='SUCCESS'%}selected{% end %}>退款成功</option>
+                <option value="FAIL" {% if form.refund_status.data=='FAIL'%}selected{% end %}>退款失败</option>
+                <option value="PROCESSING" {% if form.refund_status.data=='PROCESSING'%}selected{% end %}>退款处理中</option>
+                <option value="CHANGE" {% if form.refund_status.data=='CHANGE'%}selected{% end %}>转入代发</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <p class="form-control-static">平台交易号:</p>
+            <input type="text" class="form-control inputAll" name="out_trade_no" id="out_trade_no"
+                   value="{{ form.out_trade_no.data or '' }}" placeholder="平台交易号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">第三方交易号:</p>
+            <input type="text" class="form-control inputAll" name="transaction_id" id="transaction_id"
+                   value="{{ form.transaction_id.data or '' }}" placeholder="第三方交易号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static search-criteria">商户交易号 :</p>
+            <input type="text" class="form-control inputAll search-criteria" name="mch_trade_no" id="mch_trade_no"
+                   value="{{ form.mch_trade_no.data or '' }}" placeholder="商户交易号 ">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">uline退款单号 :</p>
+            <input type="text" class="form-control inputAll search-criteria" name="out_refund_no" id="out_refund_no"
+                   value="{{ form.out_refund_no.data or '' }}" placeholder="uline退款单号 ">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">第三方退款单号:</p>
+            <input type="text" class="form-control inputAll" name="refund_id" id="refund_id"
+                   value="{{ form.refund_id.data or '' }}" placeholder="第三方退款单号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户退款单号 :</p>
+            <input type="text" class="form-control inputAll search-criteria" name="mch_refund_no" id="mch_refund_no"
+                   value="{{ form.mch_refund_no.data or '' }}" placeholder="商户退款单号 ">
+        </div>
+    </form>
+
+    <div class="transaction-title">
+    {% if all_total_fee != '--' %}
+    退款合计: <span class="formatting-money">{{ total_num }} </span>笔 , 共<span class="formatting-money">{{ all_total_fee }}</span> 元
+    {% else %}
+    退款合计: <span class="formatting-money">{{ all_total_fee }} </span>（合计时间范围不能超过21天）
+    {% end %}
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>创建时间</th>
+                <th>
+                    <span>uline交易号</span>
+                    <span>/</span>
+                    <span>第三方交易号</span>
+                </th>
+                <th>
+                    <span>uline退款单号</span>
+                    <span>/</span>
+                    <span>第三方退款单号</span>
+                </th>
+                <th>商户名称</th>
+                <th>商户简称</th>
+                <th>所属渠道商</th>
+                <th>支付渠道</th>
+                <th>退款金额</th>
+                <th>当前状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+
+            {% for _,created_at,transaction_id,out_trade_no,refund_id,out_refund_no,refund_fee,refund_status,channel,_,mch_name,mch_shortname,dt_short_name,cs_id,dt_name,chain_dt_name in data %}
+            <tr>
+                <td>{{ created_at }}</td>
+                <td>
+                    <p>{{ out_trade_no }}</p>
+                    <div>{{ transaction_id }}</div>
+                </td>
+                <td>
+                    <p>{{ out_refund_no }}</p>
+                    <div>{{ refund_id }}</div>
+                </td>
+                     {% if chain_dt_name %}
+                    <td>
+                        {{ chain_dt_name }}
+                    </td>
+                {% else %}
+                     <td>{{ mch_name }}</td>
+                {% end %}
+                {% if dt_short_name %}
+                    <td>
+                        {{ dt_short_name }}
+                        <span style="color: #007FFF">({{ mch_shortname }})</span>
+                    </td>
+                {% else %}
+                    <td>{{ mch_shortname }}</td>
+                {% end %}
+                <td>{{ dt_name }}</td>
+                <td>{{ channel }}</td>
+                <td class="formatting-money">{{ refund_fee }}</td>
+                <td>{{ refund_status }}</td>
+                <td>
+                    <a href="/official/transaction/refund/list?out_refund_no={{ out_refund_no }}&cs_id={{ cs_id }}">详情</a>
+                </td>
+            </tr>
+            {% end %}
+
+        </tbody>
+    </table>
+
+    <div>
+         {% autoescape None %}
+         {{ navigate_html }}
+     </div>
+
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/official/js/replaceTranRefundJumpUrl.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

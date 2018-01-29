@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误提示</title>
+    <link rel="stylesheet" href="/static/common/css/step.css" />
+    <link rel="stylesheet" href="/static/common/css/ulaiber-loading.css" />
+    <link rel="stylesheet" href="/static/common/css/possport.css" />
+</head>
+<body class="possport-bg">
+<div class="possport-header">
+    <img class="fl m-right-10" src="/static/common/image/logo.png"/>
+    <span class="fl">ULINE后台管理系统</span>
+</div>
+<div class="possport-content tc" style="height:400px;line-height:300px;">
+    {% if p == "sm" %}
+    <p style="font-size:16px;">业务员暂时没有权限</p>
+    {% else %}
+    <p style="font-size:16px;">您没有任何角色权限，如有业务需要，请联系内部管理员协助开通</p>
+    {% end %}
+</div>
+</body>
+</html>

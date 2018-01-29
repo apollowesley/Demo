@@ -1,0 +1,147 @@
+{% extends '../base.html' %}
+{% module xsrf_form_html() %}
+
+{% block title %}
+<title>转入转出(官方)</title>
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form id="capital_form" class="form-inline export-xls" action="/official/capital/mch" method="POST">
+        {% module xsrf_form_html() %}
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right " id="search">查询</button>
+            <br/>
+            <button type="button" class="btn btn-default pull-right" id="exportExcel">导出</button>
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static ">创建日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control"
+                       id="create_at_start" name="create_at_start" value="{{ form.create_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control"
+                       id="create_at_end" name="create_at_end" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">资金账户:</p>
+            <select class="form-control" name="channel">
+                <option value="">全部</option>
+                <option value="weixin" {% if form.channel.data=="weixin" %}selected{% end %}>微信</option>
+                <option value="alipay" {% if form.channel.data=="alipay" %}selected{% end %}>支付宝</option>
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">划付状态:</p>
+            <select class="form-control" name="pay_status">
+                <option value="">全部</option>
+                <option value="1" {% if form.pay_status.data==1 %}selected{% end %}>等待划付</option>
+                <option value="2" {% if form.pay_status.data==2 %}selected{% end %}>划付成功</option>
+                <option value="3" {% if form.pay_status.data==3 %}selected{% end %}>划付失败</option>
+            </select>
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">业务单号:</p>
+            <input type="text" class="form-control " style="width:150px;"
+                   value="{{ form.mch_clear_no.data or '' }}" placeholder="请输入业务单号" name="mch_clear_no">
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">商户/门店名称:</p>
+            <input type="text" class="form-control" style="width:170px;"
+                   value="{{ form.mch_name.data or '' }}" placeholder="商户/门店名称" name="mch_name">
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">商户/门店简称:</p>
+            <input type="text" class="form-control" style="width:170px;"
+                   value="{{ form.mch_shortname.data or '' }}" placeholder="商户/门店简称" name="mch_shortname">
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">商户/门店编号:</p>
+            <input type="text" class="form-control" style="width:170px;"
+                   value="{{ form.mch_id.data or '' }}" placeholder="商户/门店编号" name="mch_id">
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">所属渠道名称:</p>
+            <input type="text" class="form-control" style="width:170px;"
+                   value="{{ form.dt_name.data or '' }}" placeholder="所属渠道名称" name="dt_name">
+        </div>
+
+        <div class="form-group ">
+            <p class="form-control-static">所属渠道编号:</p>
+            <input type="text" class="form-control" style="width:170px;"
+                   value="{{ form.dt_id.data or '' }}" placeholder="所属渠道编号" name="dt_id">
+        </div>
+    </form>
+    <!--分页-->
+    <div class="">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>创建时间</th>
+                <th>业务单号</th>
+                <th>商户/门店名称</th>
+                <th>商户/门店简称</th>
+                <th>业务名称</th>
+                <th>资金账户</th>
+                <th>结算户名</th>
+                <th>结算账号</th>
+                <th>金额</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for each_info in data%}
+            <tr>
+                <td>{{ datetime_to_str(each_info.get('create_at') or '') }}</td>
+                <td>{{ each_info.get('mch_clear_no') or '' }}</td>
+                <td>{{ each_info.get('mch_name') or '' }}</td>
+                <td>{{ each_info.get('mch_shortname') or '' }}</td>
+                <td>{{ each_info.get('business_type') or '' }}</td>
+                <td>
+                    {% if each_info.get('channel') == 'weixin' %}
+                    微信账户
+                    {% elif each_info.get('channel') == 'alipay' %}
+                    支付宝账户
+                    {% end %}
+                </td>
+                <td>{{ each_info.get('rcvacctname') or '' }}</td>
+                <td>{{ each_info.get('rcvacctno') or '' }}</td>
+                <td>{{ '{:.2f}'.format(each_info.get('trade_amount')/100.0 or 0) }}</td>
+                <td>{{ each_info.get('pay_status','')}}</td>
+                <td><a href="mch/detail?mch_clear_no={{each_info.get('mch_clear_no','')}}">详情</a></td>
+            </tr>
+            {% end %}
+            </tbody>
+        </table>
+
+
+    </div>
+    <div>
+        {% autoescape None %}
+        {{ navigate_html }}
+    </div>
+</div>
+
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript" src="/static/common/js/capital.js"></script>
+<script>
+    var total_num = {{total_number}};
+</script>
+{% end %}
+<!-- 引入js文件  end-->

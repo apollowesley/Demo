@@ -1,0 +1,28 @@
+.risk-modal-table{width:100%;}
+.risk-modal-table td{padding:5px 15px;border:1px solid #f3f3f3;line-height:30px;text-align:left;}
+.risk-modal-table .risk-th{width:150px;background:#f5f6fb;}
+
+.risk-modal-content{width:700px;}
+.risk-modal-content .risk-modal-body{padding:0px 20px 20px 20px;text-align:left;font-size:14px;}
+.risk-modal-title{font-size:16px;text-align:left;}
+.risk-modal-title i{margin-right:5px;color:#ff4400;font-style:normal;}
+
+.risk-form{line-height:30px;}
+.risk-form-label{width:100px;}
+.risk-m-right{margin-right:15px;}
+.risk-m-right input{margin-right:5px !important;}
+.risk-m-bottom-10{margin-bottom:10px;}
+.risk-m-bottom-20{margin-bottom:20px;}
+.risk-m-bottom-30{margin-bottom:30px;}
+
+.risk-deal{display:inline;position:relative;}
+.risk-deal{display:inline;position:relative;}
+.risk-deal:hover .risk-deal-menu{display:block;}
+.risk-deal-menu{display:none;position:absolute;top:17px;left:0px;padding:5px 0px;width:100%;line-height:24px;background:#fff;border:1px solid #f2f2f2;border-radius:5px;z-index:9;}
+.risk-deal-menu p{margin:0px;cursor:pointer;}
+.risk-deal-menu p:hover{color:#6aafe6;}
+
+
+
+.c-999{color:#999;}
+.base-hide{display:none;}

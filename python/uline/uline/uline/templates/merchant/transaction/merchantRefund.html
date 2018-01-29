@@ -1,0 +1,181 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>商户退款(商户)</title>
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <form class="form-inline export-xls" action="/merchant/transaction/refund" method="post">
+        {% module xsrf_form_html() %}
+
+        <div class="pull-right">
+            <button type="submit" class="btn btn-default pull-right " id="search">搜索</button><br>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exportChoose" >导出</button>
+        </div>
+
+        <!--导出选择-->
+        <div class="modal fade" id="exportChoose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">选择导出文件格式</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="clearfix">
+                            <div class="btn btn-default" onclick="exportXls('csv')">csv格式</div>
+                            <div class="btn btn-default m-left-5" onclick="exportXls('xlsx')">excel格式</div>
+                        </div>
+                        <p style="color:#999;padding-top: 30px;">建议选择csv格式，导出数据量大的情况下，速度更快。</p>
+                    </div>
+                    <div class="modal-footer center-block">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">创建日期:</p>
+            <div class="input-group input-daterange">
+                <input type="text" class="form_datetime form-control"
+                       id="create_at_start" name="create_at_start" value="{{ form.create_at_start.data or '' }}">
+                <span class="input-group-addon">—</span>
+                <input type="text" class="form_datetime form-control"
+                       id="create_at_end" name="create_at_end" value="{{ form.create_at_end.data or '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">退款状态:</p>
+            <select class="form-control" name="refund_status" id="refund_status">
+                <option value="">全部</option>
+                <option value="SUCCESS">退款成功</option>
+                <option value="FAIL">退款失败</option>
+                <option value="PROCESSING">退款处理中</option>
+                <option value="CHANGE">转入代发</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">支付渠道:</p>
+            <select class="form-control" name="channel" id="channel">
+                <option value="">全部</option>
+                <option value="weixin" {% if form.channel.data=='weixin'%}selected{% end %}>微信</option>
+                <option value="alipay" {% if form.channel.data=='alipay'%}selected{% end %}>支付宝</option>
+                {% if has_jdpay %}
+                <option value="jdpay" {% if form.channel.data=='jdpay'%}selected{% end %}>京东支付</option>
+                {% end %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">uline交易号:</p>
+            <input type="text" class="form-control inputAll" name="out_trade_no" id="out_trade_no"
+                   value="{{ form.out_trade_no.data or '' }}" placeholder="uline交易号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">第三方交易号:</p>
+            <input type="text" class="form-control inputAll search-criteria" name="transaction_id" id="transaction_id"
+                   value="{{ form.transaction_id.data or '' }}" placeholder="第三方交易号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户交易号:</p>
+            <input type="text" class="form-control inputAll" name="mch_trade_no" id="mch_trade_no"
+                   value="{{ form.mch_trade_no.data or '' }}" placeholder="商户交易号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">uline退款单号 :</p>
+            <input type="text" class="form-control inputAll search-criteria" name="out_refund_no" id="out_refund_no"
+                   value="{{ form.out_refund_no.data or '' }}" placeholder="uline退款单号 ">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">第三方退款单号:</p>
+            <input type="text" class="form-control inputAll" name="refund_id" id="refund_id"
+                   value="{{ form.refund_id.data or '' }}" placeholder="第三方退款单号">
+        </div>
+
+        <div class="form-group">
+            <p class="form-control-static">商户退款单号 :</p>
+            <input type="text" class="form-control inputAll search-criteria" name="mch_refund_no" id="mch_refund_no"
+                   value="{{ form.mch_refund_no.data or '' }}" placeholder="商户退款单号 ">
+        </div>
+
+    </form>
+
+    <div class="transaction-title">
+    {% if all_total_fee != '--' %}
+    退款合计: <span class="formatting-money">{{ total_num }} </span>笔 , 共<span class="formatting-money">{{ all_total_fee }}</span> 元
+    {% else %}
+    退款合计: <span  class="formatting-money">{{ all_total_fee }}</span> （合计时间范围不能超过21天）
+    {% end %}
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>创建时间</th>
+                <th>
+                    <span>uline交易号</span>
+                    <span>/</span>
+                    <span>商户交易号</span>
+                </th>
+                <th>申请人</th>
+                <th>
+                    <span>uline退款单号</span>
+                    <span>/</span>
+                    <span>第三方退款单号</span>
+                </th>
+                <th>支付渠道</th>
+                <th>退款金额</th>
+                <th>当前状态</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="tbodyBox">
+
+            {% for _,created_at,out_trade_no,mch_trade_no,applicant,refund_id,out_refund_no,refund_fee,refund_status,channel,_,_ in data %}
+            <tr>
+                <td>{{ created_at }}</td>
+                <td>
+                    <p>{{ out_trade_no }}</p>
+                    <div>{{ mch_trade_no }}</div>
+                </td>
+                <td>{{ applicant or '接口发起'}}</td>
+                <td>
+                    <p>{{ out_refund_no }}</p>
+                    <div>{{ refund_id }}</div>
+                </td>
+                <td>{{ channel }}</td>
+                <td class="formatting-money">{{ refund_fee }}</td>
+                <td>{{ refund_status }}</td>
+                <td>
+                    <a href="/merchant/transaction/refund/list?out_refund_no={{ out_refund_no }}">详情</a>
+                </td>
+            </tr>
+            {% end %}
+        </tbody>
+    </table>
+
+    <div>
+         {% autoescape None %}
+         {{ navigate_html }}
+     </div>
+
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ total_num }};</script>
+<script type="text/javascript" src="/static/merchant/js/replaceTranRefundJumpUrl.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

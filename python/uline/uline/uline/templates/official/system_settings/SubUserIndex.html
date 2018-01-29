@@ -1,0 +1,25 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>员工账号管理(官方)</title>
+{% end %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/merchant/css/subUser.css">
+{% end %}
+
+{% block content %}
+   {% autoescape None %}
+
+            {{ data_html }}
+
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript"> var total_num ={{ total_num }};
+</script>
+<script type="text/javascript" src="/static/common/js/staff_management_controller.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

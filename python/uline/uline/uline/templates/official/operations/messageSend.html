@@ -1,0 +1,97 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>短信推送管理(官方)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+    <div class="tab-nav">
+        <ul class="clearfix">
+            <li class="on">新增短信推送</li>
+            <li class="none">短信推送记录</li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <form class="form-horizontal">
+            {% module xsrf_form_html() %}
+            <div class="form-group">
+                <label class="col-md-1 control-label gap">推送对象</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="contact"
+                           required="required" value="银行直连商户" readonly>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label gap">短信内容</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" rows="3" name="message_content" placeholder="请输入推送内容，不超过200字符"
+                              maxlength="200"></textarea>
+                    <div class="base-error-c" style="margin-top:10px;"></div>
+                </div>
+            </div>
+            <button type="submit" data-click="send" class="btn btn-default col-md-offset-1">发送</button>
+        </form>
+    </div>
+    <div class="tab-content" style="display:none;">
+        <div class="tab_container">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>推送对象</th>
+                    <th>短信内容</th>
+                    <th>总推送人数</th>
+                    <th>推送失败人数</th>
+                    <th>推送时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if data %}
+                    {% for sended_sucess_count,sended_fail_count,send_id,create_at,message_content in data %}
+                    <tr>
+                        <td>银行直连商户</td>
+                        <td width="220px">
+                            <div class="message-content">
+                                <div class="message-text">{{ message_content }}</div>
+                                <div class="message-content-tip"><i></i>{{ message_content}}</div>
+                            </div>
+                        </td>
+                        <td>{{  sended_sucess_count+ sended_fail_count}}</td>
+                        <td>{{ sended_fail_count }}</td>
+                        <td>{{ create_at }}</td>
+                    </tr>
+                    {% end %}
+                {% else %}
+                    <tr>
+                        <td class="no-data-show" colspan="10">暂无数据</td>
+                    </tr>
+                {% end %}
+                </tbody>
+            </table>
+        </div>
+        <!--分页-->
+        <div>
+            {% autoescape None %}
+            {{ navigate_html }}
+        </div>
+    </div>
+</div>
+<div class="message-pop">
+    <div class="message-mack"></div>
+    <div class="message-progress">
+        <h3>正在发送</h3>
+        <p class="message-progress-bar"><span></span></p>
+        <p class="message-small">正在发送短信（0/10）</p>
+    </div>
+</div>
+
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script src="/static/official/js/messageController.js"></script>
+{% end %}
+<!-- 引入js文件  end-->

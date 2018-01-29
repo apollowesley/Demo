@@ -1,0 +1,248 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>数据统计(同业银行)</title>
+{% end %}
+
+{% block content %}
+
+<div class="row index-row">
+
+    <div class="statBoxs">
+        <div class="hf-head">
+            <div class="headBox">
+                <span class="headLi">
+                    <img src="/static/common/image/biaozhi.png"/>
+                     <span style="color: #b7b7b7">数据统计</span>
+                    <span class="advancing">></span>
+                    <a href = "/bank/stats/chain" style="color: #b7b7b7">连锁商户交易统计</a>
+                    <span class="advancing">></span>
+                    <a href="javascript:;" >连锁商户交易详情</a>
+                </span>
+            </div>
+        </div>
+        <div>
+            <font style="font-size: 20px">{{ chain_id_name[1] }}</font>
+            <!--<font style="font-size: 13px; color: #b7b7b7;">&nbsp;&nbsp;&nbsp;数据于每天上午10点更新</font>-->
+        </div>
+        <div class="col-md-12 statBox">
+            <div class="col-md-2">
+                <h4>支付成功笔数</h4>
+                <ul class="contStat">
+                    <li>昨日</li>
+                    <li class="formatting-money">{{ data['last_day_count_data']['day_tx_count_last'] or 0 }}</li>
+                    <li>累积</li>
+                    <li class="formatting-money">{{ data['total_count_data']['day_tx_count_total'] or 0 }}</li>
+                </ul>
+
+            </div>
+            <div class="col-md-2">
+                <h4>支付成功金额</h4>
+                <ul class="contStat">
+                    <li>昨日</li>
+                    <li class="formatting-money">{{ data['last_day_count_data']['day_tx_amount_last'] or 0 }}</li>
+                    <li>累积</li>
+                    <li class="formatting-money">{{ data['total_count_data']['day_tx_amount_total'] or 0 }}</li>
+                </ul>
+
+            </div>
+            <div class="col-md-2">
+                <h4>退款笔数</h4>
+                <ul class="contStat">
+                    <li>昨日</li>
+                    <li class="formatting-money">{{ data['last_day_count_data']['day_refund_count_last'] or 0 }}</li>
+                    <li>累积</li>
+                    <li class="formatting-money">{{ data['total_count_data']['day_refund_count_total'] or 0 }}</li>
+                </ul>
+
+            </div>
+            <div class="col-md-2">
+                <h4>退款金额</h4>
+                <ul class="contStat">
+                    <li>昨日</li>
+                    <li class="formatting-money">{{ data['last_day_count_data']['day_refund_amount_last'] or 0 }}</li>
+                    <li>累积</li>
+                    <li class="formatting-money">{{ data['total_count_data']['day_refund_amount_total'] or 0 }}</li>
+                </ul>
+
+            </div>
+            <div class="col-md-2">
+                <h4>交易总净额</h4>
+                <ul class="contStat">
+                    <li>昨日</li>
+                    <li class="formatting-money">{{ data['last_day_count_data']['day_tx_net_amout_last'] or 0 }}</li>
+                    <li>累积</li>
+                    <li class="formatting-money">{{ data['total_count_data']['day_tx_net_amout_total'] or 0 }}</li>
+                </ul>
+
+            </div>
+            <div class="col-md-2">
+                <h4>商户支出</h4>
+                <ul class="contStat">
+                    <li>昨日</li>
+                    <li class="formatting-money">{{ data['last_day_count_data']['day_profit_amount_last'] or 0 }}</li>
+                    <li>累积</li>
+                    <li class="formatting-money">{{ data['total_count_data']['day_profit_amount_total'] or 0 }}</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div id="tab">
+
+            <form class="form-inline export-xls" method="post" action="/bank/stats/chain/detail?chain_id={{ chain_id_name[0] }}">
+                <div class="float-left select-time">
+                    <ul class="clearfix">
+                        <li class="on">按日查询</li>
+                        <li class="none">按月查询</li>
+                    </ul>
+                </div>
+                <input type="hidden" name="query_date">
+                {% module xsrf_form_html() %}
+                <div class="input-group statInput">
+                    <input type="text" class="form_datetime form-control" id="create_at_start" name="create_at_start"
+                           placeholder="" value="{{ create_at_start or '' }}"/>
+                    <span class="input-group-addon">—</span>
+                    <input type="text" class="form_datetime form-control" id="create_at_end" name="create_at_end"
+                           placeholder="" value="{{ create_at_end or '' }}"/>
+                </div>
+                <div class="input-group statInput" style="display:none;">
+                    <input type="text" class="form_datetime form-control" id="create_at_start_moon" name="create_at_start"
+                           placeholder="" value="{{ create_at_start or '' }}"/>
+                    <span class="input-group-addon">—</span>
+                    <input type="text" class="form_datetime form-control" id="create_at_end_moon" name="create_at_end"
+                           placeholder="" value="{{ create_at_end or '' }}"/>
+                </div>
+
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-default">查询</button>
+                </div>
+                <input type="hidden" name="chain_id" id= "chain_id" value="{{ chain_id_name[0] }}">
+                <input type="hidden" name="order_by" id= "order_by" value="{{ order_by_form or '' }}">
+            </form>
+
+            <ul class="tabs col-md-12" id="tabs">
+                <li class="active col-md-2">
+                    <a href="#tab1" onclick="">
+                        <h4>支付成功笔数</h4>
+                        <p class="formatting-money">{{ data['total_count_search_data']['day_tx_count_total'] or 0 }}</p>
+                    </a>
+                    <div class="triangles">
+                        <div class="triangle-down"></div>
+                    </div>
+                </li>
+                <li class="col-md-2">
+                    <a href="#tab2">
+                        <h4>支付成功金额</h4>
+                        <p class="formatting-money">{{ data['total_count_search_data']['day_tx_amount_total'] or 0 }}</p>
+                    </a>
+                </li>
+                <li class="col-md-2">
+                    <a href="#tab3">
+                        <h4>退款笔数</h4>
+                        <p class="formatting-money">{{ data['total_count_search_data']['day_refund_count_total'] or 0 }}</p>
+                    </a>
+                </li>
+                <li class="col-md-2">
+                    <a href="#tab4">
+                        <h4>退款金额</h4>
+                        <p class="formatting-money">{{ data['total_count_search_data']['day_refund_amount_total'] or 0 }}</p>
+                    </a>
+                </li>
+                <li class="col-md-2">
+                    <a href="#tab5">
+                        <h4>交易总净额</h4>
+                        <p class="formatting-money">{{ data['total_count_search_data']['day_tx_net_amout_total'] or 0 }}</p>
+                    </a>
+                </li>
+                <li class="col-md-2">
+                    <a href="#tab6">
+                        <h4>商户支出</h4>
+                        <p class="formatting-money">{{ data['total_count_search_data']['day_profit_amount_total'] or 0 }}</p>
+                    </a>
+                </li>
+            </ul>
+
+
+            <div class="tab_container">
+                <div id="tab1" class="tab_content">
+                    <!--图表-->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="highCharts1" style="min-width: 400px;height:400px; padding-top: 20px"></div>
+                        </div>
+                    </div>
+                    <div class="statTab">
+                        <button class="btn btn-default pull-right" id="exportExcel" name="{{ chain_id_name[0] }}">导出excel</button>
+
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th class="order-by" name="day_tx_count">支付笔数<i class="fa fa-caret-down m-left-5"></i></th>
+                                <th class="order-by" name="day_tx_amount">支付成功金额<i class="fa fa-caret-down m-left-5"></i></th>
+                                <th class="order-by" name="day_refund_count">退款笔数<i class="fa fa-caret-down m-left-5"></i></th>
+                                <th class="order-by" name="day_refund_amount">退款金额<i class="fa fa-caret-down m-left-5"></i></th>
+                                <th class="order-by" name="day_tx_net_amout">交易总净额<i class="fa fa-caret-down m-left-5"></i></th>
+                                <th class="order-by" name="day_profit_amount">商户支出<i class="fa fa-caret-down m-left-5"></i></th>
+{#                                <th style="padding-right: 95px;">操作</th>#}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if len(data['details'])==0 %}
+                                <tr>
+                                    <td colspan="8" style="padding:20px;color:#999;font-size:16px;">暂无数据</td>
+                                </tr>
+                            {%end%}
+                            {% for pay_start_time,day_tx_count,day_tx_amount,day_refund_count,day_refund_amount,day_tx_net_amout,day_profit_amount, ___ in data['details'] %}
+                            <tr>
+                                <td>{{pay_start_time}}</td>
+                                <td class="formatting-money">{{day_tx_count}}</td>
+                                <td class="formatting-money">{{day_tx_amount}}</td>
+                                <td class="formatting-money">{{day_refund_count}}</td>
+                                <td class="formatting-money">{{day_refund_amount}}</td>
+                                <td class="formatting-money">{{day_tx_net_amout}}</td>
+                                <td class="formatting-money">{{day_profit_amount}}</td>
+{#                                <td>#}
+{#                                    <a href="/bank/transaction/trade?complete_at_start={{ pay_start_time }}&complete_at_end={{ pay_start_time }}&mch_id={{ chain_id_name[0] }}">支付详情</a>#}
+{#                                    <a href="/bank/transaction/refund?complete_at_start={{ pay_start_time }}&complete_at_end={{ pay_start_time }}&mch_id={{ chain_id_name[0] }}">退款详情</a>#}
+{#                                </td>#}
+                            </tr>
+                            {% end %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!--分页-->
+    <div>
+        {% autoescape None %}
+        {{ data['navigate_html'] }}
+    </div>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">var total_num={{ data['total_num'] }};</script>
+<script type="text/javascript">
+    {% autoescape None %}
+    var tx_count_chart = {{ data['charts'][0] }};
+    var tx_amount_chart = {{ data['charts'][1] }};
+    var refund_count_chart = {{ data['charts'][2] }};
+    var refund_amount_chart = {{ data['charts'][3] }};
+    var tx_net_amout_chart = {{ data['charts'][4] }};
+    var profit_amount_chart = {{ data['charts'][5] }};
+    var create_start_at = $("#create_at_start").val();
+</script>
+<script type="text/javascript" src="/static/bank/js/hc_data.js"></script>
+<script type="text/javascript" src="/static/bank/js/replacestatChainJumpUrl.js"></script>
+<script type="text/javascript" src="/static/bank/js/statistics.js"></script>
+<script type="text/javascript" src="/static/common/js/order_by.js"></script>
+<script type="text/javascript" src="/static/common/js/stats_controller.js"></script>
+{% end %}
+
+<!-- 引入js文件  end-->

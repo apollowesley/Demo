@@ -1,0 +1,20 @@
+.pay-type-title{padding:20px 0px;border-top:1px solid #ccc;}
+
+.pay-wechat,.pay-alipay,.dt-dzero-show{display:none;}
+#payTypeWechat:checked .pay_type_show{display:block;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

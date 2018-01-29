@@ -1,0 +1,110 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>转入转出详情(官方)</title>
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+    <div class="hf-head">
+        <div class="headBox">
+			<span class="headLi">
+				<img src="/static/common/image/biaozhi.png"/>
+				<a href="/official/capital/mch">转入转出</a>
+				<span class="advancing">></span>
+				<a href="javascript:;">转入转出详情</a>
+			</span>
+        </div>
+    </div>
+    <div id="main-content">
+        <div class='formlist license'>
+            <h4>转入转出详情</h4>
+            <div>
+                <label>创建时间</label>
+                <span>{{ datetime_to_str(data.get('create_at') or '') }}</span>
+            </div>
+            <div>
+                <label>业务单号</label>
+                <span>{{ data.get('mch_clear_no') or '' }}</span>
+            </div>
+            <div>
+                <label>业务名称</label>
+                <span>{{data.get('business_type')}}</span>
+            </div>
+            <div>
+                <label>商户名称</label>
+                <span>{{data.get('mch_name')}}</span>
+            </div>
+            <div>
+                <label>商户编号</label>
+                <span>{{data.get('mch_id', '')}}</span>
+            </div>
+            <div>
+                <label>商户简称</label>
+                <span>{{data.get('mch_shortname', '')}}</span>
+            </div>
+            <div>
+                <label>所属渠道名称</label>
+                <span>{{data.get('dt_name', '')}}</span>
+            </div>
+            <div>
+                <label>所属渠道编号</label>
+                <span>{{data.get('dt_id', '')}}</span>
+            </div>
+
+            <div>
+                <label>资金账户</label>
+                <span>
+                    {% if data.get('channel', '') == 'weixin' %}
+                    微信账户
+                    {% elif data.get('channel', '') == 'alipay'%}
+                    支付宝账户
+                    {% end %}
+                </span>
+            </div>
+
+            <div>
+                <label>金额</label>
+                <span class="formatting-money">￥{{ '{:.2f}'.format(data.get('trade_amount', 0)/100.0) }}</span>
+            </div>
+
+            <div>
+                <label>状态</label>
+                <span>{{data.get('pay_status', '')}}</span>
+            </div>
+
+            <div>
+                <label>备注</label>
+                <span>{{data.get('remarks', '') or ' '}}</span>
+            </div>
+
+        </div>
+        <div class='formlist license'>
+            <h4>结算账户</h4>
+            <div>
+                <label>结算银行</label>
+                <span>{{data.get('rcvbankname','')}}</span>
+            </div>
+            <div>
+                <label>支行联行号</label>
+                <span>{{data.get('rcvbanksettleno','')}}</span>
+            </div>
+            <div>
+                <label>结算户名</label>
+                <span>{{data.get('rcvacctname','')}}</span>
+            </div>
+            <div>
+                <label>结算账号</label>
+                <span>{{data.get('rcvacctno','')}}</span>
+            </div>
+        </div>
+    </div>
+    {% end %}
+</div>
+<!-- 引入js文件  start-->
+{% block js %}
+<script>
+</script>
+{% end %}
+<!-- 引入js文件  end-->

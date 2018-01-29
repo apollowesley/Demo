@@ -1,0 +1,213 @@
+{% extends '../base.html' %}
+
+{% block title %}
+<title>批量商户信息(连锁商户)</title>
+{% end %}
+
+{% block css %}
+{% end %}
+
+{% block content %}
+<div class="row index-row">
+
+    <div class="headBox">
+         <span class="headLi">
+             <img src="/static/common/image/biaozhi.png"/>
+             <a href="/chain/inlet/cs">进件管理(门店进件)</a>
+             <span class="advancing">></span>
+             <a href="#">批量商户详情</a>
+         </span>
+    </div>
+    <form id="#msgForm">
+        <div class="pl-detailsBox">
+            <div class="pull-left">
+                <label class="addNew"><a class="btn btn-default" onclick="searchAllTr();">全部</a></label>
+                <label class="addNew"><a class="btn btn-default" onclick="searchRightTr()">录入正确</a></label>
+                <label><a class="btn btn-default" onclick="searchWrongTr();">录入错误</a></label>
+            </div>
+
+            <div class="pull-right">
+                <span>共有<b>{{ inlet_info['total'] }}</b>条</span>
+                <span>不符合<b class="numberList">{{ inlet_info['valid_num'] }}</b>条</span>
+            </div>
+        </div>
+        <div class="table-scroll">
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>录入状态</td>
+                        <td>门店名称</td>
+                        <td>门店简称</td>
+                        <td>经营类目</td>
+                        <td>省 份</td>
+                        <td>城 市</td>
+                        <td>区域</td>
+                        <td>联系地址</td>
+                        <td>客服电话</td>
+                        <td>联 系 人</td>
+                        <td>联系电话</td>
+                        <td>电子邮箱</td>
+                        <td>结算账户类型</td>
+                        <td>结算户名</td>
+                        <td>结算银行</td>
+                        <td>支行名称</td>
+                        <td>支行联行号</td>
+                        <td>结算账号</td>
+                        <td>身份证号码</td>
+                        <td>身份证正面图片</td>
+                        <td>身份证反面图片</td>
+                        <td>营业执照号</td>
+                        <td>营业执照开始时间</td>
+                        <td>营业执照结束时间</td>
+                        <td>营业执照是否长期有效</td>
+                        <td>营业范围</td>
+                        <td>营业执照照片</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for inlet_data in inlet_info['data'] %}
+                    <tr>
+                        <td>{% if inlet_data['check_status'] == 1 %}<span style="color:red">录入错误</span>{% else %}录入正确{% end %}</td>
+                        <td>{{ inlet_data['mch_name'] }}</td>
+                        <td>{{ inlet_data['mch_shortname'] }}</td>
+                        <td>{{ inlet_data['industry_code'] }}</td>
+                        <td>{{ inlet_data['province'] }}</td>
+                        <td>{{ inlet_data['city'] }}</td>
+                        <td>{{ inlet_data['district'] }}</td>
+                        <td>{{ inlet_data['address'] }}</td>
+                        <td>{{ inlet_data['service_phone'] }}</td>
+                        <td>{{ inlet_data['contact'] }}</td>
+                        <td>{{ inlet_data['mobile'] }}</td>
+                        <td>{{ inlet_data['email'] }}</td>
+                        <td>{{ inlet_data['balance_type'] }}</td>
+                        <td>{{ inlet_data['balance_name'] }}</td>
+                        <td>{{ inlet_data['bank_name_com'] }}</td>
+                        <td>{{ inlet_data['bank_name'] }}</td>
+                        <td>{{ inlet_data['bank_no'] }}</td>
+                        <td>{{ inlet_data['balance_account'] }}</td>
+                        <td>{{ inlet_data['id_card_no'] }}</td>
+                        <td>{{ inlet_data['id_card_img_f'] }}</td>
+                        <td>{{ inlet_data['id_card_img_b'] }}</td>
+
+                        <td>{{ inlet_data['license_num'] }}</td>
+                        <td>{{ inlet_data['license_start_date'] }}</td>
+                        <td>{% if inlet_data['license_end_date'] %}{{ inlet_data['license_end_date'] }}{% else %}{% end %}</td>
+                        <td>
+                                {% if inlet_data['license_period'] == '2' %}
+                                是
+                                {% elif inlet_data['license_period'] == '1' %}
+                                否
+                                {% else %}
+                                {{inlet_data['license_period']}}
+                                {% end %}
+                        </td>
+                        <td>{{ inlet_data['license_scope'] }}</td>
+                        <td>{{ inlet_data['license_img'] }}</td>
+
+
+                    </tr>
+                {% end %}
+                </tbody>
+            </table>
+
+        </div>
+
+        <div>
+            <a href="/chain/inlet/cs" class="btn btn-default">重新上传</a>
+            <button class="btn btn-default" id="submit-btn" onclick="sendInletInfoToWx();return false;" {% if inlet_info[
+            'status'] == 0 %}disabled="disabled"{% else%}{%end%}>提交</button>
+        </div>
+    </form>
+</div>
+{% end %}
+
+<!-- 引入js文件  start-->
+{% block js %}
+<script type="text/javascript">
+    function searchAllTr() {
+        var trs = $("table");
+        for (i = 0; i < trs.length; i++) {
+            trs[i].style.display = "block";
+        }
+    }
+
+    function searchRightTr() {
+        var trWrong = $("table[class='table wrong']");
+        var trRight = $("table[class='table right']");
+        for (i = 0; i < trRight.length; i++) {
+            trRight[i].style.display = "block";
+        }
+        for (i = 0; i < trWrong.length; i++) {
+            trWrong[i].style.display = "none";
+        }
+    }
+
+    function searchWrongTr() {
+        var trWrong = $("table[class='table wrong']");
+        var trRight = $("table[class='table right']");
+        for (i = 0; i < trWrong.length; i++) {
+            trWrong[i].style.display = "block";
+        }
+        for (i = 0; i < trRight.length; i++) {
+            trRight[i].style.display = "none";
+        }
+    }
+
+    var uuid = getQueryString('uuid');
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+    function sendInletInfoToWx() {
+        loadingShow();
+        $.ajax({
+            type: 'GET',
+            data: {"uuid": uuid},
+            dataType: 'json',
+            url: '/chain/inlet/cs/batch/operate',
+            beforeSend: function (XMLHttpRequest) {
+                // 请求前处理
+                //点击后不可重复提交
+                $("#submit-btn").attr('disabled','disabled');
+            },
+            success: function (res) {
+                loadingHide();
+                // 请求成功处理
+                if (res.code == 200) {
+                    $('body').append("<div class='newSuccess'>进件成功</div>");
+                    $(".newSuccess").delay(1000).fadeOut(2000,function(){
+                        window.location.href = '/chain/inlet/cs';
+                    })
+                } else if (res.code == 405) {
+                    $("body").append("<div class='newSuccess'>进件失败</div>");
+                    $(".newSuccess").delay(1000).fadeOut(2000);
+                } else {
+                    console.log("参数错误");
+                    alert("进件失败");
+                }
+            },
+            complete: function (XMLHttpRequest, textStatus) {
+            },
+            error: function () {
+                loadingHide();
+                // 请求出错处理
+                $("body").append("<div class='newSuccess'>操作失败</div>");
+                $(".newSuccess").delay(1000).fadeOut(2000);
+
+                //点击后不可重复提交
+                $("#submit-btn").attr('disabled','disabled');
+            }
+        });
+        return false;
+    }
+
+</script>
+
+{% end %}
+<!-- 引入js文件  end-->
